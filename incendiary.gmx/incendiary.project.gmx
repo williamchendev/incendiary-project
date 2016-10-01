@@ -8,14 +8,23 @@
   <sprites name="sprites">
     <sprite>sprites\sTest</sprite>
     <sprite>sprites\sMapPoint</sprite>
+    <sprite>sprites\sMenu</sprite>
+    <sprite>sprites\sGUIIcons</sprite>
+    <sprite>sprites\sUnitIcons</sprite>
+    <sprite>sprites\sUnitDebug</sprite>
+    <sprite>sprites\sUnit</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\RegularFont</font>
+  </fonts>
   <objects name="objects">
     <object>objects\oSystem</object>
     <object>objects\oMapPointSystem</object>
     <object>objects\oMapPoint</object>
-    <object>objects\object2</object>
+    <object>objects\oCityTrail</object>
+    <object>objects\oPoint</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
