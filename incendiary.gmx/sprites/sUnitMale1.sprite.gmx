@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>29</bbox_right>
+  <bbox_right>40</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>39</bbox_bottom>
   <HTile>0</HTile>
@@ -20,10 +20,9 @@
   <width>48</width>
   <height>48</height>
   <frames>
-    <frame index="0">images\sUnitDebug_0.png</frame>
-    <frame index="1">images\sUnitDebug_1.png</frame>
-    <frame index="2">images\sUnitDebug_2.png</frame>
-    <frame index="3">images\sUnitDebug_3.png</frame>
-    <frame index="4">images\sUnitDebug_4.png</frame>
+    <frame index="0">images\sUnitMale1_0.png</frame>
+    <frame index="1">images\sUnitMale1_1.png</frame>
+    <frame index="2">images\sUnitMale1_2.png</frame>
+    <frame index="3">images\sUnitMale1_3.png</frame>
   </frames>
 </sprite>

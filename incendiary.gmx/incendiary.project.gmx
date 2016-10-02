@@ -6,13 +6,16 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\sSystem</sprite>
     <sprite>sprites\sTest</sprite>
     <sprite>sprites\sMapPoint</sprite>
     <sprite>sprites\sMenu</sprite>
     <sprite>sprites\sGUIIcons</sprite>
+    <sprite>sprites\sActionBar</sprite>
     <sprite>sprites\sUnitIcons</sprite>
     <sprite>sprites\sUnitDebug</sprite>
-    <sprite>sprites\sUnit</sprite>
+    <sprite>sprites\sUnitMale1</sprite>
+    <sprite>sprites\sButton</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -25,6 +28,8 @@
     <object>objects\oMapPoint</object>
     <object>objects\oCityTrail</object>
     <object>objects\oPoint</object>
+    <object>objects\oUnit</object>
+    <object>objects\oButton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>

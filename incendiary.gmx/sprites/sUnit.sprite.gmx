@@ -23,5 +23,7 @@
     <frame index="0">images\sUnit_0.png</frame>
     <frame index="1">images\sUnit_1.png</frame>
     <frame index="2">images\sUnit_2.png</frame>
+    <frame index="3">images\sUnit_3.png</frame>
+    <frame index="4">images\sUnit_4.png</frame>
   </frames>
 </sprite>
