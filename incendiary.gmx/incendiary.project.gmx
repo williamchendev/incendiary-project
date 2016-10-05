@@ -16,9 +16,13 @@
     <sprite>sprites\sUnitDebug</sprite>
     <sprite>sprites\sUnitMale1</sprite>
     <sprite>sprites\sButton</sprite>
+    <sprite>sprites\sTile</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\UnitCreateScript.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\RegularFont</font>
   </fonts>

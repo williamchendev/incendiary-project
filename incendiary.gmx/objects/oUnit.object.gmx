@@ -34,16 +34,23 @@ selected = false;
 image_speed = 0;
 image_index = 1;
 
+moving = false;
+
 //Combat
-act = "none";
+health = 50;  //Health
+healthmax = 60;
+dead = false;
+
+act = "none";  //Actions
 actionspd = 1;
 actionmax = 100;
 
 action = actionmax;
 
-ammo = 0;
+ammo = 0;  //Ammo
 ammomax = 6;
-medkits = 0;
+
+unit_type = irandom_range(0, 7);
 
 //Image
 silalpha = 0;
@@ -74,7 +81,11 @@ if (instance_exists(oSystem)){
     pause = oSystem.pause;
 }
 
+//Depth
+depth = -y;
+
 if (!pause){
+    //Action
     action += actionspd;
     action = clamp(action, 0, actionmax);
     if (act == "reloading"){
@@ -84,6 +95,7 @@ if (!pause){
         }
     }
     
+    //Perform Action
     if(canmove){
         if (action == actionmax){
             if (keyboard_check_pressed(ord("K"))){
@@ -98,6 +110,9 @@ if (!pause){
     else{
     
     }
+    
+    //Tile Lock
+    
 }
 </string>
           </argument>
@@ -125,7 +140,7 @@ if (!pause){
 
 //Silhouette
 if (selected){
-    silalpha += 0.004;
+    silalpha += 0.008;
     if (silalpha &gt; 1){
         silalpha = 0;
     }

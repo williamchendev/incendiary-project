@@ -52,8 +52,6 @@
   </views>
   <instances>
     <instance objName="oSystem" x="128" y="288" name="inst_AC62F3D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCityTrail" x="64" y="192" name="inst_C524BBDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oUnit" x="96" y="96" name="inst_C1A9E68F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

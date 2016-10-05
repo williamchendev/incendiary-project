@@ -3,7 +3,7 @@
   <spriteName>sSystem</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,7 +29,7 @@
 
 //Settings
 pause = false;
-room_type = "map";
+room_type = "combat";
 
 //Variables
 people = 0;
@@ -49,6 +49,14 @@ timer = 0;
 
 //Image
 sin_val = 0;
+
+tile_alpha = 0;
+tile_visible = true;
+
+//Combat
+unit_create = false;
+unitnum = 2;
+unit = noone;
 </string>
           </argument>
         </arguments>
@@ -81,7 +89,7 @@ if (keyboard_check_pressed(ord("R"))){
 
 
 if (room_type == "map"){
-    //Timer
+    //Time
     timer++;
     if (timer == timespd){
         timer = 0;
@@ -103,9 +111,80 @@ if (room_type == "map"){
         view_yview = round(view_yview);
     }
 }
-else {
-     view_xview = 0;
-     view_yview = 0;
+else if (room_type == "combat"){
+    //Time
+    timer++;
+    if (timer == timespd){
+        timer = 0;
+        time++;
+        if (time &gt;= 1440){
+            time = 0;
+        }
+    }
+    
+    //Unit Init
+    if (!unit_create){
+        unit_create = true;
+        for (i = 0; i &lt; 3; i++){
+            unit[i] = noone;
+            if (i &lt; unitnum){
+                UnitCreateScript(50, irandom_range(128, 250), i);
+            }
+        }
+    }
+    
+    //Select
+    if (mouse_check_button_pressed(mb_left)){
+        if (position_meeting(mouse_x, mouse_y, oUnit)){
+            oUnit.selected = false;
+            select_unit = instance_position(mouse_x, mouse_y, oUnit);
+            select_unit.selected = true;
+        }
+        else {
+            oUnit.selected = false;
+        }
+    }
+    
+    //View
+    view_xview = 0;
+    view_yview = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Begin
+
+if (room_type == "combat"){
+    if (tile_visible){
+        tile_alpha += 0.008;
+        if (tile_alpha &gt;= 1){
+            tile_alpha = 0;
+        }
+        for (h = 0; h &lt; 8; h++){
+            for (w = 0; w &lt; room_width div 32; w++){
+                draw_sprite_ext(sTile, 0, w * 32, h * 16 + 134, 1, 1, 0, c_white, 0.6 + (0.2 * sin(tile_alpha * (2 * pi))));
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -138,7 +217,7 @@ if (mouse_check_button(mb_left)){
         sin_val = 0;
     }
     var mouse_effect = 0.5 - (0.5 * sin(sin_val * (2 * pi)));
-    draw_sprite_ext(sGUIIcons, 0, mouse_x, mouse_y, (mouse_effect * 0.4) + 0.6, (mouse_effect * 0.4) + 0.6, sin_val * 360, c_white, (mouse_effect * 0.4) + 0.6);
+    draw_sprite_ext(sGUIIcons, 0, mouse_x, mouse_y, (mouse_effect * 0.4) + 0.6, (mouse_effect * 0.4) + 0.6, -sin_val * 360, c_white, (mouse_effect * 0.4) + 0.6);
 }
 else {
     sin_val = 0.0;
@@ -166,7 +245,28 @@ if (room_type == "map"){
     
 }
 else if (room_type == "combat"){
-
+    draw_sprite(sMenu, 1, view_xview, view_yview);
+    draw_set_font(RegularFont);
+    draw_set_colour(c_white);
+    
+     //Time
+    draw_set_halign(fa_center);
+    draw_text(view_xview + 27, view_yview + 15, string(time div 60) + ":" + string(time mod 60));
+    draw_set_halign(fa_left);
+    
+    //Unit Stats
+    if (unit[0] != noone){
+        draw_sprite(sUnitIcons, unit[0].unit_type, view_xview + 66, view_yview + 6);
+        draw_rectangle(view_xview + 132, view_yview + 9, view_xview + 132 + (55 * (unit[0].health / unit[0].healthmax)), view_yview + 11, false);
+    }
+    if (unit[1] != noone){
+        draw_sprite(sUnitIcons, unit[1].unit_type, view_xview + 208, view_yview + 6);
+        draw_rectangle(view_xview + 274, view_yview + 9, view_xview + 274 + (55 * (unit[1].health / unit[1].healthmax)), view_yview + 11, false);
+    }
+    if (unit[2] != noone){
+        draw_sprite(sUnitIcons, unit[2].unit_type, view_xview + 350, view_yview + 6);
+        draw_rectangle(view_xview + 416, view_yview + 9, view_xview + 416 + (55 * (unit[2].health / unit[2].healthmax)), view_yview + 11, false);
+    }
 }
 
 /**
