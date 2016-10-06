@@ -17,6 +17,7 @@
     <sprite>sprites\sUnitMale1</sprite>
     <sprite>sprites\sButton</sprite>
     <sprite>sprites\sTile</sprite>
+    <sprite>sprites\sWeapons</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

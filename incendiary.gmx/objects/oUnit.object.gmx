@@ -36,6 +36,10 @@ image_index = 1;
 
 moving = false;
 
+//Tiles
+tilex = round((x / 32) + 0.5);
+tiley = round(((y - 170) / 16) + 0.5);
+
 //Combat
 health = 50;  //Health
 healthmax = 60;
@@ -51,6 +55,7 @@ ammo = 0;  //Ammo
 ammomax = 6;
 
 unit_type = irandom_range(0, 7);
+unit_weapon = irandom_range(1, 4);
 
 //Image
 silalpha = 0;
@@ -84,6 +89,10 @@ if (instance_exists(oSystem)){
 //Depth
 depth = -y;
 
+//Tiles
+tilex = round((x / 32) + 0.5) - 1;
+tiley = round(((y - 170) / 16) + 0.5);
+
 if (!pause){
     //Action
     action += actionspd;
@@ -112,7 +121,10 @@ if (!pause){
     }
     
     //Tile Lock
-    
+    if (moving != true){
+        x += (((tilex * 32) + 16) - x) * 0.05;
+        y += (((tiley * 16) + 162) - y) * 0.05;
+    }
 }
 </string>
           </argument>
@@ -192,7 +204,7 @@ else{
     draw_set_color(c_white);
     draw_set_font(RegularFont);
     draw_set_halign(fa_center);
-    draw_text(x, y - 36, string(ammo));
+    draw_text(x + 1, y - 36, string(ammo));
     draw_set_halign(fa_left);
 }
 </string>

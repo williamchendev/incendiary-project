@@ -57,6 +57,8 @@ tile_visible = true;
 unit_create = false;
 unitnum = 2;
 unit = noone;
+
+select_unit = noone;
 </string>
           </argument>
         </arguments>
@@ -128,20 +130,28 @@ else if (room_type == "combat"){
         for (i = 0; i &lt; 3; i++){
             unit[i] = noone;
             if (i &lt; unitnum){
-                UnitCreateScript(50, irandom_range(128, 250), i);
+                UnitCreateScript(48, (irandom_range(0, 5) * 16) + 162, i);
             }
         }
     }
     
     //Select
     if (mouse_check_button_pressed(mb_left)){
-        if (position_meeting(mouse_x, mouse_y, oUnit)){
+        if (position_meeting(mouse_x, mouse_y, oUnit) ){
             oUnit.selected = false;
             select_unit = instance_position(mouse_x, mouse_y, oUnit);
             select_unit.selected = true;
         }
         else {
+            if (select_unit != noone){
+                var selecttilex = round((mouse_x / 32) + 0.5);
+                var selecttiley = round(((mouse_y - 182) / 16) + 0.5);
+                
+                select_unit.x = clamp((clamp(selecttilex, 0, room_width div 32) * 32) - 16, 16, room_width - 16);
+                select_unit.y = (clamp(selecttiley, 0, 5) * 16) + 162;
+            }
             oUnit.selected = false;
+            select_unit = noone;
         }
     }
     
@@ -179,9 +189,9 @@ if (room_type == "combat"){
         if (tile_alpha &gt;= 1){
             tile_alpha = 0;
         }
-        for (h = 0; h &lt; 8; h++){
+        for (h = 0; h &lt; 6; h++){
             for (w = 0; w &lt; room_width div 32; w++){
-                draw_sprite_ext(sTile, 0, w * 32, h * 16 + 134, 1, 1, 0, c_white, 0.6 + (0.2 * sin(tile_alpha * (2 * pi))));
+                draw_sprite_ext(sTile, 0, w * 32, h * 16 + 170, 1, 1, 0, c_white, 0.6 + (0.2 * sin(tile_alpha * (2 * pi))));
             }
         }
     }
@@ -258,14 +268,26 @@ else if (room_type == "combat"){
     if (unit[0] != noone){
         draw_sprite(sUnitIcons, unit[0].unit_type, view_xview + 66, view_yview + 6);
         draw_rectangle(view_xview + 132, view_yview + 9, view_xview + 132 + (55 * (unit[0].health / unit[0].healthmax)), view_yview + 11, false);
+        
+        draw_sprite_ext(sWeapons, unit[0].unit_weapon, view_xview + 141, view_yview + 20, 1, 1, 0, c_black, 0.4);
+        draw_sprite(sWeapons, unit[0].unit_weapon, view_xview + 142, view_yview + 19);
+        
+        draw_text(view_xview + 132, view_yview + 128, string(unit[0].tilex));
+        draw_text(view_xview + 152, view_yview + 128, string(unit[0].tiley));
     }
     if (unit[1] != noone){
         draw_sprite(sUnitIcons, unit[1].unit_type, view_xview + 208, view_yview + 6);
         draw_rectangle(view_xview + 274, view_yview + 9, view_xview + 274 + (55 * (unit[1].health / unit[1].healthmax)), view_yview + 11, false);
+        
+        draw_sprite_ext(sWeapons, unit[1].unit_weapon, view_xview + 283, view_yview + 20, 1, 1, 0, c_black, 0.4);
+        draw_sprite(sWeapons, unit[1].unit_weapon, view_xview + 284, view_yview + 19);
     }
     if (unit[2] != noone){
         draw_sprite(sUnitIcons, unit[2].unit_type, view_xview + 350, view_yview + 6);
         draw_rectangle(view_xview + 416, view_yview + 9, view_xview + 416 + (55 * (unit[2].health / unit[2].healthmax)), view_yview + 11, false);
+        
+        draw_sprite_ext(sWeapons, unit[2].unit_weapon, view_xview + 425, view_yview + 20, 1, 1, 0, c_black, 0.4);
+        draw_sprite(sWeapons, unit[2].unit_weapon, view_xview + 426, view_yview + 19);
     }
 }
 
