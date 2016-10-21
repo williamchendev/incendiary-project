@@ -6,38 +6,47 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sSystem</sprite>
-    <sprite>sprites\sTest</sprite>
-    <sprite>sprites\sMapPoint</sprite>
-    <sprite>sprites\sMenu</sprite>
-    <sprite>sprites\sGUIIcons</sprite>
-    <sprite>sprites\sActionBar</sprite>
-    <sprite>sprites\sUnitIcons</sprite>
-    <sprite>sprites\sUnitDebug</sprite>
-    <sprite>sprites\sUnitMale1</sprite>
-    <sprite>sprites\sButton</sprite>
-    <sprite>sprites\sTile</sprite>
-    <sprite>sprites\sWeapons</sprite>
+    <sprites name="System">
+      <sprite>sprites\sSystem</sprite>
+      <sprite>sprites\sMove</sprite>
+      <sprite>sprites\sSolid</sprite>
+      <sprite>sprites\sDebug</sprite>
+    </sprites>
+    <sprites name="Debug">
+      <sprite>sprites\sUnitDebug</sprite>
+      <sprite>sprites\sSarahDebug</sprite>
+      <sprite>sprites\sWeapons</sprite>
+      <sprite>sprites\sAnnaDebug</sprite>
+    </sprites>
+    <sprite>sprites\sAnna</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\UnitCreateScript.gml</script>
+    <script>scripts\AnnaScript.gml</script>
+    <script>scripts\AdvInitScript.gml</script>
+    <scripts name="System">
+      <script>scripts\ControlScript.gml</script>
+      <script>scripts\RoomInitScript.gml</script>
+      <script>scripts\AnnaMoveGridScript.gml</script>
+    </scripts>
+    <scripts name="Debug">
+      <script>scripts\UnitCreateScript.gml</script>
+      <script>scripts\CombatRoomScript.gml</script>
+      <script>scripts\UnitMoveScript.gml</script>
+      <script>scripts\UnitMovePauseScript.gml</script>
+      <script>scripts\UnitMoveUnpauseScript.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\RegularFont</font>
   </fonts>
   <objects name="objects">
-    <object>objects\oSystem</object>
-    <object>objects\oMapPointSystem</object>
-    <object>objects\oMapPoint</object>
-    <object>objects\oCityTrail</object>
-    <object>objects\oPoint</object>
-    <object>objects\oUnit</object>
-    <object>objects\oButton</object>
+    <object>objects\oAnna</object>
+    <object>objects\oMove</object>
+    <object>objects\oSolid</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room_template</room>
   </rooms>
   <help>

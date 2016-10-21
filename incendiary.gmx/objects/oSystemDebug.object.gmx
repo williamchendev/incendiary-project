@@ -29,7 +29,10 @@
 
 //Settings
 pause = false;
-room_type = "combat";
+room_type = "null";
+
+//Controls
+canmove = true;
 
 //Variables
 people = 0;
@@ -54,6 +57,8 @@ tile_alpha = 0;
 tile_visible = true;
 
 //Combat
+movement_grid = noone;
+
 unit_create = false;
 unitnum = 2;
 unit = noone;
@@ -81,7 +86,8 @@ select_unit = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(vk_f11)){
+            <string>///Step Event
+if (keyboard_check_pressed(vk_f11)){
     window_set_fullscreen(!window_get_fullscreen());
 }
 
@@ -124,34 +130,54 @@ else if (room_type == "combat"){
         }
     }
     
-    //Unit Init
-    if (!unit_create){
-        unit_create = true;
-        for (i = 0; i &lt; 3; i++){
-            unit[i] = noone;
-            if (i &lt; unitnum){
-                UnitCreateScript(48, (irandom_range(0, 5) * 16) + 162, i);
-            }
-        }
-    }
-    
     //Select
     if (mouse_check_button_pressed(mb_left)){
-        if (position_meeting(mouse_x, mouse_y, oUnit) ){
-            oUnit.selected = false;
-            select_unit = instance_position(mouse_x, mouse_y, oUnit);
-            select_unit.selected = true;
+        if (select_unit == noone){
+            if (position_meeting(mouse_x, mouse_y, oUnit) ){
+                oUnit.selected = false;
+                select_unit = instance_position(mouse_x, mouse_y, oUnit);
+                select_unit.selected = true;
+                select_unit.silalpha = 0.3;
+            }
         }
         else {
-            if (select_unit != noone){
-                var selecttilex = round((mouse_x / 32) + 0.5);
-                var selecttiley = round(((mouse_y - 182) / 16) + 0.5);
-                
-                select_unit.x = clamp((clamp(selecttilex, 0, room_width div 32) * 32) - 16, 16, room_width - 16);
-                select_unit.y = (clamp(selecttiley, 0, 5) * 16) + 162;
+            if (mouse_y &gt; 162){
+                if (select_unit != noone){
+                    var selecttilex = round((mouse_x / 32) + 0.5);
+                    var selecttiley = round(((mouse_y - 170) / 16) + 0.5);
+                    
+                    var select_x = clamp((clamp(selecttilex, 0, room_width div 32) * 32) - 16, 16, room_width - 16);
+                    var select_y = (clamp(selecttiley, 1, 6) * 16) + 162;
+                    
+                    if (!pause){
+                        UnitMoveScript(select_unit, movement_grid, select_x, select_y);
+                    }
+                    else {
+                        UnitMoveScript(select_unit, movement_grid, select_x, select_y);
+                        with(select_unit){
+                            path_goalx = path_get_x(path, 1);
+                            path_goaly = path_get_y(path, 1);
+                            path_end();
+                        }
+                    }
+                }
             }
             oUnit.selected = false;
             select_unit = noone;
+        }
+    }
+    
+    if (mouse_x &gt; view_xview + 460){
+        if (mouse_y &gt; view_yview + 250){
+            if (mouse_check_button_pressed(mb_left)){
+                pause = !pause;
+                if (pause == true){
+                    UnitMovePauseScript(movement_grid);
+                }
+                else {
+                    UnitMoveUnpauseScript(movement_grid);
+                }
+            }
         }
     }
     
@@ -272,8 +298,8 @@ else if (room_type == "combat"){
         draw_sprite_ext(sWeapons, unit[0].unit_weapon, view_xview + 141, view_yview + 20, 1, 1, 0, c_black, 0.4);
         draw_sprite(sWeapons, unit[0].unit_weapon, view_xview + 142, view_yview + 19);
         
-        draw_text(view_xview + 132, view_yview + 128, string(unit[0].tilex));
-        draw_text(view_xview + 152, view_yview + 128, string(unit[0].tiley));
+        draw_text(view_xview + 132, view_yview + 128, string(unit[0].x));
+        draw_text(view_xview + 152, view_yview + 128, string(unit[0].xprevious));
     }
     if (unit[1] != noone){
         draw_sprite(sUnitIcons, unit[1].unit_type, view_xview + 208, view_yview + 6);
@@ -288,6 +314,14 @@ else if (room_type == "combat"){
         
         draw_sprite_ext(sWeapons, unit[2].unit_weapon, view_xview + 425, view_yview + 20, 1, 1, 0, c_black, 0.4);
         draw_sprite(sWeapons, unit[2].unit_weapon, view_xview + 426, view_yview + 19);
+    }
+    
+    //Pause Button
+    if (pause){
+        draw_sprite(sPause, 1, view_xview + 460, view_yview + 250);
+    }
+    else {
+        draw_sprite(sPause, 0, view_xview + 460, view_yview + 250);
     }
 }
 
