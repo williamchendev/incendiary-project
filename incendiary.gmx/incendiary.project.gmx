@@ -19,12 +19,14 @@
       <sprite>sprites\sAnnaDebug</sprite>
     </sprites>
     <sprite>sprites\sAnna</sprite>
+    <sprite>sprites\sprite9</sprite>
+    <sprite>sprites\sprite10</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\AnnaScript.gml</script>
-    <script>scripts\AdvInitScript.gml</script>
+    <script>scripts\AnnaInitScript.gml</script>
     <scripts name="System">
       <script>scripts\ControlScript.gml</script>
       <script>scripts\RoomInitScript.gml</script>

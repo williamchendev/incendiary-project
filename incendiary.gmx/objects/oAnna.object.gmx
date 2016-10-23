@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -26,8 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Init
-
-AdvInitScript();
+AnnaInitScript();
 </string>
           </argument>
         </arguments>
@@ -51,7 +50,6 @@ AdvInitScript();
           <argument>
             <kind>1</kind>
             <string>///Step Event
-
 AnnaScript();
 </string>
           </argument>
@@ -76,6 +74,7 @@ AnnaScript();
           <argument>
             <kind>1</kind>
             <string>///Draw Event
+
 //Settings
 depth = -1 * round(y);
 //x = round(x);
@@ -83,13 +82,21 @@ depth = -1 * round(y);
 
 //path
 draw_path(path, x, y, true);
+draw_point(x, y);
 
 //Anna Sprite
-if (sign(x - xprevious) != 0){
-    image_xscale = sign(x - xprevious);
+var sprite_spd = 0.2;
+var pre_anna_x = anna_x;
+var pre_anna_y = anna_y;
+
+anna_x += (x - anna_x) * sprite_spd;
+anna_y += (y - anna_y) * sprite_spd;
+
+if (round(pre_anna_x) != round(anna_x)){
+    image_xscale = sign(round(anna_x) - round(pre_anna_x));
 }
 
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, anna_x, anna_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

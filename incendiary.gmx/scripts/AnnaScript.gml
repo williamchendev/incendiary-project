@@ -45,3 +45,8 @@ else {
         path_end();
     }
 }
+
+if (keyboard_check_pressed(ord("R"))){
+    path_end();
+    room_restart();
+}

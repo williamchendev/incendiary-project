@@ -9,6 +9,7 @@ canmove = true;
 //Settings
 spd = 1;
 
-move_x = 0;
-move_y = 0;
+anna_x = 0;
+anna_y = 0;
+
 moving = false;
