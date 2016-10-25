@@ -46,7 +46,9 @@ else {
     }
 }
 
-if (keyboard_check_pressed(ord("R"))){
+//Restart
+if (restart_key){
     path_end();
     room_restart();
+    randomize();
 }

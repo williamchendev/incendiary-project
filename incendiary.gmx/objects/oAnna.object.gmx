@@ -56,6 +56,58 @@ AnnaScript();
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw End
+
+//Debug
+if (debug_key){
+    global.debug = !global.debug;
+}
+
+if (global.debug){
+    draw_set_color(c_black);
+    draw_set_font(DebugFont);
+    draw_set_halign(fa_right);
+    
+    draw_text(view_xview + view_wview, view_yview, "FPS: " + string(fps));
+    
+    draw_set_halign(fa_left);
+}
+
+//Menu
+draw_sprite(sMenu, 0, view_xview, view_yview);
+
+for (i = 0; i &lt; 8; i++){
+    var item_x = view_xview + (i * 42) + 27;
+    var item_y = view_yview + (270 - 27);
+    
+    draw_sprite(sItems, 0, item_x, item_y);
+    
+    if (item_slot[i] != -1){
+        draw_sprite_ext(sItems, item_slot[i], item_x, item_y, 1, 1, 0, c_white, 1);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -81,8 +133,10 @@ depth = -1 * round(y);
 //y = round(y);
 
 //path
-draw_path(path, x, y, true);
-draw_point(x, y);
+if (global.debug){
+    draw_path(path, x, y, true);
+    draw_point(x, y);
+}
 
 //Anna Sprite
 var sprite_spd = 0.2;

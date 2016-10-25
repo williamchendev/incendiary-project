@@ -21,6 +21,9 @@
     <sprite>sprites\sAnna</sprite>
     <sprite>sprites\sprite9</sprite>
     <sprite>sprites\sprite10</sprite>
+    <sprite>sprites\sprite13</sprite>
+    <sprite>sprites\sItems</sprite>
+    <sprite>sprites\sMenu</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -30,7 +33,6 @@
     <scripts name="System">
       <script>scripts\ControlScript.gml</script>
       <script>scripts\RoomInitScript.gml</script>
-      <script>scripts\AnnaMoveGridScript.gml</script>
     </scripts>
     <scripts name="Debug">
       <script>scripts\UnitCreateScript.gml</script>
@@ -42,6 +44,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\RegularFont</font>
+    <font>fonts\DebugFont</font>
   </fonts>
   <objects name="objects">
     <object>objects\oAnna</object>
