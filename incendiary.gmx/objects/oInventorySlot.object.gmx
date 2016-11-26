@@ -29,11 +29,9 @@
 
 //Settings
 item = -1;
-
-move_x = 0;
-move_y = 0;
-
 alpha = 0;
+
+prox = false;
 
 sin_val = random_range(0, 1);
 </string>
@@ -60,8 +58,7 @@ sin_val = random_range(0, 1);
             <kind>1</kind>
             <string>///Step Event
 
-//move_x = (cos(sin_val * 2 * pi) * 3);
-//move_y = (sin(sin_val * 2 * pi) * 3);
+prox = position_meeting(mouse_x, mouse_y, self);
 
 alpha = clamp(alpha, 0, 0.8);
 </string>
@@ -99,11 +96,24 @@ var sin_draw = (sin(2 * pi * sin_val) + 1) / 2;
 
 //Draw Bubble
 draw_set_color(c_white);
-draw_set_alpha(alpha);
-draw_circle(x - 1 + move_x, y - 1 + move_y, 6 + (3 * sin_draw), true);
-if (item != -1){
-    draw_sprite(sInventoryItems, item, x + move_x, y + move_y);
+
+if ((alpha &gt;= 0.8) and prox){
+    draw_set_alpha(1);
+    draw_circle(x - 1, y - 1, 6 + (3 * sin_draw), true);
+    if (item != -1){
+        draw_sprite(sInventoryItems, item, x, y);
+    }
 }
+else {
+    draw_set_alpha(alpha);
+    draw_circle(x - 1, y - 1, 6 + (3 * sin_draw), true);
+    if (item != -1){
+        draw_set_alpha(alpha);
+        draw_sprite(sInventoryItems, item, x, y);
+    }
+}
+
+draw_set_color(c_black);
 draw_set_alpha(1);
 </string>
           </argument>

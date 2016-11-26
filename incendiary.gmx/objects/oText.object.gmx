@@ -28,10 +28,10 @@
             <string>///Init
 
 //Variables
-text = "Hey, what's up?";
+text = "";
 text_color = c_white;
 text_limit = 120;
-spd = 1;
+spd = 0.35;
 
 //Settings
 exist = true;
@@ -43,8 +43,8 @@ sin_val = random_range(0, 1);
 move_x = 0;
 move_y = 0;
 
-border_width = 5;
-border_height = 3;
+border_width = 4;
+border_height = 2;
 </string>
           </argument>
         </arguments>
@@ -77,6 +77,9 @@ else {
     sin_val = 0;
 }
 
+x = round(x);
+y = round(y);
+
 move_x = clamp(((sin(sin_val * 2 * pi) + 1) / 2) * 3.3, 0.01, 4);
 move_y = clamp(((cos(sin_val * 2 * pi) + 1) / 2) * 3.3, 0.01, 4);
 
@@ -84,13 +87,19 @@ move_y = clamp(((cos(sin_val * 2 * pi) + 1) / 2) * 3.3, 0.01, 4);
 if (exist){
     if (alpha &lt; 1){
         alpha += 0.001;
-        alpha *= 1.1;
+        alpha *= 1.15;
+    }
+    
+    if (alpha &gt; 0.7){
+        if (time &lt; string_length(text)){
+            time += spd;
+        }
     }
 }
 else {
     if (alpha &gt; 0){
         alpha -= 0.001;
-        alpha *= 0.90;
+        alpha *= 0.85;
     }
     else {
         instance_destroy();
@@ -100,7 +109,12 @@ else {
 //Destroy
 if (instance_exists(oAnna)){
     if (oAnna.mouse_click){
-        exist = false;
+        if (time &gt;= string_length(text)){
+            exist = false;
+        }
+        else {
+            time = string_length(text);
+        }
     }
 }
 
@@ -134,7 +148,7 @@ draw_set_alpha(alpha);
 draw_set_color(c_black);
 var corner_radius_sin = ((sin(sin_val * 2 * pi) + 1) / 2) * (string_width_ext(text, -1, text_limit) / 3);
 var corner_radius_cos = ((cos(sin_val * 2 * pi) + 1) / 2) * (string_height_ext(text, -1, text_limit) / 3);
-draw_roundrect_ext(x - ((string_width_ext(text, -1, text_limit) / 2) + border_width + move_x), y - ((string_height_ext(text, -1, text_limit) / 2) + border_width + move_x), x + ((string_width_ext(text, -1, text_limit) / 2) + border_width + move_x), y + ((string_height_ext(text, -1, text_limit) / 2) + border_width + move_x), corner_radius_sin + 10, corner_radius_cos + 10, false);
+draw_roundrect_ext(x - ((string_width_ext(text, -1, text_limit) / 2) + border_width + move_x), y - ((string_height_ext(text, -1, text_limit) / 2) + border_height + move_x), x + ((string_width_ext(text, -1, text_limit) / 2) + border_width + move_x), y + ((string_height_ext(text, -1, text_limit) / 2) + border_height + move_x), corner_radius_sin + 10, corner_radius_cos + 10, false);
 
 //Text
 draw_set_color(text_color);
@@ -143,9 +157,9 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 draw_set_alpha(alpha * 0.3);
-draw_text_ext(x + 1, y + 1, text, -1, text_limit);
+draw_text_ext(x + 1, y + 1, string_copy(text, 0, clamp(time, 0, string_length(text))), -1, text_limit);
 draw_set_alpha(alpha);
-draw_text_ext(x + 1, y, text, -1, text_limit);
+draw_text_ext(x + 1, y, string_copy(text, 0, clamp(time, 0, string_length(text))), -1, text_limit);
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

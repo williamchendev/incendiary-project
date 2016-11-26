@@ -16,7 +16,7 @@ moving = false;
 
 //Settings
 spd = 1;
-item = 0;
+item = -1;
 
 cutscene = false;
 cutscene_y = 0;
@@ -31,3 +31,12 @@ item_slot = noone;
 for (i = 0; i < 12; i++){
     item_slot[i] = instance_create(x, y, oInventorySlot);
 }
+
+//Item Array
+global.item_data = noone;
+
+item_data[0, 0] = "Rifle";
+item_data[0, 1] = "Dad's old hunting rifle.";
+
+item_data[1, 0] = "Rifle";
+item_data[1, 1] = "Dad's old hunting rifle.";

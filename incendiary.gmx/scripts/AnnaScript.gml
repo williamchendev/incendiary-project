@@ -94,8 +94,8 @@ else {
 //Move Inventory
 for (i = 0; i < 12; i++){
     if (item_slot[i] != noone){
-        item_slot[i].x = lengthdir_x(gui_circle_length, (360 / 12) * i) + x;
-        item_slot[i].y = lengthdir_y(gui_circle_length, (360 / 12) * i) + y - 18;
+        item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * i) + 90) + x;
+        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * i) + 90) + y - 18;
         
         if (gui){
             if (item_slot[i].alpha < 0.8){

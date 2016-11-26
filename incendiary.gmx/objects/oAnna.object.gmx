@@ -78,6 +78,33 @@ AnnaScript();
 //Menu
 draw_sprite(sMenu, 0, view_xview + view_wview - 16, view_yview);
 
+if (gui){
+    if (position_meeting(mouse_x, mouse_y, oInventorySlot)){
+    var inst_item = instance_position(mouse_x, mouse_y, oInventorySlot);
+        if (inst_item != noone){
+            if (inst_item.item != -1){
+                if (inst_item.alpha &gt; 0.5){
+                    draw_set_halign(fa_center);
+                    draw_set_color(c_white);
+                    draw_set_font(DebugFont);
+                    
+                    draw_set_alpha(0.3);
+                    draw_text(x + 1, y - 75, item_data[inst_item.item, 0]);
+                    draw_set_alpha(1);
+                    draw_text(x + 1, y - 76, item_data[inst_item.item, 0]);
+                    
+                    draw_set_alpha(0.3);
+                    draw_text(x + 1, y - 67, '"' + item_data[inst_item.item, 1] + '"');
+                    draw_set_alpha(1);
+                    draw_text(x + 1, y - 68, '"' + item_data[inst_item.item, 1] + '"');
+                    
+                    draw_set_halign(fa_left);
+                }
+            }
+        }
+    }
+}
+
 //Item
 if (!cutscene){
     if (item != -1){
@@ -145,11 +172,6 @@ if (round(pre_anna_x) != round(anna_x)){
 }
 
 draw_sprite_ext(sprite_index, image_index, anna_x, anna_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-
-//Menu
-if (gui){
-    
-}
 </string>
           </argument>
         </arguments>

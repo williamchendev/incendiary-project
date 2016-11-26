@@ -57,6 +57,10 @@
       <script>scripts\UnitMovePauseScript.gml</script>
       <script>scripts\UnitMoveUnpauseScript.gml</script>
     </scripts>
+    <script>scripts\TextScript.gml</script>
+    <script>scripts\ItemCheckScript.gml</script>
+    <script>scripts\ItemAddScript.gml</script>
+    <script>scripts\ItemSubScript.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_outline.shader</shader>
@@ -73,6 +77,7 @@
     <objects name="System">
       <object>objects\oMove</object>
       <object>objects\oSolid</object>
+      <object>objects\oText</object>
     </objects>
     <objects name="Items">
       <object>objects\oAction</object>
@@ -86,11 +91,10 @@
       <object>objects\oTestAni</object>
     </objects>
     <object>objects\oInventorySlot</object>
-    <object>objects\oText</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room2</room>
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
     <room>rooms\room_template</room>
   </rooms>
   <help>
