@@ -118,11 +118,14 @@ if (debug_key){
 }
 
 if (global.debug){
+    draw_set_alpha(1);
     draw_set_color(c_black);
     draw_set_font(DebugFont);
     draw_set_halign(fa_left);
     
     draw_text(view_xview + 1, view_yview, "FPS: " + string(fps));
+    draw_text(view_xview + 1, view_yview + 7, "Anna_x: " + string(x));
+    draw_text(view_xview + 1, view_yview + 14, "Anna_y: " + string(y));
 }
 </string>
           </argument>

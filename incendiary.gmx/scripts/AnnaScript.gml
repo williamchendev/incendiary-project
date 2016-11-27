@@ -9,7 +9,15 @@ if (keyboard_check_pressed(vk_f11)){
 //Movement
 if (canmove){
     if (mouse_click){
-        if (point_in_rectangle(mouse_x, mouse_y, x - 6, y - 40, x + 6, y + 4)){
+        if (position_meeting(mouse_x, mouse_y, oAction)){
+            var inst_act = instance_position(mouse_x, mouse_y, oAction);
+            if (inst_act != noone){
+                if (inst_act.action_sprite_scale == 1){
+                    inst_act.clicked = true;
+                }
+            }
+        }
+        else if (point_in_rectangle(mouse_x, mouse_y, x - 6, y - 40, x + 6, y + 4)){
             if (item != -1){
                 gui = true;
             }
@@ -18,16 +26,6 @@ if (canmove){
             }
             canmove = false;
             moving = false;
-        }
-        else if (position_meeting(mouse_x, mouse_y, oAction)){
-            var inst_act = instance_position(mouse_x, mouse_y, oAction);
-            if (inst_act != noone){
-                if (!moving){
-                    if (inst_act.action_sprite_scale == 1){
-                        inst_act.clicked = true;
-                    }
-                }
-            }
         }
         else {
             //Pathfinding on Click

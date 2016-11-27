@@ -38,5 +38,5 @@ global.item_data = noone;
 item_data[0, 0] = "Rifle";
 item_data[0, 1] = "Dad's old hunting rifle.";
 
-item_data[1, 0] = "Rifle";
-item_data[1, 1] = "Dad's old hunting rifle.";
+item_data[1, 0] = "Caps";
+item_data[1, 1] = "A few rifle shells.";

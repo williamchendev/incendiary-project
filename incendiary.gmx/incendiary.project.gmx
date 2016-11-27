@@ -24,6 +24,7 @@
     </sprites>
     <sprites name="Inspect">
       <sprite>sprites\sInspect</sprite>
+      <sprite>sprites\sLog</sprite>
     </sprites>
     <sprites name="Debug">
       <sprite>sprites\sUnitDebug</sprite>
@@ -35,7 +36,6 @@
       <sprite>sprites\sprite10</sprite>
       <sprite>sprites\sprite16</sprite>
     </sprites>
-    <sprite>sprites\sLog</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,7 +45,14 @@
     <scripts name="System">
       <script>scripts\ControlScript.gml</script>
       <script>scripts\RoomInitScript.gml</script>
+      <script>scripts\TextScript.gml</script>
+      <script>scripts\TextFontScript.gml</script>
       <script>scripts\AnnaMoveScript.gml</script>
+      <scripts name="Items">
+        <script>scripts\ItemCheckScript.gml</script>
+        <script>scripts\ItemAddScript.gml</script>
+        <script>scripts\ItemSubScript.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Draw">
       <script>scripts\OutlineScript.gml</script>
@@ -57,10 +64,6 @@
       <script>scripts\UnitMovePauseScript.gml</script>
       <script>scripts\UnitMoveUnpauseScript.gml</script>
     </scripts>
-    <script>scripts\TextScript.gml</script>
-    <script>scripts\ItemCheckScript.gml</script>
-    <script>scripts\ItemAddScript.gml</script>
-    <script>scripts\ItemSubScript.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_outline.shader</shader>
@@ -77,11 +80,13 @@
     <objects name="System">
       <object>objects\oMove</object>
       <object>objects\oSolid</object>
+      <object>objects\oAction</object>
+      <object>objects\oInventorySlot</object>
       <object>objects\oText</object>
     </objects>
     <objects name="Items">
-      <object>objects\oAction</object>
       <object>objects\oItem</object>
+      <object>objects\oGun</object>
     </objects>
     <objects name="Inspect">
       <object>objects\oInspect</object>
@@ -89,8 +94,8 @@
     </objects>
     <objects name="Debug">
       <object>objects\oTestAni</object>
+      <object>objects\oTempText</object>
     </objects>
-    <object>objects\oInventorySlot</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
