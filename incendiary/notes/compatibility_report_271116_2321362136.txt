@@ -1,0 +1,83 @@
+Converting GML script : ${project_dir}\scripts\AnnaScript\AnnaScript.gml
+Converted builtin : line 115 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 119 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 123 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 116 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 120 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 124 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 115 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 119 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 123 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 116 : view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin : line 120 : view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin : line 124 : view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin : line 115 : view_xview += ((x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed -> __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + (((x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed) )
+Converted builtin : line 119 : view_xview += ((cutscene_x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed -> __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + (((cutscene_x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed) )
+Converted builtin : line 123 : view_xview = clamp(__view_get( e__VW.XView, 0 ), 0, room_width - __view_get( e__VW.WView, 0 -> __view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), 0, room_width - __view_get( e__VW.WView, 0 )
+Converted builtin : line 116 : view_yview += ((y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed -> __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + (((y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed) )
+Converted builtin : line 120 : view_yview += ((cutscene_y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed -> __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + (((cutscene_y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed) )
+Converted builtin : line 124 : view_yview = clamp(__view_get( e__VW.YView, 0 ), 0, room_height - __view_get( e__VW.HView, 0 -> __view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), 0, room_height - __view_get( e__VW.HView, 0 )
+
+Converting GML script : ${project_dir}\scripts\AnnaInitScript\AnnaInitScript.gml
+Converted string : line 39 : "Dad's old hunting rifle." -> "Dad\'s old hunting rifle."
+
+Converting GML script : ${project_dir}\objects\oTestNPC\Create_0.gml
+Converted string : line 16 : "How's it hangin'?" -> "How\'s it hangin\'?"
+Converted string : line 22 : "I'm pretty tired" -> "I\'m pretty tired"
+Converted string : line 32 : "Why's that so#hard?" -> "Why\'s that so#hard?"
+Converted string : line 38 : "There's no rest for the wicked..." -> "There\'s no rest for the wicked..."
+Converted string : line 60 : "I didn't ask for this." -> "I didn\'t ask for this."
+Converted string : line 65 : "So don't blame me." -> "So don\'t blame me."
+
+Converting GML script : ${project_dir}\objects\oAnna\Draw_73.gml
+Error : variable "draw_set_color" has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+Converted builtin : line 4 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 51 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 52 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 53 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 4 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 51 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 52 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 53 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 4 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted string : line 22 : '"' -> "\""
+Converted string : line 22 : '"' -> "\""
+Converted string : line 24 : '"' -> "\""
+Converted string : line 24 : '"' -> "\""
+
+Converting GML script : ${project_dir}\objects\oText\Draw_0.gml
+Error : variable "draw_set_color" has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+
+Converting GML script : ${project_dir}\objects\oCircleTrans\Step_0.gml
+Converted builtin : line 5 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 5 : view_hview -> __view_get( e__VW.HView, 0 )
+
+Converting GML script : ${project_dir}\objects\oCircleTrans\Draw_0.gml
+Error : variable "draw_set_color" has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+Converted builtin : line 15 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 20 : view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 16 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 21 : view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin : line 6 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 20 : view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin : line 7 : view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin : line 21 : view_hview -> __view_get( e__VW.HView, 0 )
+
+Converting GML script : ${project_dir}\objects\oLog\Create_0.gml
+Converted string : line 12 : "I wonder who's out here..." -> "I wonder who\'s out here..."
+
+Converting GML script : ${project_dir}\objects\oTempText\Draw_0.gml
+Error : variable "draw_set_color" has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+
+Converting GML script : ${project_dir}\objects\oInventorySlot\Draw_0.gml
+Error : variable "draw_set_color" has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+
+game speed set to 60
+added compatibility script instance/instance_create.gml
+added compatibility script object/object_get_depth.gml
+added compatibility script view/__view_get.gml
+added compatibility script view/__view_set.gml
+added compatibility script view/__view_set_internal.gml
+added compatibility script view/__init_view.gml
+added compatibility script __init_global.gml
+added compatibility script __global_object_depths.gml
