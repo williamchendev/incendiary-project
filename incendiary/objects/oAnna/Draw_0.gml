@@ -1,7 +1,6 @@
 ///Draw Event
 
 //Settings
-depth = -1 * round(y);
 //x = round(x);
 //y = round(y);
 

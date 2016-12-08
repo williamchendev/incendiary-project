@@ -111,17 +111,7 @@ for (i = 0; i < 12; i++){
 }
 
 //Camera
-if (!cutscene){
-    __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + (((x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed) );
-    __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + (((y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed) );
-}
-else {
-    __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + (((cutscene_x - (__view_get( e__VW.WView, 0 ) / 2)) - __view_get( e__VW.XView, 0 )) * camera_speed) );
-    __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + (((cutscene_y - (__view_get( e__VW.HView, 0 ) / 2)) - __view_get( e__VW.YView, 0 )) * camera_speed) );
-}
-
-__view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), 0, room_width - __view_get( e__VW.WView, 0 ) ));
-__view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), 0, room_height - __view_get( e__VW.HView, 0 ) ));
+CameraScript();
 
 //Debug Keys
 
@@ -134,7 +124,5 @@ if (restart_key){
 
 //Test
 if (test_key){
-    if (!instance_exists(oCircleTrans)){
-        instance_create(x, y, oCircleTrans);
-    }
+    
 }

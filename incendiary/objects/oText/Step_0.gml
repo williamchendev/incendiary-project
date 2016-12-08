@@ -11,8 +11,8 @@ else {
 x = round(x);
 y = round(y);
 
-move_x = clamp(((sin(sin_val * 2 * pi) + 1) / 2) * 3.3, 0.01, 4);
-move_y = clamp(((cos(sin_val * 2 * pi) + 1) / 2) * 3.3, 0.01, 4);
+move_x = clamp(((sin(sin_val * 2 * pi) + 1) / 2) * 3.3, 0, 4);
+move_y = clamp(((cos(sin_val * 2 * pi) + 1) / 2) * 3.3, 0, 4);
 
 //Alpha
 if (exist){

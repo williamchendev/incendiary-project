@@ -14,10 +14,12 @@ draw_set_color(text_color);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
+//draw_point(x, y);
+
 draw_set_alpha(alpha * 0.3);
-draw_text_ext(x + 1, y + 1, string_hash_to_newline(temp_text), -1, text_limit);
+draw_text_ext(x, y + 5, string_hash_to_newline(temp_text), -1, text_limit);
 draw_set_alpha(alpha);
-draw_text_ext(x + 1, y, string_hash_to_newline(temp_text), -1, text_limit);
+draw_text_ext(x, y + 4, string_hash_to_newline(temp_text), -1, text_limit);
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

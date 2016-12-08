@@ -3,7 +3,7 @@
 //Settings
 inspect_type = 0;
 
-action = instance_create(x, y, oAction);
+action = instance_create_layer(x, y, layer_get_id("Action_Layer"), oAction);
 action.action_type = 1;
 
 selected = false;
@@ -15,6 +15,7 @@ event = 0;
 
 //Text Event
 type = 0;
+text_spd = 0.35;
 text_font = RegularFont;
 text_displace_y = 50;
 

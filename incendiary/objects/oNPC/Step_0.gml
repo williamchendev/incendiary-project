@@ -99,7 +99,7 @@ if (talk){
                 text_x = temp_text[event, 1].x;
                 text_y = temp_text[event, 1].y - (((temp_text[event, 1].sprite_height / 2) + 4) + (string_height_ext(string_hash_to_newline(temp_text[event, 0]), -1, 220) / 2));
             }
-            TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 3], temp_text[event, 2], 220, 0.35);
+            TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 3], temp_text[event, 2], 220, text_spd);
             event++;
         }
         else {

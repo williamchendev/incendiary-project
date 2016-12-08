@@ -1,8 +1,8 @@
 {
-    "id": "b5db6959-b578-40a2-863d-8e4ef3c1305f",
+    "id": "332df9e0-c933-40e9-abb8-c56169b978df",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "UnitCreateScript",
+    "name": "CameraScript",
     "IsCompatibility": false,
     "IsDnD": false
 }

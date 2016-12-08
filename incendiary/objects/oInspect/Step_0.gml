@@ -55,7 +55,7 @@ if (inspecting){
                         inspect_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(inspect_text[event, 0]), -1, 120) / 2));
                         inspect_text[event, 3] = c_white;
                 }
-                TextScript(inspect_text[event, 1], inspect_text[event, 2], inspect_text[event, 0], inspect_text[event, 3], 0.35);
+                TextScript(inspect_text[event, 1], inspect_text[event, 2], inspect_text[event, 0], inspect_text[event, 3], text_spd);
                 event++;
             }
             else {
@@ -72,7 +72,7 @@ if (inspecting){
                         useless_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(useless_text[event, 0]), -1, 120) / 2));
                         useless_text[event, 3] = c_white;
                 }
-                TextScript(useless_text[event, 1], useless_text[event, 2], useless_text[event, 0], inspect_text[event, 3], 0.35);
+                TextScript(useless_text[event, 1], useless_text[event, 2], useless_text[event, 0], inspect_text[event, 3], text_spd);
                 event++;
             }
             else {

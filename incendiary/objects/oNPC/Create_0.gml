@@ -1,7 +1,7 @@
 ///Init
 
 //Settings
-action = instance_create(x, y, oAction);
+action = instance_create_layer(x, y, layer_get_id("Action_Layer"), oAction);
 action.action_type = 3;
 
 move_x = x;
@@ -21,6 +21,7 @@ text_index = 1;
 //Text Event
 type = 0;
 text_displace_y = 50;
+text_spd = 0.35;
 
 text1 = noone;
 text1[0, 0] = "...";

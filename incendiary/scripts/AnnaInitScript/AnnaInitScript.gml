@@ -1,7 +1,9 @@
 ///AdventureInitScript();
 
 //Init
+//view_camera[0] = camera_create_view(0, 0, 480, 270, 0, -1, -1, -1, 0, 0);
 global.debug = false;
+layer = layer_get_id("Player_Layer");
 ControlScript();
 
 //Paths
@@ -21,7 +23,7 @@ item = -1;
 cutscene = false;
 cutscene_y = 0;
 cutscene_x = 0;
-camera_speed = 0.1;
+camera_speed = 0.05;
 
 gui = false;
 gui_circle_length = 32;
@@ -29,7 +31,7 @@ gui_circle_length = 32;
 //Inventory
 item_slot = noone;
 for (i = 0; i < 12; i++){
-    item_slot[i] = instance_create(x, y, oInventorySlot);
+    item_slot[i] = instance_create_layer(x, y, layer_get_id("GUI_Layer"), oInventorySlot);
 }
 
 //Item Array

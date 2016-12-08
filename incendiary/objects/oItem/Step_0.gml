@@ -50,7 +50,7 @@ if (pick_up){
                         pick_up_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(pick_up_text[event, 0]), -1, 120) / 2));
                         pick_up_text[event, 3] = c_white;
                 }
-                TextScript(pick_up_text[event, 1], pick_up_text[event, 2], pick_up_text[event, 0], pick_up_text[event, 3], 0.35);
+                TextScript(pick_up_text[event, 1], pick_up_text[event, 2], pick_up_text[event, 0], pick_up_text[event, 3], text_spd);
                 event++;
             }
             else {
@@ -63,7 +63,7 @@ if (pick_up){
                 }
                 else {
                     if (put_down){
-                        TextScript(oAnna.x, oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(no_room_text), -1, 120) / 2)), no_room_text, c_white, 0.35);
+                        TextScript(oAnna.x, oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(no_room_text), -1, 120) / 2)), no_room_text, c_white, text_spd);
                         put_down = false;
                     }
                     else {
@@ -84,7 +84,7 @@ if (pick_up){
                         put_down_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(put_down_text[event, 0]), -1, 120) / 2));
                         put_down_text[event, 3] = c_white;
                 }
-                TextScript(put_down_text[event, 1], put_down_text[event, 2], put_down_text[event, 0], put_down_text[event, 3], 0.35);
+                TextScript(put_down_text[event, 1], put_down_text[event, 2], put_down_text[event, 0], put_down_text[event, 3], text_spd);
                 event++;
             }
             else {

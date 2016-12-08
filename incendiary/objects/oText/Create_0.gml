@@ -1,4 +1,5 @@
 ///Init
+layer = layer_get_id("Action_Layer");
 
 //Variables
 text = "";
@@ -18,5 +19,4 @@ move_x = 0;
 move_y = 0;
 
 border_width = 4;
-border_height = 2;
-
+border_height = 0;

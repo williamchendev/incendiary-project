@@ -1,9 +1,7 @@
 //RoomInitScript();
 
-//Anna
-if (!instance_exists(oAnna)){
-    instance_create(room_width / 2, room_height / 2, oAnna);
-}
+//View
+views_enabled = true;
 
 //Grid
 if (instance_exists(oAnna)){

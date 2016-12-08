@@ -1,6 +1,6 @@
 ///TextFontScript(x, y, text, font, color, width, spd);
 
-with(instance_create(argument0, argument1, oText)){
+with(instance_create_layer(argument0, argument1, layer_get_id("Solids_Layer"), oText)){
     text = argument2;
     text_font = argument3;
     text_color = argument4;

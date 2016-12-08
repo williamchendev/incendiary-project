@@ -1,7 +1,10 @@
 ///Draw End
 
 //Menu
-draw_sprite(sMenu, 0, __view_get( e__VW.XView, 0 ) + __view_get( e__VW.WView, 0 ) - 16, __view_get( e__VW.YView, 0 ));
+var view_x = camera_get_view_x(view_camera[0]);
+var view_y = camera_get_view_y(view_camera[0]);
+
+draw_sprite(sMenu, 0, view_x + 480 - 16, view_y);
 
 if (gui){
     if (position_meeting(mouse_x, mouse_y, oInventorySlot)){
@@ -48,8 +51,8 @@ if (global.debug){
     draw_set_font(DebugFont);
     draw_set_halign(fa_left);
     
-    draw_text(__view_get( e__VW.XView, 0 ) + 1, __view_get( e__VW.YView, 0 ), string_hash_to_newline("FPS: " + string(fps)));
-    draw_text(__view_get( e__VW.XView, 0 ) + 1, __view_get( e__VW.YView, 0 ) + 7, string_hash_to_newline("Anna_x: " + string(x)));
-    draw_text(__view_get( e__VW.XView, 0 ) + 1, __view_get( e__VW.YView, 0 ) + 14, string_hash_to_newline("Anna_y: " + string(y)));
+    draw_text(view_x + 1, view_y + 1, string_hash_to_newline("FPS: " + string(fps)));
+    draw_text(view_x + 1, view_y + 8, string_hash_to_newline("Anna_x: " + string(x)));
+    draw_text(view_x + 1, view_y + 15, string_hash_to_newline("Anna_y: " + string(y)));
 }
 
