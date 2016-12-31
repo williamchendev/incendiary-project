@@ -1749,9 +1749,9 @@
             }
         },
         {
-            "Key": "8158545c-60d4-4019-9313-bbd9c207e8ab",
+            "Key": "060521a3-db8a-4c6b-9224-018b5ce312e9",
             "Value": {
-                "id": "f30c8efe-1a49-4935-b1cf-59c9810c6e73",
+                "id": "7b5b7f74-9b34-4fa0-a92c-49fa2c555d7d",
                 "modelName": "GMResourceInfo",
                 "mvc": "1.0",
                 "configDeltaFiles": [
@@ -1763,7 +1763,7 @@
                 "resourceCreationConfigs": [
                     "default"
                 ],
-                "resourcePath": "sprites\\sprite_21\\sprite_21.yy",
+                "resourcePath": "sprites\\skybox1\\skybox1.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1841,6 +1841,101 @@
                 ],
                 "resourcePath": "datafiles_yy\\04.TTF.yy",
                 "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "5bf9d679-b95c-4d4d-b1eb-529622b8a324",
+            "Value": {
+                "id": "b6aa41d1-415c-42e4-a90d-71d5e81b2ccc",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "views\\5bf9d679-b95c-4d4d-b1eb-529622b8a324.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "825dcf2a-a299-4fd0-a14d-b1028ede853d",
+            "Value": {
+                "id": "09484268-9e4b-4f59-ad93-69640d6dbb15",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\sprite_22\\sprite_22.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a51faff2-f9ab-4c08-8e09-61d1c01d30a4",
+            "Value": {
+                "id": "c95f3324-08ca-480d-9b1d-44141274a5f4",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\forestbox\\forestbox.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "db1dad3e-7fa8-4ce0-9821-b2a83950f309",
+            "Value": {
+                "id": "34fb2817-cd4f-4c59-bf92-7a8ce4b773a0",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skybox2\\skybox2.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "2553d412-8f68-4323-b429-42b9a65d14e7",
+            "Value": {
+                "id": "56c78ee7-6b79-4990-b6ec-26c6a567b6d9",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skybox3\\skybox3.yy",
+                "resourceType": "GMSprite"
             }
         }
     ],

@@ -35,6 +35,10 @@ if (selected){
         selected = false;
     }
     else {
+		if (!inspect_move){
+			move_x = oAnna.x;
+			move_y = oAnna.y;
+		}
         if (abs(oAnna.x - move_x) < 1){
             if (abs(oAnna.y - move_y) < 1){
                 oAnna.canmove = false;

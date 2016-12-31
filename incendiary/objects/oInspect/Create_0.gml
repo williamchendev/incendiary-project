@@ -8,6 +8,8 @@ action.action_type = 1;
 
 selected = false;
 
+inspect_move = true;
+
 inspecting = false;
 useful = false;
 inspect_event = false;

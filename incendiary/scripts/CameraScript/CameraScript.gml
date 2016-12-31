@@ -16,3 +16,5 @@ else {
 }
 
 camera_set_view_pos(view_camera[0], clamp(view_set_x, 0, room_width - 480), clamp(view_set_y, 0, room_height - 270));
+
+//Backgrounds

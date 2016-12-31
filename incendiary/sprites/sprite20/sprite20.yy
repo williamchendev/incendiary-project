@@ -249,8 +249,8 @@
             "visible": true
         }
     ],
-    "playbackSpeed": 1,
-    "playbackSpeedType": 1,
+    "playbackSpeed": 10,
+    "playbackSpeedType": 0,
     "sepmasks": false,
     "swatchColours": null,
     "textureGroup": 0,

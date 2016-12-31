@@ -2,6 +2,8 @@ event_inherited();
 
 sprite_index = sLog;
 
+inspect_move = false;
+
 //Text Event
 useless_text = noone;
 useless_text[0, 0] = "This wood looks freshly cut.";
