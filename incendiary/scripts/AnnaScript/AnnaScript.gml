@@ -26,6 +26,7 @@ if (canmove){
             }
             canmove = false;
             moving = false;
+			walking = false;
         }
         else {
             //Pathfinding on Click
@@ -59,6 +60,7 @@ if (canmove){
             }
             
             moving = false;
+			walking = true;
         }
     }
 }

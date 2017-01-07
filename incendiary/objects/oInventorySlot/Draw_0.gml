@@ -16,7 +16,7 @@ if ((alpha >= 0.8) and prox){
     draw_set_alpha(1);
     draw_circle(x, y - 1, 6 + (3 * sin_draw), true);
     if (item != -1){
-        draw_sprite(sInventoryItems, item, x, y);
+        draw_sprite(sInventoryItems, item, x + 1, y);
     }
 }
 else {
@@ -24,7 +24,7 @@ else {
     draw_circle(x, y - 1, 6 + (3 * sin_draw), true);
     if (item != -1){
         draw_set_alpha(alpha);
-        draw_sprite(sInventoryItems, item, x, y);
+        draw_sprite(sInventoryItems, item, x + 1, y);
     }
 }
 

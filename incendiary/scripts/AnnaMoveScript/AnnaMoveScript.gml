@@ -31,5 +31,6 @@ if (instance_exists(oAnna)){
         }
         
         moving = true;
+		walking = true;
     }
 }

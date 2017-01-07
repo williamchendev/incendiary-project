@@ -1863,25 +1863,6 @@
             }
         },
         {
-            "Key": "825dcf2a-a299-4fd0-a14d-b1028ede853d",
-            "Value": {
-                "id": "09484268-9e4b-4f59-ad93-69640d6dbb15",
-                "modelName": "GMResourceInfo",
-                "mvc": "1.0",
-                "configDeltaFiles": [
-                    
-                ],
-                "configDeltas": [
-                    
-                ],
-                "resourceCreationConfigs": [
-                    "default"
-                ],
-                "resourcePath": "sprites\\sprite_22\\sprite_22.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "a51faff2-f9ab-4c08-8e09-61d1c01d30a4",
             "Value": {
                 "id": "c95f3324-08ca-480d-9b1d-44141274a5f4",
@@ -1935,6 +1916,63 @@
                     "default"
                 ],
                 "resourcePath": "sprites\\skybox3\\skybox3.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
+            "Value": {
+                "id": "d6511b1a-a733-40e2-96ee-54520d57e40b",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\sAnnaWalk\\sAnnaWalk.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a5116cd7-0cb7-48f7-acb4-68ddc6663d8b",
+            "Value": {
+                "id": "7e5d3df2-96b8-4b88-b09f-e8c2424042a2",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "views\\a5116cd7-0cb7-48f7-acb4-68ddc6663d8b.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "082f63a2-08bd-4c7f-9e42-f0171efe03eb",
+            "Value": {
+                "id": "04ee367a-f01f-4c13-b920-9656cb7ddcce",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\sprite_26\\sprite_26.yy",
                 "resourceType": "GMSprite"
             }
         }

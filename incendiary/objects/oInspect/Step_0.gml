@@ -43,6 +43,7 @@ if (selected){
             if (abs(oAnna.y - move_y) < 1){
                 oAnna.canmove = false;
                 oAnna.moving = false;
+				oAnna.walking = false;
                 inspecting = true;
                 event = 0;
             }

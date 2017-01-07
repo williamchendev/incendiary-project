@@ -1,7 +1,7 @@
 {
     "id": "2db3e317-2174-4ec6-a0dd-ebd5d510f360",
     "modelName": "GMSprite",
-    "mvc": "1.1",
+    "mvc": "1.11",
     "name": "sLog",
     "For3D": false,
     "HTile": false,

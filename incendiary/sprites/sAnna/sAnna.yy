@@ -1,7 +1,7 @@
 {
     "id": "b896a714-b2b4-4253-8f1d-e8d218d3cc79",
     "modelName": "GMSprite",
-    "mvc": "1.1",
+    "mvc": "1.11",
     "name": "sAnna",
     "For3D": false,
     "HTile": false,

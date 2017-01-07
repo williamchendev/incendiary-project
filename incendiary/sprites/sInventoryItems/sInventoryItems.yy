@@ -1,7 +1,7 @@
 {
     "id": "9b3ba9d7-c50c-45ed-93e0-e814ede99fc4",
     "modelName": "GMSprite",
-    "mvc": "1.1",
+    "mvc": "1.11",
     "name": "sInventoryItems",
     "For3D": false,
     "HTile": false,

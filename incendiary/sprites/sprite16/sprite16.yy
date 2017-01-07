@@ -1,7 +1,7 @@
 {
     "id": "544f2058-5a74-43fe-8216-e254fdcdd117",
     "modelName": "GMSprite",
-    "mvc": "1.1",
+    "mvc": "1.11",
     "name": "sprite16",
     "For3D": false,
     "HTile": false,

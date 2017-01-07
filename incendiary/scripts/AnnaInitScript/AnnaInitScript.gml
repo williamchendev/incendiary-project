@@ -15,8 +15,14 @@ anna_y = y;
 
 canmove = true;
 moving = false;
+walking = false;
+
+move_x = x;
+move_y = y;
 
 //Settings
+sprite_index = sAnna;
+
 spd = 1;
 item = -1;
 

@@ -32,6 +32,7 @@ if (selected){
             if (abs(oAnna.y - move_y) < 1){
                 oAnna.canmove = false;
                 oAnna.moving = false;
+				oAnna.walking = false;
                 talk = true;
                 event = 0;
                 talk_reset = true;
