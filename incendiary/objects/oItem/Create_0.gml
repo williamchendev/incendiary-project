@@ -2,6 +2,7 @@
 
 //Settings
 item = 0;
+item_stack = 1;
 
 action = instance_create_layer(x, y, layer_get_id("Action_Layer"), oAction);
 action.action_type = 1;
@@ -17,7 +18,7 @@ event = 0;
 type = 0;
 text_font = RegularFont;
 text_spd = 0.35;
-no_room_text = "My pockets are#full right now.e..";
+no_room_text = "My pockets are full right now...";
 text_displace_y = 50;
 
 pick_up_text = noone;

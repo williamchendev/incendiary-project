@@ -14,3 +14,6 @@ if (instance_exists(oAnna)){
         oAnna.grid = grid;
     }
 }
+
+//Textures
+draw_texture_flush();

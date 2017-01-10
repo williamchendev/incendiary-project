@@ -28,9 +28,9 @@ if (instance_exists(oAnna)){
             
             path_start(path, spd, path_action_stop, true);
             path_set_kind(path, 0);
+			
+			walking = true;
+			moving = true;
         }
-        
-        moving = true;
-		walking = true;
     }
 }

@@ -57,7 +57,7 @@ if (inspecting){
             if (event < array_height_2d(inspect_text)){
                 if (type == 0){
                         inspect_text[event, 1] = oAnna.x;
-                        inspect_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(inspect_text[event, 0]), -1, 120) / 2));
+                        inspect_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(inspect_text[event, 0], -1, 120) / 2));
                         inspect_text[event, 3] = c_white;
                 }
                 TextScript(inspect_text[event, 1], inspect_text[event, 2], inspect_text[event, 0], inspect_text[event, 3], text_spd);
@@ -74,7 +74,7 @@ if (inspecting){
             if (event < array_height_2d(useless_text)){
                 if (type == 0){
                         useless_text[event, 1] = oAnna.x;
-                        useless_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(useless_text[event, 0]), -1, 120) / 2));
+                        useless_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(useless_text[event, 0], -1, 120) / 2));
                         useless_text[event, 3] = c_white;
                 }
                 TextScript(useless_text[event, 1], useless_text[event, 2], useless_text[event, 0], inspect_text[event, 3], text_spd);

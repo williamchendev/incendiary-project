@@ -15,6 +15,50 @@
     "coltolerance": 0,
     "frames": [
         {
+            "id": "ad7669fb-ddad-4244-9b57-2420503351be",
+            "modelName": "GMSpriteFrame",
+            "mvc": "1.0",
+            "SpriteId": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
+            "compositeImage": {
+                "id": "ba8a969f-b618-4247-b98f-15d632b15084",
+                "modelName": "GMSpriteImage",
+                "mvc": "1.0",
+                "FrameId": "ad7669fb-ddad-4244-9b57-2420503351be",
+                "LayerId": "00000000-0000-0000-0000-000000000000"
+            },
+            "images": [
+                {
+                    "id": "41832bf6-b559-4c89-b2e9-8afff2fabbd4",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "ad7669fb-ddad-4244-9b57-2420503351be",
+                    "LayerId": "c5b32c1b-d095-4d1a-b229-6fb20b4d8fd5"
+                }
+            ]
+        },
+        {
+            "id": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
+            "modelName": "GMSpriteFrame",
+            "mvc": "1.0",
+            "SpriteId": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
+            "compositeImage": {
+                "id": "ac033f4c-5727-4efc-8af9-61542bc4979a",
+                "modelName": "GMSpriteImage",
+                "mvc": "1.0",
+                "FrameId": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
+                "LayerId": "00000000-0000-0000-0000-000000000000"
+            },
+            "images": [
+                {
+                    "id": "feaef5f9-b3b5-4898-b7a3-b8c2728fd8f9",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
+                    "LayerId": "c5b32c1b-d095-4d1a-b229-6fb20b4d8fd5"
+                }
+            ]
+        },
+        {
             "id": "9208d772-108f-46f1-abad-c7f326776da3",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
@@ -186,50 +230,6 @@
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
                     "FrameId": "2b4d02fa-4bd8-4ee0-888a-15a6bff7e0b8",
-                    "LayerId": "c5b32c1b-d095-4d1a-b229-6fb20b4d8fd5"
-                }
-            ]
-        },
-        {
-            "id": "ad7669fb-ddad-4244-9b57-2420503351be",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
-            "compositeImage": {
-                "id": "ba8a969f-b618-4247-b98f-15d632b15084",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "ad7669fb-ddad-4244-9b57-2420503351be",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "41832bf6-b559-4c89-b2e9-8afff2fabbd4",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "ad7669fb-ddad-4244-9b57-2420503351be",
-                    "LayerId": "c5b32c1b-d095-4d1a-b229-6fb20b4d8fd5"
-                }
-            ]
-        },
-        {
-            "id": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
-            "compositeImage": {
-                "id": "ac033f4c-5727-4efc-8af9-61542bc4979a",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "feaef5f9-b3b5-4898-b7a3-b8c2728fd8f9",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "ac21e060-e4e1-430e-af3f-7ee080656ad6",
                     "LayerId": "c5b32c1b-d095-4d1a-b229-6fb20b4d8fd5"
                 }
             ]

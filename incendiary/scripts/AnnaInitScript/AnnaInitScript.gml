@@ -1,8 +1,14 @@
 ///AdventureInitScript();
 
 //Init
-//view_camera[0] = camera_create_view(0, 0, 480, 270, 0, -1, -1, -1, 0, 0);
+/*
 global.debug = false;
+global.escape_game = -1;
+global.music_vol = 0;
+global.sfx_vol = 0;
+global.dog_fluff = 0;
+*/
+
 layer = layer_get_id("Player_Layer");
 ControlScript();
 
@@ -25,6 +31,7 @@ sprite_index = sAnna;
 
 spd = 1;
 item = -1;
+item_stack = -1;
 
 cutscene = false;
 cutscene_y = 0;
@@ -38,13 +45,11 @@ gui_circle_length = 32;
 item_slot = noone;
 for (i = 0; i < 12; i++){
     item_slot[i] = instance_create_layer(x, y, layer_get_id("GUI_Layer"), oInventorySlot);
+	//item_slot[i].item = 0;
+	//item_slot[i].item_stack = 1;
 }
+//item_slot[0].item = 0;
+//item_slot[0].item_stack = 1;
 
 //Item Array
-global.item_data = noone;
-
-item_data[0, 0] = "Rifle";
-item_data[0, 1] = "Dad\'s old hunting rifle.";
-
-item_data[1, 0] = "Caps";
-item_data[1, 1] = "A few rifle shells.";
+//ItemDataScript();

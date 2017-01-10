@@ -3,7 +3,7 @@
 var i;
 for (i = 0; i < 12; i++){
     if (oAnna.item_slot[i].item == argument0){
-        return true;
+        return oAnna.item_slot[i].item_stack;
     }
 }
-return false;
+return -1;

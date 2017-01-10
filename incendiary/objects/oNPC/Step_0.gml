@@ -94,11 +94,11 @@ if (talk){
             draw_set_font(temp_text[event, 3]);
             if (temp_text[event, 1] == -1){
                 text_x = oAnna.x;
-                text_y = oAnna.y - (text_displace_y + (string_height_ext(string_hash_to_newline(temp_text[event, 0]), -1, 220) / 2));
+                text_y = oAnna.y - (text_displace_y + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
             }
             else {
                 text_x = temp_text[event, 1].x;
-                text_y = temp_text[event, 1].y - (((temp_text[event, 1].sprite_height / 2) + 4) + (string_height_ext(string_hash_to_newline(temp_text[event, 0]), -1, 220) / 2));
+                text_y = temp_text[event, 1].y - (((temp_text[event, 1].sprite_height / 2) + 4) + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
             }
             TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 3], temp_text[event, 2], 220, text_spd);
             event++;

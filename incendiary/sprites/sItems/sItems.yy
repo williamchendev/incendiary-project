@@ -57,6 +57,28 @@
                     "LayerId": "51b8edf6-29b0-4002-91a8-4c32a883705d"
                 }
             ]
+        },
+        {
+            "id": "ed21c95a-e01d-4608-8fd9-4edbd8262986",
+            "modelName": "GMSpriteFrame",
+            "mvc": "1.0",
+            "SpriteId": "485c9daa-4aca-4fd2-9613-e497c7c8724e",
+            "compositeImage": {
+                "id": "227ca94d-c8e3-4c76-a2eb-7c6d2c27c934",
+                "modelName": "GMSpriteImage",
+                "mvc": "1.0",
+                "FrameId": "ed21c95a-e01d-4608-8fd9-4edbd8262986",
+                "LayerId": "00000000-0000-0000-0000-000000000000"
+            },
+            "images": [
+                {
+                    "id": "ada1cf98-828d-46c5-9606-f7ac07f19be2",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "ed21c95a-e01d-4608-8fd9-4edbd8262986",
+                    "LayerId": "51b8edf6-29b0-4002-91a8-4c32a883705d"
+                }
+            ]
         }
     ],
     "height": 36,

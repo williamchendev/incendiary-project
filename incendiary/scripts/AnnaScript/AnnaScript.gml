@@ -57,10 +57,10 @@ if (canmove){
                 
                 path_start(path, spd, path_action_stop, true);
                 path_set_kind(path, 0);
+				walking = true;
             }
             
             moving = false;
-			walking = true;
         }
     }
 }
@@ -81,9 +81,40 @@ else {
                 if (position_meeting(mouse_x, mouse_y, oInventorySlot)){
                     var inst_item = instance_position(mouse_x, mouse_y, oInventorySlot);
                     if (inst_item != noone){
-                        var temp_item = inst_item.item;
-                        inst_item.item = item;
-                        item = temp_item;
+						if (inst_item.item == item){
+							if (item != -1){
+								if (global.item_data[item, 2] > 1){
+									if (inst_item.item_stack + item_stack <= global.item_data[item, 2]){
+										inst_item.item_stack += item_stack;
+										item = -1;
+										item_stack = -1;
+									}
+									else if (item_stack == global.item_data[item, 2]){
+										item_stack = inst_item.item_stack;
+										inst_item.item_stack = global.item_data[item, 2];
+									}
+									else if (inst_item.item_stack == global.item_data[item, 2]){
+										inst_item.item_stack = item_stack;
+										item_stack = global.item_data[item, 2];
+									}
+									else {
+										var temp_item_mouse_add = clamp(item_stack, 0, global.item_data[item, 2] - inst_item.item_stack);
+										inst_item.item_stack += temp_item_mouse_add;
+										item_stack -= temp_item_mouse_add;
+									}
+								}
+							}
+						}
+						else {
+							var temp_item = inst_item.item;
+							var temp_stack = inst_item.item_stack;
+							
+	                        inst_item.item = item;
+							inst_item.item_stack = item_stack;
+							
+	                        item = temp_item;
+							item_stack = temp_stack;
+						}
                     }
                 }
             }
@@ -94,8 +125,8 @@ else {
 //Move Inventory
 for (i = 0; i < 12; i++){
     if (item_slot[i] != noone){
-        item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * i) + 90) + x;
-        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * i) + 90) + y - 18;
+        item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * -i) + 90) + x;
+        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * -i) + 90) + y - 18;
         
         if (gui){
             if (item_slot[i].alpha < 0.8){
@@ -115,6 +146,23 @@ for (i = 0; i < 12; i++){
 //Camera
 CameraScript();
 
+//If OS is paused
+if (os_is_paused()){
+	GamePauseScript();
+}
+
+//Menu
+var view_x = camera_get_view_x(view_camera[0]);
+var view_y = camera_get_view_y(view_camera[0]);
+
+if (mouse_click){
+	if (mouse_x - view_x > 464){
+		if (mouse_y - view_y < 16){
+			GamePauseScript();
+		}
+	}
+}
+
 //Debug Keys
 
 //Restart
@@ -126,5 +174,5 @@ if (restart_key){
 
 //Test
 if (test_key){
-    
+    instance_create_layer(0, 0, "Action_Layer", oCircleTrans);
 }
