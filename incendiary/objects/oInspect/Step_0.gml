@@ -24,7 +24,11 @@ if (action.clicked){
     with(oNPC){
         selected = false;
     }
-    AnnaMoveScript(move_x, move_y);
+	if (!inspect_move){
+		move_x = oAnna.x;
+		move_y = oAnna.y;
+	}
+	AnnaMoveScript(move_x, move_y);
     action.clicked = false;
     selected = true;
 }
@@ -35,23 +39,27 @@ if (selected){
         selected = false;
     }
     else {
-		if (!inspect_move){
-			move_x = oAnna.x;
-			move_y = oAnna.y;
-		}
-        if (abs(oAnna.x - move_x) < 1){
+		if (abs(oAnna.x - move_x) < 1){
             if (abs(oAnna.y - move_y) < 1){
                 oAnna.canmove = false;
-                oAnna.moving = false;
+	            oAnna.moving = false;
 				oAnna.walking = false;
-                inspecting = true;
-                event = 0;
+	            inspecting = true;
+	            event = 0;
             }
         }
     }
 }
 
 if (inspecting){
+	if (inspect_move){
+		if (oAnna.stand_still){
+			if (oAnna.x - x != 0){
+				oAnna.image_xscale = sign(x - oAnna.x);
+			}
+		}
+	}
+
     if (!instance_exists(oText)){
         if (useful){
             if (event < array_height_2d(inspect_text)){

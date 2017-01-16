@@ -1274,25 +1274,6 @@
             }
         },
         {
-            "Key": "46ef5d92-2388-4ff1-b3c2-689ae44b009e",
-            "Value": {
-                "id": "9a4275f6-f163-47b4-bcee-cb95616aba16",
-                "modelName": "GMResourceInfo",
-                "mvc": "1.0",
-                "configDeltaFiles": [
-                    
-                ],
-                "configDeltas": [
-                    
-                ],
-                "resourceCreationConfigs": [
-                    "default"
-                ],
-                "resourcePath": "shaders\\shader_outline\\shader_outline.yy",
-                "resourceType": "GMShader"
-            }
-        },
-        {
             "Key": "a9ca2834-5ebc-4d8e-8be8-3e8ab405c016",
             "Value": {
                 "id": "70bdedd5-79cd-4298-9756-2bea398b5677",
@@ -2143,7 +2124,7 @@
                 "resourceCreationConfigs": [
                     "default"
                 ],
-                "resourcePath": "objects\\oFire\\oFire.yy",
+                "resourcePath": "objects\\oFireTest\\oFireTest.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -2181,7 +2162,7 @@
                 "resourceCreationConfigs": [
                     "default"
                 ],
-                "resourcePath": "sprites\\sFireParticle\\sFireParticle.yy",
+                "resourcePath": "sprites\\sFireParticle_medium\\sFireParticle_medium.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2221,6 +2202,234 @@
                 ],
                 "resourcePath": "views\\893eccf4-6292-4582-b5cc-42d855bf126e-room.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "a00a8640-9901-412b-a7c3-b6d4ade19718",
+            "Value": {
+                "id": "7bfac9ac-e26d-4854-8a82-01cb2d597267",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\sLily\\sLily.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "bffd87ea-22e7-4528-a9e4-b66991af46b6",
+            "Value": {
+                "id": "75457ddc-1ab2-4907-a7b8-2559a6c1a3ce",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\sFireParticle_small\\sFireParticle_small.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "0c5d3414-fcb7-4d67-ac95-8e499b3b2328",
+            "Value": {
+                "id": "a22acceb-b00a-48d7-b421-2903986f434e",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\\oTorch_Fire\\oTorch_Fire.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "19cc95d3-fdcd-4c6d-a98f-657575a4a238",
+            "Value": {
+                "id": "07024b4f-5356-4556-b788-3e60890f7fcc",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\\oCamp_Fire\\oCamp_Fire.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "c6a726af-af70-4a5e-bea9-000b92378406",
+            "Value": {
+                "id": "c90a9e72-ff01-438e-98cd-e3e23db129fd",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\\oSnowTest\\oSnowTest.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "237cfcf7-58cd-4c67-9050-cf3a455c3ff8",
+            "Value": {
+                "id": "89f93fec-f995-46a6-bc8e-e69e6f0b8a35",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skybox4\\skybox4.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "13c4ef3d-2eb1-40b6-9c0e-0c956ebc877e",
+            "Value": {
+                "id": "3de7d198-365e-497b-b342-67281ccfe1b6",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skybox4_1\\skybox4_1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "4776e72c-1009-403d-ab8d-ff6324e43f81",
+            "Value": {
+                "id": "37988d43-a5dd-4890-8c3e-fa173d66e508",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skybox_rosesky\\skybox_rosesky.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "5c0cf099-7d21-452d-bac2-8563b5f7c12c",
+            "Value": {
+                "id": "85298f9c-d4e2-4439-b1de-3327121bec02",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\\skyboxTreelayer\\skyboxTreelayer.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "6fa2e090-31c6-45b0-86a5-6e39680d95a2",
+            "Value": {
+                "id": "779c812a-4285-47dc-b002-1e769f8026d2",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\\oLighting\\oLighting.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e473eb81-7d24-40c6-8611-89f3a9646b16",
+            "Value": {
+                "id": "6a590ef7-1d42-4937-b388-52fdde0eafe0",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\\oLight\\oLight.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "2ae44f0b-4197-4066-903a-add8462588ad",
+            "Value": {
+                "id": "1d187f9f-9e3a-4ffc-a29c-9126d2084f08",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "shaders\\shader_outline\\shader_outline.yy",
+                "resourceType": "GMShader"
             }
         }
     ],

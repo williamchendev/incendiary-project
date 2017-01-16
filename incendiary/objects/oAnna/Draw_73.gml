@@ -1,8 +1,8 @@
 ///Draw End
 
 //Menu
-var view_x = camera_get_view_x(view_camera[0]);
-var view_y = camera_get_view_y(view_camera[0]);
+var view_x = view_set_x;
+var view_y = view_set_y;
 
 draw_sprite(sMenu, 0, view_x + 480 - 16, view_y);
 
@@ -13,8 +13,8 @@ if (gui){
             if (inst_item.item != -1){
                 if (inst_item.alpha > 0.5){
                     draw_set_halign(fa_center);
-					//draw_set_color(c_white);
-                    draw_set_color(make_colour_rgb(230, 230, 230));
+					draw_set_color(make_color_rgb(186, 193, 184));
+                    //draw_set_color(make_colour_rgb(230, 230, 230));
                     draw_set_font(DebugFont);
                     
 					var temp_stack_text = "";
@@ -73,7 +73,12 @@ if (global.debug){
     draw_text(view_x + 1, view_y + 1, "FPS: " + string(fps));
     draw_text(view_x + 1, view_y + 8, "Anna_x: " + string(x));
     draw_text(view_x + 1, view_y + 15, "Anna_y: " + string(y));
-	draw_text(view_x + 1, view_y + 22, "Moving: " + string(moving));
+	draw_text(view_x + 1, view_y + 22, "Still: " + string(stand_still));
+	draw_text(view_x + 1, view_y + 29, "Half: " + string(x - view_x) + ":240");
+	
+	draw_set_color(c_white);
+	draw_line(view_x + 240, view_y, view_x + 240, view_y + 270);
+	draw_set_color(c_black);
 }
 
 //Mouse

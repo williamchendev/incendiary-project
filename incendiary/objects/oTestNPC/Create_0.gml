@@ -2,6 +2,9 @@
 
 event_inherited();
 
+move_x = x + 48;
+move_y = y;
+
 text1 = noone;
 text1[0, 0] = "This is a test.";
 text1[0, 1] = -1;

@@ -11,7 +11,8 @@
         "a55297b1-b6b4-4b27-8f88-2eeebc0ca381",
         "960f0246-e174-4a33-88fe-f9da9e771dd9",
         "69b22b7c-bf7a-4fa2-9d47-d0aa5a193d5f",
-        "84de61f1-6930-41f6-abf7-01ebd861d270"
+        "84de61f1-6930-41f6-abf7-01ebd861d270",
+        "bffd87ea-22e7-4528-a9e4-b66991af46b6"
     ],
     "filterType": "GMSprite",
     "folderName": "System",

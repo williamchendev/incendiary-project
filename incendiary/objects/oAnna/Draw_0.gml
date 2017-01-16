@@ -1,9 +1,5 @@
 ///Draw Event
 
-//Settings
-//x = round(x);
-//y = round(y);
-
 //path
 if (global.debug){
     draw_path(path, x, y, true);
@@ -32,8 +28,18 @@ var pre_anna_y = anna_y;
 anna_x += (x - anna_x) * sprite_spd;
 anna_y += (y - anna_y) * sprite_spd;
 
-if (round(pre_anna_x) != round(anna_x)){
-    image_xscale = sign(round(anna_x) - round(pre_anna_x));
+if (round(anna_x) == round(x)){
+	anna_x = x;
+}
+
+if (anna_x != pre_anna_x){
+	if (round(anna_x) != round(pre_anna_x)){
+		image_xscale = sign(anna_x - pre_anna_x);
+	}
+	stand_still = false;
+}
+else {
+	stand_still = true;
 }
 
 //Sprite Image

@@ -10,8 +10,8 @@ else {
 var sin_draw = (sin(2 * pi * sin_val) + 1) / 2;
 
 //Draw Bubble
-//draw_set_color(c_white);
-draw_set_color(make_colour_rgb(230, 230, 230));
+draw_set_color(make_color_rgb(186, 193, 184));
+//draw_set_color(make_colour_rgb(230, 230, 230));
 draw_set_font(DebugFont);
 
 if ((alpha >= 0.6) and prox){

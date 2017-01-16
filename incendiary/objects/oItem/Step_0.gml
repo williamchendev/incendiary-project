@@ -68,6 +68,7 @@ if (pick_up){
                         put_down = false;
                     }
                     else {
+						item_stack -= ItemAddScript(item, item_stack);
                         oAnna.canmove = true;
                         pick_up = false;
                         put_down = true;

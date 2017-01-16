@@ -86,6 +86,12 @@ if (talk){
         talk_reset = false;
     }
 
+	if (oAnna.x - x != 0){
+		if (oAnna.stand_still){
+			oAnna.image_xscale = sign(x - oAnna.x);
+		}
+	}
+
     //Text
     if (!instance_exists(oText)){
         if (event < array_height_2d(temp_text)){

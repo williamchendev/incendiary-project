@@ -22,6 +22,7 @@ anna_y = y;
 canmove = true;
 moving = false;
 walking = false;
+stand_still = false;
 
 move_x = x;
 move_y = y;
@@ -36,7 +37,9 @@ item_stack = -1;
 cutscene = false;
 cutscene_y = 0;
 cutscene_x = 0;
-camera_speed = 0.05;
+view_set_x = 0;
+view_set_y = 0;
+camera_speed = 0.06;
 
 gui = false;
 gui_circle_length = 32;
