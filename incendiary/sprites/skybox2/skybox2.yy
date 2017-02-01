@@ -1,7 +1,7 @@
 {
     "id": "db1dad3e-7fa8-4ce0-9821-b2a83950f309",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "skybox2",
     "For3D": false,
     "HTile": false,
@@ -37,6 +37,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 324,
     "layers": [
         {
@@ -51,6 +53,7 @@
             "visible": true
         }
     ],
+    "origin": 0,
     "playbackSpeed": 15,
     "playbackSpeedType": 0,
     "sepmasks": false,

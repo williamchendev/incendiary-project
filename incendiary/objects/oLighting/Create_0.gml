@@ -1,7 +1,7 @@
 /// @description Light Variables
 
 //Settings
-alpha = 0.5;
+alpha = 0.3;
 main_light_alpha = 0;
 secondary_light_alpha = 0;
 

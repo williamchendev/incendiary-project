@@ -1,7 +1,7 @@
 {
     "id": "69b22b7c-bf7a-4fa2-9d47-d0aa5a193d5f",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "sSandTimer",
     "For3D": false,
     "HTile": false,
@@ -169,6 +169,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 16,
     "layers": [
         {
@@ -183,6 +185,7 @@
             "visible": true
         }
     ],
+    "origin": 0,
     "playbackSpeed": 0.2,
     "playbackSpeedType": 1,
     "sepmasks": false,

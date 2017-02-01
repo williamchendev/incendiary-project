@@ -54,7 +54,7 @@ if (escape){
 if (global.escape_game != -1){
 	draw_set_font(RegularFont);
 	draw_set_color(make_colour_hsv(0, 0, 10));
-	draw_sprite(sSandTimer, round(global.escape_game / 6), 0, 0);
+	draw_sprite(sSandTimer, round(global.escape_game / 6), view_x, view_y);
 	draw_text(view_x + 16, view_y + 4, "Exit");
 	
 	if (!escape){
@@ -64,8 +64,5 @@ if (global.escape_game != -1){
 		game_end();
 	}
 }
-
-//Mouse
-draw_sprite(sMenu, 1, mouse_x, mouse_y);
 
 draw_set_color(c_black);

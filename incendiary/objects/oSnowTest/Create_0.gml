@@ -16,7 +16,7 @@ part_type_color_mix(partSnow, c_ltgray, c_white);
 part_type_alpha3(partSnow, 0.8, 0.6, 0);
 part_type_speed(partSnow, 0.4, 0.7, -0.0005, 0);
 part_type_direction(partSnow, 260, 270, -0.07, 0);
-part_type_life(partSnow, 400, 580);
+part_type_life(partSnow, 440, 580);
 
 //Particle Emitter
 partSnow_emit = part_emitter_create(partSnow_sys);

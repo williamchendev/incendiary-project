@@ -1,7 +1,7 @@
 {
     "id": "4d4cc14c-d217-4cc5-9396-2e36a81fb01c",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "sAnnaDebug",
     "For3D": false,
     "HTile": false,
@@ -37,6 +37,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 48,
     "layers": [
         {
@@ -51,6 +53,7 @@
             "visible": true
         }
     ],
+    "origin": 0,
     "playbackSpeed": 1,
     "playbackSpeedType": 1,
     "sepmasks": false,

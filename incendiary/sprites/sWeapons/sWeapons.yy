@@ -1,7 +1,7 @@
 {
     "id": "cf56c917-96fd-45f4-8969-5db16b86df86",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "sWeapons",
     "For3D": false,
     "HTile": false,
@@ -147,6 +147,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 12,
     "layers": [
         {
@@ -161,6 +163,7 @@
             "visible": true
         }
     ],
+    "origin": 0,
     "playbackSpeed": 1,
     "playbackSpeedType": 1,
     "sepmasks": false,

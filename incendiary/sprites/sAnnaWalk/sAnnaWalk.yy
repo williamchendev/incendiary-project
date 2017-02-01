@@ -1,7 +1,7 @@
 {
     "id": "5cccae7a-67a2-404b-9175-9f852ac15ca0",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "sAnnaWalk",
     "For3D": false,
     "HTile": false,
@@ -235,6 +235,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 48,
     "layers": [
         {
@@ -249,6 +251,7 @@
             "visible": true
         }
     ],
+    "origin": 9,
     "playbackSpeed": 0.2,
     "playbackSpeedType": 1,
     "sepmasks": false,

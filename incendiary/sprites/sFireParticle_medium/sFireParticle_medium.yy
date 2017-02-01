@@ -1,7 +1,7 @@
 {
     "id": "84de61f1-6930-41f6-abf7-01ebd861d270",
     "modelName": "GMSprite",
-    "mvc": "1.11",
+    "mvc": "1.12",
     "name": "sFireParticle_medium",
     "For3D": false,
     "HTile": false,
@@ -345,6 +345,8 @@
             ]
         }
     ],
+    "gridX": 0,
+    "gridY": 0,
     "height": 8,
     "layers": [
         {
@@ -359,6 +361,7 @@
             "visible": true
         }
     ],
+    "origin": 4,
     "playbackSpeed": 15,
     "playbackSpeedType": 0,
     "sepmasks": false,

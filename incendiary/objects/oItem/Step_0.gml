@@ -55,7 +55,7 @@ if (pick_up){
                 event++;
             }
             else {		
-                if(ItemAddScript(item, item_stack) <= 0){
+                if(ItemAddScript(item)){
                     with (action){
                         instance_destroy();
                     }
@@ -68,7 +68,7 @@ if (pick_up){
                         put_down = false;
                     }
                     else {
-						item_stack -= ItemAddScript(item, item_stack);
+						ItemAddScript(item);
                         oAnna.canmove = true;
                         pick_up = false;
                         put_down = true;

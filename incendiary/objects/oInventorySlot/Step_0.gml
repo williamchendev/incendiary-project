@@ -1,6 +1,6 @@
 ///Step Event
 
-prox = position_meeting(mouse_x, mouse_y, self);
+prox = position_meeting(oAnna.mouse_scale_x, oAnna.mouse_scale_y, self);
 
 alpha = clamp(alpha, 0, 0.6);
 

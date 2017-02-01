@@ -9,15 +9,15 @@ if (keyboard_check_pressed(vk_f11)){
 //Movement
 if (canmove){
     if (mouse_click){
-        if (position_meeting(mouse_x, mouse_y, oAction)){
-            var inst_act = instance_position(mouse_x, mouse_y, oAction);
+        if (position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
+            var inst_act = instance_position(mouse_scale_x, mouse_scale_y, oAction);
             if (inst_act != noone){
                 if (inst_act.action_sprite_scale == 1){
                     inst_act.clicked = true;
                 }
             }
         }
-        else if (point_in_rectangle(mouse_x, mouse_y, x - 6, y - 40, x + 6, y + 4)){
+        else if (point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4)){
             if (item != -1){
                 gui = true;
             }
@@ -32,8 +32,8 @@ if (canmove){
             //Pathfinding on Click
             path_end();
             
-            move_x = round(mouse_x);
-            move_y = round(mouse_y);
+            move_x = round(mouse_scale_x);
+            move_y = round(mouse_scale_y);
             
             if (mp_grid_path(grid, path, x, y, move_x, move_y, true)){
                 var point_a = 0;
@@ -72,49 +72,18 @@ else {
     //GUI
     if (gui){
         if (mouse_click){
-            if (point_in_rectangle(mouse_x, mouse_y, x - 6, y - 40, x + 6, y + 4)){
+            if (point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4)){
                 gui = false
                 canmove = true;
             }
             else {
                 //Switch Items
-                if (position_meeting(mouse_x, mouse_y, oInventorySlot)){
-                    var inst_item = instance_position(mouse_x, mouse_y, oInventorySlot);
+                if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
+                    var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
                     if (inst_item != noone){
-						if (inst_item.item == item){
-							if (item != -1){
-								if (global.item_data[item, 2] > 1){
-									if (inst_item.item_stack + item_stack <= global.item_data[item, 2]){
-										inst_item.item_stack += item_stack;
-										item = -1;
-										item_stack = -1;
-									}
-									else if (item_stack == global.item_data[item, 2]){
-										item_stack = inst_item.item_stack;
-										inst_item.item_stack = global.item_data[item, 2];
-									}
-									else if (inst_item.item_stack == global.item_data[item, 2]){
-										inst_item.item_stack = item_stack;
-										item_stack = global.item_data[item, 2];
-									}
-									else {
-										var temp_item_mouse_add = clamp(item_stack, 0, global.item_data[item, 2] - inst_item.item_stack);
-										inst_item.item_stack += temp_item_mouse_add;
-										item_stack -= temp_item_mouse_add;
-									}
-								}
-							}
-						}
-						else {
-							var temp_item = inst_item.item;
-							var temp_stack = inst_item.item_stack;
-							
-	                        inst_item.item = item;
-							inst_item.item_stack = item_stack;
-							
-	                        item = temp_item;
-							item_stack = temp_stack;
-						}
+						var temp_item = inst_item.item
+						inst_item.item = item;
+						item = temp_item;
                     }
                 }
             }
@@ -156,8 +125,8 @@ var view_x = camera_get_view_x(view_camera[0]);
 var view_y = camera_get_view_y(view_camera[0]);
 
 if (mouse_click){
-	if (mouse_x - view_x > 464){
-		if (mouse_y - view_y < 16){
+	if (mouse_scale_x - view_x > 464){
+		if (mouse_scale_y - view_y < 16){
 			GamePauseScript();
 		}
 	}

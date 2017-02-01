@@ -18,6 +18,3 @@ if (global.escape_game != -1){
 		game_end();
 	}
 }
-
-//Mouse
-draw_sprite(sMenu, 1, mouse_x, mouse_y);

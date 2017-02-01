@@ -25,51 +25,51 @@ var view_x = camera_get_view_x(view_camera[0]);
 var view_y = camera_get_view_y(view_camera[0]);
 
 cursor_num = -1;
-if (abs((view_y + 60) - mouse_y) < 8){
-	if (abs((view_x + 120 + (string_width("Fullscreen: " + BooleanTextScript(window_get_fullscreen())) / 2)) - mouse_x) < (string_width("Fullscreen: " + BooleanTextScript(window_get_fullscreen())) / 2) + 6){
+if (abs((view_y + 60) - mouse_scale_y) < 8){
+	if (abs((view_x + 120 + (string_width("Fullscreen: " + BooleanTextScript(window_get_fullscreen())) / 2)) - mouse_scale_x) < (string_width("Fullscreen: " + BooleanTextScript(window_get_fullscreen())) / 2) + 6){
 		cursor_num = 0;
 	}
 }
-else if (abs((view_y + 76) - mouse_y) < 8){
+else if (abs((view_y + 76) - mouse_scale_y) < 8){
 	if (!window_get_fullscreen()){
 		var string_w = string_width("Scale: x" + string(window_scale)) / 2;
-		var abs_w = abs(view_x + 120 + string_w - mouse_x);
+		var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 		if (abs_w < string_w + 6){
 			cursor_num = 1;
 		}
 	}
 	else {
 		var string_w = string_width("Scale: n/a") / 2;
-		var abs_w = abs(view_x + 120 + string_w - mouse_x);
+		var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 		if (abs_w < string_w + 6){
 			cursor_num = 1;
 		}
 	}
 }
-else if (abs((view_y + 92) - mouse_y) < 8){
+else if (abs((view_y + 92) - mouse_scale_y) < 8){
 	var string_w = string_width("Music Volume: " + string(global.music_vol)) / 2;
-	var abs_w = abs(view_x + 120 + string_w - mouse_x);
+	var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 	if (abs_w < string_w + 6){
 		cursor_num = 2;
 	}
 }
-else if (abs((view_y + 108) - mouse_y) < 8){
+else if (abs((view_y + 108) - mouse_scale_y) < 8){
 	var string_w = string_width("SFX Volume: " + string(global.sfx_vol)) / 2;
-	var abs_w = abs(view_x + 120 + string_w - mouse_x);
+	var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 	if (abs_w < string_w + 6){
 		cursor_num = 3;
 	}
 }
-else if (abs((view_y + 124) - mouse_y) < 8){
+else if (abs((view_y + 124) - mouse_scale_y) < 8){
 	var string_w = string_width("Dog Fluffiness: " + dog_fluff_text) / 2;
-	var abs_w = abs(view_x + 120 + string_w - mouse_x);
+	var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 	if (abs_w < string_w + 6){
 		cursor_num = 4;
 	}
 }
-else if (abs((view_y + 140) - mouse_y) < 8){
+else if (abs((view_y + 140) - mouse_scale_y) < 8){
 	var string_w = string_width("Resume") / 2;
-	var abs_w = abs(view_x + 120 + string_w - mouse_x);
+	var abs_w = abs(view_x + 120 + string_w - mouse_scale_x);
 	if (abs_w < string_w + 6){
 		cursor_num = 5;
 	}
