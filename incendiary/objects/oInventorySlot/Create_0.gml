@@ -6,5 +6,5 @@ alpha = 0;
 
 prox = false;
 
-sin_val = random_range(0, 1);
+sin_val = 0;
 

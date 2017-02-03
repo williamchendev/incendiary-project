@@ -75,6 +75,17 @@ else {
             if (point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4)){
                 gui = false
                 canmove = true;
+				//Toss Combo Items On Ground
+				if (max(combo_slot1, combo_slot2) != -1){
+					if (combo_slot1 != -1){
+						ItemAddScript(combo_slot1);
+						combo_slot1 = -1;
+					}
+					else {
+						ItemAddScript(combo_slot2);
+						combo_slot2 = -1;
+					}
+				}
             }
             else {
                 //Switch Items
@@ -86,6 +97,18 @@ else {
 						item = temp_item;
                     }
                 }
+				if (max(combo_slot1, combo_slot2) != -1 or item != -1){
+					if (point_distance(mouse_scale_x, mouse_scale_y, x - 14, y - 18) <= 7.5){
+						var temp_combo_item1 = item;
+						item = combo_slot1;
+						combo_slot1 = temp_combo_item1;
+					}
+					else if (point_distance(mouse_scale_x, mouse_scale_y, x + 16, y - 18) <= 7.5){
+						var temp_combo_item2 = item;
+						item = combo_slot2;
+						combo_slot2 = temp_combo_item2;
+					}
+				}
             }
         }
     }
@@ -95,7 +118,7 @@ else {
 for (i = 0; i < 12; i++){
     if (item_slot[i] != noone){
         item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * -i) + 90) + x;
-        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * -i) + 90) + y - 18;
+        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * -i) + 90) + y - 19;
         
         if (gui){
             if (item_slot[i].alpha < 0.8){
@@ -114,6 +137,15 @@ for (i = 0; i < 12; i++){
 
 //Camera
 CameraScript();
+
+//Sin Val
+if (sin_val >= 1){
+	sin_val = 0;
+}
+else {
+	sin_val += 0.007;
+}
+sin_val = clamp(sin_val, 0, 1);
 
 //If OS is paused
 if (os_is_paused()){

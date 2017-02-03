@@ -327,6 +327,14 @@
             }
         },
         {
+            "Key": "37a3f6ae-9cd8-45e7-a826-f40d595ffde7",
+            "Value": {
+                "id": "93c89216-f56e-4b24-9faa-be17e88c3672",
+                "resourcePath": "sprites\\sGunGUI\\sGunGUI.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3817817d-ec49-4f8a-8714-5f3050a9a84d",
             "Value": {
                 "id": "b622fc8b-14ed-4a1e-8f99-07ad726e1701",
@@ -666,7 +674,7 @@
             "Key": "8f7c0124-5026-4225-b851-2a321e1aee29",
             "Value": {
                 "id": "8aef390f-6613-4aa4-98d7-9ca6d0ca85ed",
-                "resourcePath": "sprites\\Car\\Car.yy",
+                "resourcePath": "sprites\\sCar\\sCar.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -858,7 +866,7 @@
             "Key": "c0cda390-3500-4fa2-9250-8caa5f51ffb4",
             "Value": {
                 "id": "e41b2c03-e09a-4882-873d-c7b8c2be60da",
-                "resourcePath": "sprites\\GunGUI\\GunGUI.yy",
+                "resourcePath": "sprites\\GunGUItest\\GunGUItest.yy",
                 "resourceType": "GMSprite"
             }
         },

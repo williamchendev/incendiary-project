@@ -30,6 +30,8 @@ move_y = y;
 //Settings
 sprite_index = sAnna;
 
+sin_val = 0;
+
 spd = 1;
 item = -1;
 item_stack = -1;
@@ -43,16 +45,23 @@ camera_speed = 0.06;
 
 gui = false;
 gui_circle_length = 32;
+combo_slot1 = -1;
+combo_slot2 = -1;
+
+ammo = 5;
+ammoloaded = 0;
+
+gungui_alpha = 0;
+item_text_surface = surface_create(room_width, room_height);
 
 //Inventory
 item_slot = noone;
 for (i = 0; i < 12; i++){
     item_slot[i] = instance_create_layer(x, y, layer_get_id("GUI_Layer"), oInventorySlot);
-	//item_slot[i].item = 0;
-	//item_slot[i].item_stack = 1;
+	item_slot[i].sin_val = (1 / 12) * (11 - i);
+	item_slot[i].item = i + 2;
 }
-//item_slot[0].item = 0;
-//item_slot[0].item_stack = 1;
+item_slot[0].item = -1;
 
 //Item Array
 //ItemDataScript();

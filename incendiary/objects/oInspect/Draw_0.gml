@@ -7,7 +7,7 @@ if (distance_to_point(oAnna.mouse_scale_x, oAnna.mouse_scale_y) <= (sprite_width
         //Outline
         if (oAnna.canmove){
             if (!selected){
-                OutlineScript(sprite_index, image_index);
+                OutlineScript(sprite_index, image_index, outline_surface);
             }
         }
     }

@@ -15,6 +15,8 @@ useful = false;
 inspect_event = false;
 event = 0;
 
+outline_surface = surface_create(room_width, room_height);
+
 //Text Event
 type = 0;
 text_spd = 0.35;
