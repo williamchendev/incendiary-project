@@ -12,7 +12,47 @@ if (gui){
 	var yi = round(y);
 	
 	//Item Text
-    if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
+	if (max(combo_slot1, combo_slot2) != -1){
+		draw_set_halign(fa_center);
+		draw_set_font(DebugFont);
+					
+		//Surface Outlines
+		if (!surface_exists(item_text_surface)){
+			item_text_surface = surface_create(room_width, room_height);
+		}
+		surface_set_target(item_text_surface);
+		draw_clear_alpha(c_black, 0);
+	
+		draw_set_alpha(1);
+		draw_set_color(c_black);
+		shader_set(shader_outline);
+	
+		var temp_combo1_text = "";
+		var temp_combo2_text = "";
+		if (combo_slot1 != -1){
+			temp_combo1_text = global.item_data[combo_slot1, 0];
+		}
+		if (combo_slot2 != -1){
+			temp_combo2_text = global.item_data[combo_slot2, 0];
+		}
+		if (min(combo_slot1, combo_slot2) != -1){
+			temp_combo2_text = " + " + global.item_data[combo_slot2, 0];
+		}
+		var temp_combo_item_text = temp_combo1_text + temp_combo2_text;
+		draw_text(xi + 2, yi - 78, temp_combo_item_text);
+		draw_text(xi + 1, yi - 79, temp_combo_item_text);
+		draw_text(xi, yi - 78, temp_combo_item_text);
+		draw_text(xi + 1, yi - 77, temp_combo_item_text);
+		shader_reset();
+		surface_reset_target();
+					
+		draw_surface_ext(item_text_surface, 0, 0, 1, 1, 0, make_color_rgb(84, 28, 34), 0.8);
+		
+		draw_set_alpha(1);
+		draw_set_color(make_color_rgb(229, 229, 229));
+	    draw_text(xi + 1, yi - 78, temp_combo_item_text);
+	}
+    else if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
 		var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
         if (inst_item != noone){
             if (inst_item.item != -1){
@@ -26,10 +66,11 @@ if (gui){
 					}
 					surface_set_target(item_text_surface);
 					draw_clear_alpha(c_black, 0);
-					
+	
 					draw_set_alpha(1);
 					draw_set_color(c_black);
 					shader_set(shader_outline);
+					
 					draw_text(xi + 2, yi - 78, global.item_data[inst_item.item, 0]);
 					draw_text(xi + 1, yi - 79, global.item_data[inst_item.item, 0]);
 					draw_text(xi, yi - 78, global.item_data[inst_item.item, 0]);
@@ -41,7 +82,6 @@ if (gui){
 					shader_reset();
 					surface_reset_target();
 					
-					//draw_surface_ext(item_text_surface, 0, 0, 1, 1, 0, make_color_rgb(84, 28, 34), 0.8);
 					draw_surface_ext(item_text_surface, 0, 0, 1, 1, 0, make_color_rgb(41, 56, 79), 0.8);
 					
 					//Item Desc Text
@@ -49,8 +89,6 @@ if (gui){
 					draw_set_color(make_color_rgb(229, 229, 229));
 	                draw_text(xi + 1, yi - 78, global.item_data[inst_item.item, 0]);
                     draw_text(xi + 1, yi - 70, "\"" + global.item_data[inst_item.item, 1] + "\"");
-					
-                    draw_set_halign(fa_left);
                 }
             }
         }
