@@ -81,7 +81,7 @@ else {
 						ItemAddScript(combo_slot1);
 						combo_slot1 = -1;
 					}
-					else {
+					if (combo_slot2 != -1){
 						ItemAddScript(combo_slot2);
 						combo_slot2 = -1;
 					}

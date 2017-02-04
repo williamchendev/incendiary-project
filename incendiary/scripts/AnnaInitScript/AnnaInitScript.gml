@@ -44,7 +44,7 @@ view_set_y = 0;
 camera_speed = 0.06;
 
 gui = false;
-gui_circle_length = 32;
+gui_circle_length = 38;
 combo_slot1 = -1;
 combo_slot2 = -1;
 

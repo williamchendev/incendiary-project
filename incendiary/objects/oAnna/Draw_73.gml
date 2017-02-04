@@ -11,6 +11,8 @@ if (gui){
 	var xi = round(x);
 	var yi = round(y);
 	
+	var desc_text_distance = 82;
+	
 	//Item Text
 	if (max(combo_slot1, combo_slot2) != -1){
 		draw_set_halign(fa_center);
@@ -39,10 +41,10 @@ if (gui){
 			temp_combo2_text = " + " + global.item_data[combo_slot2, 0];
 		}
 		var temp_combo_item_text = temp_combo1_text + temp_combo2_text;
-		draw_text(xi + 2, yi - 78, temp_combo_item_text);
-		draw_text(xi + 1, yi - 79, temp_combo_item_text);
-		draw_text(xi, yi - 78, temp_combo_item_text);
-		draw_text(xi + 1, yi - 77, temp_combo_item_text);
+		draw_text(xi + 2, yi - desc_text_distance, temp_combo_item_text);
+		draw_text(xi + 1, yi - (desc_text_distance + 1), temp_combo_item_text);
+		draw_text(xi, yi - desc_text_distance, temp_combo_item_text);
+		draw_text(xi + 1, yi - (desc_text_distance - 1), temp_combo_item_text);
 		shader_reset();
 		surface_reset_target();
 					
@@ -50,7 +52,7 @@ if (gui){
 		
 		draw_set_alpha(1);
 		draw_set_color(make_color_rgb(229, 229, 229));
-	    draw_text(xi + 1, yi - 78, temp_combo_item_text);
+	    draw_text(xi + 1, yi - desc_text_distance, temp_combo_item_text);
 	}
     else if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
 		var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
@@ -71,14 +73,14 @@ if (gui){
 					draw_set_color(c_black);
 					shader_set(shader_outline);
 					
-					draw_text(xi + 2, yi - 78, global.item_data[inst_item.item, 0]);
-					draw_text(xi + 1, yi - 79, global.item_data[inst_item.item, 0]);
-					draw_text(xi, yi - 78, global.item_data[inst_item.item, 0]);
-					draw_text(xi + 1, yi - 77, global.item_data[inst_item.item, 0]);
-					draw_text(xi + 2, yi - 70, "\"" + global.item_data[inst_item.item, 1] + "\"");
-					draw_text(xi + 1, yi - 71, "\"" + global.item_data[inst_item.item, 1] + "\"");
-					draw_text(xi, yi - 70, "\"" + global.item_data[inst_item.item, 1] + "\"");
-					draw_text(xi + 1, yi - 69, "\"" + global.item_data[inst_item.item, 1] + "\"");
+					draw_text(xi + 2, yi - desc_text_distance, global.item_data[inst_item.item, 0]);
+					draw_text(xi + 1, yi - (desc_text_distance + 1), global.item_data[inst_item.item, 0]);
+					draw_text(xi, yi - desc_text_distance, global.item_data[inst_item.item, 0]);
+					draw_text(xi + 1, yi - (desc_text_distance - 1), global.item_data[inst_item.item, 0]);
+					draw_text(xi + 2, yi - (desc_text_distance - 8), "\"" + global.item_data[inst_item.item, 1] + "\"");
+					draw_text(xi + 1, yi - (desc_text_distance - 7), "\"" + global.item_data[inst_item.item, 1] + "\"");
+					draw_text(xi, yi - (desc_text_distance - 8), "\"" + global.item_data[inst_item.item, 1] + "\"");
+					draw_text(xi + 1, yi - (desc_text_distance - 9), "\"" + global.item_data[inst_item.item, 1] + "\"");
 					shader_reset();
 					surface_reset_target();
 					
@@ -87,8 +89,8 @@ if (gui){
 					//Item Desc Text
 					draw_set_alpha(1);
 					draw_set_color(make_color_rgb(229, 229, 229));
-	                draw_text(xi + 1, yi - 78, global.item_data[inst_item.item, 0]);
-                    draw_text(xi + 1, yi - 70, "\"" + global.item_data[inst_item.item, 1] + "\"");
+	                draw_text(xi + 1, yi - desc_text_distance, global.item_data[inst_item.item, 0]);
+                    draw_text(xi + 1, yi - (desc_text_distance - 8), "\"" + global.item_data[inst_item.item, 1] + "\"");
                 }
             }
         }
@@ -96,24 +98,27 @@ if (gui){
 	
 	//Item Combo Draw
 	if (max(combo_slot1, combo_slot2) != -1 or item != -1){
+		//Settings
+		var combo_distance = 18;
+		
 		draw_set_alpha(clamp(0.6 + sign(combo_slot1 + 1), 0, 1));
 		draw_set_color(make_color_rgb(230, 230, 230));
-		draw_circle(xi - 15, yi - 19, 6 + (sin_draw * 2.5), false);
+		draw_circle(xi - combo_distance, yi - 19, 6 + (sin_draw * 2.5), false);
 		draw_set_color(make_color_rgb(84, 28, 34));
-		draw_circle(xi - 15, yi - 19, 6 + (sin_draw * 2.5), true);
+		draw_circle(xi - combo_distance, yi - 19, 6 + (sin_draw * 2.5), true);
 		
 		if (combo_slot1 != -1){
-			draw_sprite(sInventoryItems, combo_slot1, xi - 14, yi - 18);
+			draw_sprite(sInventoryItems, combo_slot1, xi - (combo_distance - 1), yi - 18);
 		}
 		
 		draw_set_alpha(clamp(0.6 + sign(combo_slot2 + 1), 0, 1));
 		draw_set_color(make_color_rgb(230, 230, 230));
-		draw_circle(xi + 15, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), false);
+		draw_circle(xi + combo_distance, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), false);
 		draw_set_color(make_color_rgb(84, 28, 34));
-		draw_circle(xi + 15, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), true);
+		draw_circle(xi + combo_distance, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), true);
 		
 		if (combo_slot2 != -1){
-			draw_sprite(sInventoryItems, combo_slot2, xi + 16, yi - 18);
+			draw_sprite(sInventoryItems, combo_slot2, xi + (combo_distance + 1), yi - 18);
 		}
 	}
 	draw_set_color(c_black);

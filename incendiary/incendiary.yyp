@@ -631,6 +631,14 @@
             }
         },
         {
+            "Key": "8372ccf0-50cf-4110-8db6-20589539fc6d",
+            "Value": {
+                "id": "957e3c23-dd01-43c6-9e3b-5ee8520f5606",
+                "resourcePath": "objects\\oArc\\oArc.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "84b2fa69-2892-4981-bd43-f366e122367c",
             "Value": {
                 "id": "fd08020c-0973-44e5-a31b-0bf85f45a7da",
@@ -700,14 +708,6 @@
                 "id": "2c550bcb-493d-4aa1-b65e-dc03afc35c6f",
                 "resourcePath": "fonts\\RegularFont\\RegularFont.yy",
                 "resourceType": "GMFont"
-            }
-        },
-        {
-            "Key": "9788cf05-d3bb-4b79-a736-535c6a756d5f",
-            "Value": {
-                "id": "30e602c0-a613-4fb1-8ea8-29096cadf336",
-                "resourcePath": "objects\\oLightTest\\oLightTest.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -988,6 +988,14 @@
                 "id": "64b163ad-cb43-4960-b664-7a3b8e6b6c6f",
                 "resourcePath": "datafiles_yy\\favicon.ico.yy",
                 "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "dc33623e-34c0-4c08-987d-cdf65e70a1f9",
+            "Value": {
+                "id": "438f9d8b-804c-441c-aa23-611619f3b9a3",
+                "resourcePath": "views\\dc33623e-34c0-4c08-987d-cdf65e70a1f9.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
