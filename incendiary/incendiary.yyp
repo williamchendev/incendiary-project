@@ -471,6 +471,14 @@
             }
         },
         {
+            "Key": "4fc933ba-3814-49c6-ac1f-948de43b8dfe",
+            "Value": {
+                "id": "313cd420-c18c-40d7-b0c3-31035fb52ea5",
+                "resourcePath": "scripts\\CraftScript\\CraftScript.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "544f2058-5a74-43fe-8216-e254fdcdd117",
             "Value": {
                 "id": "20d9a3f7-f932-4c1f-9196-85746c72bcc8",
@@ -492,6 +500,14 @@
                 "id": "85298f9c-d4e2-4439-b1de-3327121bec02",
                 "resourcePath": "sprites\\skyboxTreelayer\\skyboxTreelayer.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "5c3ac58c-2064-4b68-8b00-d1c7842c728c",
+            "Value": {
+                "id": "bab93f2b-7a31-482b-bf4b-21598ffcb542",
+                "resourcePath": "scripts\\DrawArcScript\\DrawArcScript.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -634,7 +650,7 @@
             "Key": "8372ccf0-50cf-4110-8db6-20589539fc6d",
             "Value": {
                 "id": "957e3c23-dd01-43c6-9e3b-5ee8520f5606",
-                "resourcePath": "objects\\oArc\\oArc.yy",
+                "resourcePath": "objects\\oArcTest\\oArcTest.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -1142,7 +1158,9 @@
         "b4b7c011-cccc-4680-bf1d-8481b9b321b9",
         "d6575ccb-34e0-48f3-ae10-5fabc615fd4d",
         "332df9e0-c933-40e9-abb8-c56169b978df",
-        "895a0ae7-9c13-479e-b28c-d086404dc710"
+        "895a0ae7-9c13-479e-b28c-d086404dc710",
+        "5c3ac58c-2064-4b68-8b00-d1c7842c728c",
+        "4fc933ba-3814-49c6-ac1f-948de43b8dfe"
     ],
     "tutorial": ""
 }

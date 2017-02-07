@@ -5,6 +5,7 @@ ControlScript();
 if (keyboard_check_pressed(vk_f11)){
     window_set_fullscreen(!window_get_fullscreen());
 }
+var self_box_click = point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4);
 
 //Movement
 if (canmove){
@@ -17,7 +18,7 @@ if (canmove){
                 }
             }
         }
-        else if (point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4)){
+        else if (self_box_click){
             if (item != -1){
                 gui = true;
             }
@@ -72,8 +73,8 @@ else {
     //GUI
     if (gui){
         if (mouse_click){
-            if (point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4)){
-                gui = false
+            if (self_box_click){
+                gui = false;
                 canmove = true;
 				//Toss Combo Items On Ground
 				if (max(combo_slot1, combo_slot2) != -1){
@@ -86,12 +87,26 @@ else {
 						combo_slot2 = -1;
 					}
 				}
+				if (item != -1){
+					if (global.item_data[item, 2] == 2){
+						canmove = false;
+						throw = true;
+					}
+				}
             }
             else {
                 //Switch Items
                 if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
                     var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
                     if (inst_item != noone){
+						if (item == -1){
+							if (inst_item.combo_item != -1){
+								inst_item.item = inst_item.combo_item;
+								inst_item.combo_item = -1;
+								combo_slot1 = -1;
+								combo_slot2 = -1;
+							}
+						}
 						var temp_item = inst_item.item
 						inst_item.item = item;
 						item = temp_item;
@@ -111,10 +126,40 @@ else {
 				}
             }
         }
+		
+		combo_item = -1;
+		if (min(combo_slot1, combo_slot2) != -1){
+			if (CraftScript(combo_slot1, combo_slot2) != -1){
+				combo_item = CraftScript(combo_slot1, combo_slot2);
+			}
+		}
     }
+	else if (throw){
+		var anna_x_throwpos = anna_x;
+		var anna_y_throwpos = anna_y - 19;
+		
+		inside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(120) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(54));
+		
+		canthrow1 = false;
+		canthrow2 = false;
+		if (instance_position(mouse_scale_x, mouse_scale_y, oMove) != noone){
+			canthrow1 = true;
+		}
+		if (instance_position(mouse_scale_x, mouse_scale_y, oSolid) == noone){
+			canthrow2 = true;
+		}
+		
+		if (mouse_click){
+            if (self_box_click){
+				gui = true;
+				throw = false;
+			}
+		}
+	}
 }
 
 //Move Inventory
+var empty_slot = true;
 for (i = 0; i < 12; i++){
     if (item_slot[i] != noone){
         item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * -i) + 90) + x;
@@ -132,6 +177,16 @@ for (i = 0; i < 12; i++){
                 item_slot[i].alpha *= 0.9;
             }
         }
+		
+		item_slot[i].combo_item = -1;
+		if (empty_slot == true){
+			if (item_slot[i].item == -1){
+				if (combo_item != -1){
+					item_slot[i].combo_item = combo_item;
+					empty_slot = false;
+				}
+			}
+		}
     }
 }
 

@@ -47,9 +47,17 @@ gui = false;
 gui_circle_length = 38;
 combo_slot1 = -1;
 combo_slot2 = -1;
+combo_item = -1;
 
 ammo = 5;
 ammoloaded = 0;
+
+throw = false;
+inside_throw_distance = false;
+canthrow1 = false;
+canthrow2 = false;
+surface_arc_1 = surface_create(room_width, room_height);
+surface_arc_2 = surface_create(room_width, room_height);
 
 gungui_alpha = 0;
 item_text_surface = surface_create(room_width, room_height);
@@ -59,7 +67,7 @@ item_slot = noone;
 for (i = 0; i < 12; i++){
     item_slot[i] = instance_create_layer(x, y, layer_get_id("GUI_Layer"), oInventorySlot);
 	item_slot[i].sin_val = (1 / 12) * (11 - i);
-	item_slot[i].item = i + 2;
+	item_slot[i].item = i + 5;
 }
 item_slot[0].item = -1;
 

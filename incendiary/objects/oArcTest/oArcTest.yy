@@ -2,7 +2,7 @@
     "id": "8372ccf0-50cf-4110-8db6-20589539fc6d",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "oArc",
+    "name": "oArcTest",
     "eventList": [
         {
             "id": "abf35f67-fc6a-4b61-b0f4-0c2aa4a55db9",
@@ -12,6 +12,16 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 8,
+            "m_owner": "8372ccf0-50cf-4110-8db6-20589539fc6d"
+        },
+        {
+            "id": "a22166da-d8c6-4bc2-b2db-3db92810d6bb",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
             "m_owner": "8372ccf0-50cf-4110-8db6-20589539fc6d"
         }
     ],
