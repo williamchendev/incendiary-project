@@ -6,7 +6,8 @@ var ym = argument1;
 var xp = argument2;
 var yp = argument3;
 
-var mdy = ((ym + yp) / 2.5) - 60;
+var temp_distance = point_distance(xm, ym, xp, yp) / 120;
+var mdy = ((ym + yp) / 2.5) + (5 * temp_distance);
 
 var temp_arc_surface1 = argument7;
 var temp_arc_surface2 = argument8;

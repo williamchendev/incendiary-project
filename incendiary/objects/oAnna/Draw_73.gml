@@ -7,6 +7,16 @@ var view_y = view_set_y;
 draw_sprite(sMenu, 0, view_x + 480 - 16, view_y);
 var sin_draw = (sin(2 * pi * sin_val) + 1) / 2;
 
+//Combine
+if (action_timer != -1){
+	var anna_wait_length = (action_timer / action_wait) * 26;
+	draw_set_color(make_color_rgb(200, 200, 200));
+	draw_rectangle(anna_x - anna_wait_length, anna_y + 7, anna_x + anna_wait_length, anna_y + 8, false);
+	draw_set_color(make_color_rgb(230, 230, 230));
+	draw_rectangle(anna_x - anna_wait_length, anna_y + 6, anna_x + anna_wait_length, anna_y + 7, false);
+	draw_set_color(c_black);
+}
+
 //Throwing
 if (throw){
 	var anna_x_throwpos = anna_x;
@@ -223,7 +233,9 @@ if (global.debug){
 
 //Mouse
 if (!cutscene){
-    if (item != -1){
-        draw_sprite(sInventoryItems, item, mouse_scale_x, mouse_scale_y);
-    }
+	if (throw != true){
+	    if (item != -1){
+	        draw_sprite(sInventoryItems, item, mouse_scale_x, mouse_scale_y);
+	    }
+	}
 }

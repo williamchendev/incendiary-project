@@ -50,5 +50,20 @@ else {
 	sprite_index = sAnna;
 }
 
+//Throw
+if (throw){
+	if (!instance_exists(oThrowRange)){
+		instance_create_depth(mouse_scale_x, mouse_scale_y, 0, oThrowRange);
+	}
+	if (global.debug){
+		var ellipse1_width = 150;
+		var ellipse1_height = 54;
+		var ellipse2_width = 48;
+		var ellipse2_height = 28;
+		draw_ellipse(anna_x - ellipse1_width, (anna_y - 19) - ellipse1_height, anna_x + ellipse1_width, (anna_y - 19) + ellipse1_height, true);
+		draw_ellipse(anna_x - ellipse2_width, (anna_y - 19) - ellipse2_height, anna_x + ellipse2_width, (anna_y - 19) + ellipse2_height, true);
+	}
+}
+
 draw_sprite_ext(sprite_index, image_index, anna_x, anna_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 

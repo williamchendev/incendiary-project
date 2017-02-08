@@ -28,7 +28,7 @@ if ((alpha >= 0.6) and prox){
     }
 	else {
 		if (combo_item != -1){
-			draw_set_alpha(0.7);
+			draw_set_alpha(0.9);
 			draw_sprite(sInventoryItems, combo_item, draw_x + 1, draw_y + 1);
 		}
 	}

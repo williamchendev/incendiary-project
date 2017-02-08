@@ -48,12 +48,15 @@ gui_circle_length = 38;
 combo_slot1 = -1;
 combo_slot2 = -1;
 combo_item = -1;
+action_timer = -1;
+action_wait = 90;
 
 ammo = 5;
 ammoloaded = 0;
 
 throw = false;
 inside_throw_distance = false;
+outside_throw_distance = false;
 canthrow1 = false;
 canthrow2 = false;
 surface_arc_1 = surface_create(room_width, room_height);

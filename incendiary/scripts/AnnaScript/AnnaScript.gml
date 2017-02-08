@@ -70,8 +70,13 @@ else {
         path_end();
     }
     
-    //GUI
-    if (gui){
+    if (action_timer != -1){
+		action_timer--;
+		if (action_timer == -1){
+			gui = true;
+		}
+	}
+    else if (gui){
         if (mouse_click){
             if (self_box_click){
                 gui = false;
@@ -99,17 +104,21 @@ else {
                 if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
                     var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
                     if (inst_item != noone){
-						if (item == -1){
-							if (inst_item.combo_item != -1){
+						if (inst_item.combo_item != -1){
+							if (item == -1){
 								inst_item.item = inst_item.combo_item;
 								inst_item.combo_item = -1;
 								combo_slot1 = -1;
 								combo_slot2 = -1;
+								action_timer = action_wait;
+								gui = false
 							}
 						}
-						var temp_item = inst_item.item
-						inst_item.item = item;
-						item = temp_item;
+						if (action_timer == -1){
+							var temp_item = inst_item.item
+							inst_item.item = item;
+							item = temp_item;
+						}
                     }
                 }
 				if (max(combo_slot1, combo_slot2) != -1 or item != -1){
@@ -136,9 +145,10 @@ else {
     }
 	else if (throw){
 		var anna_x_throwpos = anna_x;
-		var anna_y_throwpos = anna_y - 19;
+		var anna_y_throwpos = (anna_y - 19);
 		
-		inside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(120) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(54));
+		inside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(150) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(54));
+		outside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(48) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(28));
 		
 		canthrow1 = false;
 		canthrow2 = false;
@@ -153,6 +163,25 @@ else {
             if (self_box_click){
 				gui = true;
 				throw = false;
+			}
+			else {
+				if (inside_throw_distance <= 1){
+					if (outside_throw_distance >= 1){
+						var temp_throw = instance_create_depth(x, y, -y, oThrow);
+						temp_throw.start_x = anna_x_throwpos;
+						temp_throw.start_y = anna_y_throwpos;
+						with(temp_throw){
+							ThrowScript(other.mouse_scale_x, other.mouse_scale_y, start_x, start_y, path);
+							path_start(path, spd, path_action_stop, true);
+							path_set_kind(path, 0);
+						}
+						ItemAddScript(item);
+						item = -1;
+						gui = false;
+						throw = false;
+						canmove = true;
+					}
+				}
 			}
 		}
 	}
