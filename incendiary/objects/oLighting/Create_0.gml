@@ -2,8 +2,8 @@
 
 //Settings
 alpha = 0.3;
-main_light_alpha = 0;
-secondary_light_alpha = 0;
+main_light_alpha = 0.8;
+secondary_light_alpha = 0.3;
 
 //Lighting
 light_surface = surface_create(room_width, room_height);

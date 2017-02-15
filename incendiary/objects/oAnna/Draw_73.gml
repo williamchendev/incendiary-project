@@ -25,7 +25,9 @@ if (throw){
 	var max_arc_alpha = 0.2;
 	if (canthrow1){
 		if (canthrow2){
-			max_arc_alpha = 1;
+			if (outside_throw_distance >= 1){
+				max_arc_alpha = 1;
+			}
 		}
 	}
 	var arc_alpha = clamp((1 - inside_throw_distance)+ 0.6, 0, max_arc_alpha);
@@ -160,10 +162,11 @@ if (gui){
 		}
 	}
 	draw_set_color(c_black);
+	draw_set_halign(fa_left);
 }
 
 //Gun GUI
-if (ItemCheckScript(0)){
+if (max(ItemCheckScript(0), item == 0) != false){
 	gungui_alpha += 0.02;
 }
 else {

@@ -4,6 +4,7 @@ mouse_scale_x = (window_mouse_get_x() / (window_get_width() / 480)) + camera_get
 mouse_scale_y = (window_mouse_get_y() / (window_get_height() / 270)) +camera_get_view_y(view_camera[0]);
 
 mouse_click = mouse_check_button_pressed(mb_left);
+mouse_hold = mouse_check_button(mb_left);
 escape = keyboard_check(vk_escape);
 
 debug_key = keyboard_check_pressed(vk_f8);

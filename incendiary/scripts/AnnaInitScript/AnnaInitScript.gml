@@ -1,14 +1,6 @@
 ///AdventureInitScript();
 
 //Init
-/*
-global.debug = false;
-global.escape_game = -1;
-global.music_vol = 0;
-global.sfx_vol = 0;
-global.dog_fluff = 0;
-*/
-
 layer = layer_get_id("Player_Layer");
 ControlScript();
 
@@ -53,6 +45,9 @@ action_wait = 90;
 
 ammo = 5;
 ammoloaded = 0;
+shoot = false;
+shoot_aim = 60;
+reload = false;
 
 throw = false;
 inside_throw_distance = false;

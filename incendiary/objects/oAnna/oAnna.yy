@@ -45,7 +45,7 @@
             "m_owner": "8877b7a2-a938-4cdd-9bdc-11f80a82e435"
         }
     ],
-    "maskSpriteId": "00000000-0000-0000-0000-000000000000",
+    "maskSpriteId": "b896a714-b2b4-4253-8f1d-e8d218d3cc79",
     "parentObjectId": "00000000-0000-0000-0000-000000000000",
     "persistent": false,
     "physicsAngularDamping": 0.1,

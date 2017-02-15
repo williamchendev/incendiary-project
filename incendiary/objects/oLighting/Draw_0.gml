@@ -31,7 +31,6 @@ surface_reset_target();
 surface_set_target(temp1_surface);
 
 with (oLight){
-	other.main_light_alpha = light_strength;
 	draw_circle(x, y, light_size, false);
 }
 
@@ -41,7 +40,6 @@ surface_reset_target();
 surface_set_target(temp2_surface);
 
 with (oLight){
-	other.secondary_light_alpha = light_strength_outline;
 	draw_circle(x, y, light_size_outline, false);
 }
 
@@ -69,7 +67,7 @@ surface_reset_target();
 gpu_set_blendmode(bm_normal);
 
 //Draw Surface
-draw_surface_ext(light_surface, 0, 0, 1, 1, 0, c_white, clamp(alpha, 0, 0.95));
+draw_surface_ext(light_surface, 0, 0, 1, 1, 0, c_white, clamp(alpha, 0, 1));
 
 //Reset
 draw_set_color(c_black);

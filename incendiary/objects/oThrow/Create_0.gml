@@ -3,7 +3,7 @@
 path = path_add();
 hit_ground = false;
 
-spd = 8;
+spd = 7;
 
 width = 6;
 height = 3;

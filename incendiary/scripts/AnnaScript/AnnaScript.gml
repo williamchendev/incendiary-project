@@ -93,7 +93,13 @@ else {
 					}
 				}
 				if (item != -1){
-					if (global.item_data[item, 2] == 2){
+					if (item == 0){
+						canmove = false;
+						shoot = true;
+						ItemAddScript(0);
+						item = -1;
+					}
+					else if (global.item_data[item, 2] == 2){
 						canmove = false;
 						throw = true;
 					}
@@ -143,6 +149,31 @@ else {
 			}
 		}
     }
+	else if (shoot){
+		if (reload != true){
+			if (mouse_hold){
+				shoot_aim--;
+			}
+		}
+		else {
+			shoot_aim += (60 - shoot_aim) * 0.1;
+			if (round(shoot_aim - 60) == 0){
+				reload = false;
+			}
+		}
+		if (mouse_click){
+			if (self_box_click){
+				gui = true;
+				shoot = false;
+				shoot_aim = 60;
+			}
+			else if (shoot_aim <= 3){
+				ShotScript(x, y - 19, point_direction(x, y - 19, mouse_scale_x, mouse_scale_y), 40);
+				reload = true;
+			}
+		}
+		shoot_aim = clamp(shoot_aim, 3, 60);
+	}
 	else if (throw){
 		var anna_x_throwpos = anna_x;
 		var anna_y_throwpos = (anna_y - 19);
@@ -159,29 +190,36 @@ else {
 			canthrow2 = true;
 		}
 		
+		var canthrow = false;
+		if (canthrow1){
+			if (canthrow2){
+				if (inside_throw_distance <= 1){
+					if (outside_throw_distance >= 1){
+						canthrow = true;
+					}
+				}
+			}
+		}
+		
 		if (mouse_click){
             if (self_box_click){
 				gui = true;
 				throw = false;
 			}
-			else {
-				if (inside_throw_distance <= 1){
-					if (outside_throw_distance >= 1){
-						var temp_throw = instance_create_depth(x, y, -y, oThrow);
-						temp_throw.start_x = anna_x_throwpos;
-						temp_throw.start_y = anna_y_throwpos;
-						with(temp_throw){
-							ThrowScript(other.mouse_scale_x, other.mouse_scale_y, start_x, start_y, path);
-							path_start(path, spd, path_action_stop, true);
-							path_set_kind(path, 0);
-						}
-						ItemAddScript(item);
-						item = -1;
-						gui = false;
-						throw = false;
-						canmove = true;
-					}
+			else if (canthrow){
+				var temp_throw = instance_create_depth(x, y, -y, oThrow);
+				temp_throw.start_x = anna_x_throwpos;
+				temp_throw.start_y = anna_y_throwpos;
+				with(temp_throw){
+					ThrowScript(other.mouse_scale_x, other.mouse_scale_y, start_x, start_y, path);
+					path_start(path, spd, path_action_stop, true);
+					path_set_kind(path, 0);
 				}
+				ItemAddScript(item);
+				item = -1;
+				gui = false;
+				throw = false;
+				canmove = true;
 			}
 		}
 	}
