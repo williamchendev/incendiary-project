@@ -67,7 +67,8 @@ else if (throw){
 else if (shoot){
 	//Shoot
 	var shoot_alpha = 0;
-	var shoot_distance = clamp((sqr(mouse_scale_x - anna_x) / sqr(32) + sqr(mouse_scale_y - (anna_y - 19)) / sqr(32)), 0, 1);
+	var shoot_distance = clamp((sqr(mouse_scale_x - anna_x) / sqr(32) + sqr(mouse_scale_y - (anna_y - 28)) / sqr(32)), 0, 1);
+	var shoot_mouse_angle = point_direction(0, 0, (mouse_scale_x - anna_x) * 0.42, mouse_scale_y - (anna_y - 28));
 	if (shoot_aim <= 3){
 		draw_set_color(make_color_rgb(200, 200, 200));
 		shoot_alpha = 0.4;
@@ -79,12 +80,11 @@ else if (shoot){
 	draw_set_alpha(shoot_alpha * shoot_distance);
 	draw_primitive_begin(pr_trianglefan);
 	
-	draw_vertex(anna_x, (anna_y - 19));
+	draw_vertex(anna_x, (anna_y));
 	
 	var r;
-	var mouse_angle = point_direction(0, 0, (mouse_scale_x - anna_x) * 0.42, mouse_scale_y - (anna_y - 19));
 	for (r = 0; r <= shoot_aim; r++){
-		draw_vertex(anna_x + lengthdir_x(140, (mouse_angle - (shoot_aim div 2)) + r), (anna_y - 19) + lengthdir_y(60, (mouse_angle - (shoot_aim div 2)) + r));
+		draw_vertex(anna_x + lengthdir_x(140, (shoot_mouse_angle - (shoot_aim div 2)) + r), (anna_y) + lengthdir_y(60, (shoot_mouse_angle - (shoot_aim div 2)) + r));
 	}
 	draw_primitive_end();
 	draw_set_color(c_black);
@@ -100,3 +100,41 @@ else {
 }
 
 draw_sprite_ext(sprite_index, image_index, anna_x, anna_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+
+if (shoot){
+	var shoot_mouse_angle = point_direction(0, 0, (mouse_scale_x - anna_x), mouse_scale_y - (anna_y - 28));
+	
+	var arm1_x = anna_x - (image_xscale * 4) - 1;
+	var arm1_y = anna_y - 29;
+	var arm1_length = lengthdir_x(4, shoot_mouse_angle - (image_xscale * 60));
+	var arm1_height = lengthdir_y(4, shoot_mouse_angle - (image_xscale * 60))
+	var arm1_x_end = lengthdir_x(3, shoot_mouse_angle - (image_xscale * 70)) + (image_xscale * 2) + anna_x - 1;
+	var arm1_y_end = lengthdir_y(3, shoot_mouse_angle - (image_xscale * 70)) + (anna_y - 29);
+	
+	var arm2_x = anna_x + (image_xscale * 5) - 1;
+	var arm2_y = anna_y - 28;
+	var arm2_length = lengthdir_x(3, shoot_mouse_angle - (image_xscale * 50));
+	var arm2_height = lengthdir_y(3, shoot_mouse_angle - (image_xscale * 50))
+	var arm2_x_end = lengthdir_x(11, shoot_mouse_angle - (image_xscale * 10)) + (image_xscale * 2) + anna_x - 1;
+	var arm2_y_end = lengthdir_y(11, shoot_mouse_angle - (image_xscale * 10)) + (anna_y - 29);
+
+	//Arm 2
+	draw_line_width_color(arm2_x, arm2_y, arm2_x + arm2_length, arm2_y + arm2_height, 2, make_color_rgb(98, 109, 102), make_color_rgb(98, 109, 102));
+	draw_line_width_color(arm2_x + arm2_length, arm2_y + arm2_height, arm2_x_end, arm2_y_end, 2, make_color_rgb(98, 109, 102), make_color_rgb(98, 109, 102));
+	
+	//Hand 2
+	draw_circle_color(arm2_x_end, arm2_y_end, 1, make_color_rgb(167, 125, 100), make_color_rgb(167, 125, 100), false);
+	
+	//Hand 1
+	draw_circle_color(arm1_x_end, arm1_y_end, 2, make_color_rgb(167, 125, 100), make_color_rgb(167, 125, 100), false);
+	
+	//Gun
+	draw_sprite_ext(sAnnaGun, 0, anna_x + (image_xscale * 2), anna_y - 28, 1, image_xscale, shoot_mouse_angle, c_white, 1);
+	
+	//Arm 1
+	draw_line_width_color(arm1_x, arm1_y, arm1_x + arm1_length, arm1_y + arm1_height, 2, make_color_rgb(98, 109, 102), make_color_rgb(98, 109, 102));
+	draw_line_width_color(arm1_x + arm1_length, arm1_y + arm1_height, arm1_x_end, arm1_y_end + 1, 2, make_color_rgb(98, 109, 102), make_color_rgb(98, 109, 102));
+	
+	draw_set_color(c_black);
+	//draw_point(arm_x_end, arm_y_end);
+}

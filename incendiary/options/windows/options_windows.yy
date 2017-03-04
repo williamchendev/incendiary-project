@@ -7,7 +7,7 @@
     "option_windows_borderless": false,
     "option_windows_company_info": "InnotArt",
     "option_windows_copyright_info": "(c) InnoArt 2017",
-    "option_windows_description_info": "An adventure game surrounding Anna's trials in the woods.",
+    "option_windows_description_info": "The Wolves Game",
     "option_windows_display_cursor": true,
     "option_windows_display_name": "The Wolves",
     "option_windows_enable_steam": false,
@@ -31,7 +31,7 @@
         "build": 9,
         "major": 0,
         "minor": 0,
-        "revision": 1
+        "revision": 6
     },
     "option_windows_vsync": false
 }

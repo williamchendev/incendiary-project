@@ -3,7 +3,7 @@
 //Settings
 depth = -y;
 action.x = x;
-action.y = y - ((sprite_height div 2) + 8);
+action.y = y - (((sprite_height div 4) * 3) + 8);
 action.selected = selected;
 
 //Clicked & Character Move Script
@@ -104,7 +104,7 @@ if (talk){
             }
             else {
                 text_x = temp_text[event, 1].x;
-                text_y = temp_text[event, 1].y - (((temp_text[event, 1].sprite_height / 2) + 4) + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
+                text_y = temp_text[event, 1].y - ((((temp_text[event, 1].sprite_height div 4) * 3) + 8) + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
             }
             TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 3], temp_text[event, 2], 220, text_spd);
             event++;

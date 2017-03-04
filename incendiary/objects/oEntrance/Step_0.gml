@@ -3,7 +3,7 @@
 //Settings
 depth = -(y + (sprite_height / 2) - 3);
 action.x = x;
-action.y = y - ((sprite_height div 2) + 6);
+action.y = y - (((sprite_height div 4) * 3) + 2);
 action.selected = selected;
 draw_set_font(text_font);
 

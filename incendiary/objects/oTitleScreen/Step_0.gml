@@ -19,26 +19,28 @@ for (i = 0; i < array_height_2d(button_data); i++){
 
 //Mouse Actions
 if (mouse_click){
-	if(credits_show){
-		if (cursor_num == 3){
-			credits_show = false;
+	if (start_time == 60){
+		if(credits_show){
+			if (cursor_num == 3){
+				credits_show = false;
+			}
 		}
-	}
-	else if (cursor_num == 0){
-		if (start_time == wait){
-			start_time = wait - 1;
-			colorA = c_white;
-			colorB = c_black;
+		else if (cursor_num == 0){
+			if (start_time == wait){
+				start_time = wait - 1;
+				colorA = c_white;
+				colorB = c_black;
+			}
 		}
-	}
-	else if (cursor_num == 1){
+		else if (cursor_num == 1){
 		
-	}
-	else if (cursor_num == 2){
-		game_end();
-	}
-	else if (cursor_num == 3){
-		credits_show = true;
+		}
+		else if (cursor_num == 2){
+			game_end();
+		}
+		else if (cursor_num == 3){
+			credits_show = true;
+		}
 	}
 }
 

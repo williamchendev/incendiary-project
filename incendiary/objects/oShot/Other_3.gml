@@ -1,0 +1,1 @@
+ParticleEndScript(partSmoke_sys);

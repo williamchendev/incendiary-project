@@ -68,8 +68,7 @@ if (pick_up){
                         put_down = false;
                     }
                     else {
-						ItemAddScript(item);
-                        oAnna.canmove = true;
+                        oAnna.canmove = false;
                         pick_up = false;
                         put_down = true;
                         selected = false;

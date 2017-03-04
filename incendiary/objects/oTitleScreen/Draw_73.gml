@@ -1,10 +1,9 @@
 /// Draw
 
 //Black
-draw_set_alpha(1);
-draw_set_color(colorA);
-
-if (colorA == c_white){
+if (colorB == c_black){
+	draw_set_alpha(1);
+	draw_set_color(c_white);
 	draw_rectangle(-10, -10, 490, 280, false);
 }
 
@@ -16,6 +15,9 @@ draw_set_color(colorB);
 draw_set_alpha(1);
 
 draw_sprite_ext(sTitle, 0, 240, 25, 1, 1, 0, colorB, 1);
+
+draw_line(189, 77, 289, 77);
+draw_line(191, 78, 287, 78);
 
 if (credits_show){
 	var start_x = 110;

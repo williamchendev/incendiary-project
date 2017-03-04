@@ -2,8 +2,8 @@
 event_inherited();
 
 alpha = 1;
-main_light_alpha = 0.6;
-secondary_light_alpha = 0.3;
+main_light_alpha = 0.7;
+secondary_light_alpha = 0.4;
 
 ControlScript();
 
@@ -36,7 +36,6 @@ window_set_position(clamp((display_get_width() - window_w) / 2, 10, display_get_
 //Variables
 cursor_num = -1;
 
-colorA = c_black;
 colorB = c_white;
 
 wait = 60;
@@ -64,7 +63,7 @@ button_data[3, 2] = 220;
 
 credits_data = noone;
 
-credits_data[0] = "Code/Art: William Spelman";
+credits_data[0] = "Code + Art: William Spelman";
 credits_data[1] = "Music: Jack Barenbrugge";
 credits_data[2] = "Special Thanks to Ms.Haga";
 credits_data[3] = "Emotional Wreck: William Spelman";

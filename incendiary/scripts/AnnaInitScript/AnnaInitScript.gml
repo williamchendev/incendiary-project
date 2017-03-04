@@ -67,7 +67,7 @@ for (i = 0; i < 12; i++){
 	item_slot[i].sin_val = (1 / 12) * (11 - i);
 	item_slot[i].item = i + 5;
 }
-item_slot[0].item = -1;
+item_slot[0].item = 0;
 
 //Item Array
 //ItemDataScript();

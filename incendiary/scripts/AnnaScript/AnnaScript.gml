@@ -168,7 +168,8 @@ else {
 				shoot_aim = 60;
 			}
 			else if (shoot_aim <= 3){
-				ShotScript(x, y - 19, point_direction(x, y - 19, mouse_scale_x, mouse_scale_y), 40);
+				var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 28, mouse_scale_x, mouse_scale_y);
+				ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 28 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 40);
 				reload = true;
 			}
 		}
