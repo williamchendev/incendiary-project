@@ -21,7 +21,7 @@ type = 0;
 text_font = RegularFont;
 text_spd = 0.35;
 no_room_text = "My pockets are full right now...";
-text_displace_y = 50;
+text_displace_y = 56;
 
 pick_up_text = noone;
 pick_up_text[0, 0] = "...";

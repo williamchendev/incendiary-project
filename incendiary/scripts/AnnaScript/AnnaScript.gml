@@ -28,7 +28,16 @@ if (canmove){
             canmove = false;
             moving = false;
 			walking = false;
+			drop = false;
         }
+		else if (item != -1){
+			if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
+				if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
+					drop = true;
+					AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+				}
+			}
+		}
         else {
             //Pathfinding on Click
             path_end();
@@ -64,6 +73,28 @@ if (canmove){
             moving = false;
         }
     }
+	if (drop){
+		if (item != -1){
+			if (point_distance(x, y, move_x, move_y) <= 1){
+				var dropped_item = false;
+				if (global.item_data[item, 3] != noone){
+					for (var u = 5; u > 2; u--){
+						var drop_x = x + (u * image_xscale);
+						var can_drop_item = (position_meeting(drop_x, round(y + 1), oMove) and (!position_meeting(drop_x, round(y + 1), oSolid)));
+						if (can_drop_item){
+								dropped_item = true;
+								instance_create_depth(drop_x, round(y + 4), round(-1 * (y + 4)), global.item_data[item, 3]);
+								break;
+						}
+					}
+				}
+				if (dropped_item){
+					item = -1;
+					drop = false;
+				}
+			}
+		}
+	}
 }
 else {
     if (path_index != -1){
@@ -107,7 +138,8 @@ else {
             }
             else {
                 //Switch Items
-                if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
+                var item_switch = false;
+				if (position_meeting(mouse_scale_x, mouse_scale_y, oInventorySlot)){
                     var inst_item = instance_position(mouse_scale_x, mouse_scale_y, oInventorySlot);
                     if (inst_item != noone){
 						if (inst_item.combo_item != -1){
@@ -125,6 +157,7 @@ else {
 							inst_item.item = item;
 							item = temp_item;
 						}
+						item_switch = true;
                     }
                 }
 				if (max(combo_slot1, combo_slot2) != -1 or item != -1){
@@ -132,11 +165,25 @@ else {
 						var temp_combo_item1 = item;
 						item = combo_slot1;
 						combo_slot1 = temp_combo_item1;
+						item_switch = true;
 					}
 					else if (point_distance(mouse_scale_x, mouse_scale_y, x + 16, y - 18) <= 7.5){
 						var temp_combo_item2 = item;
 						item = combo_slot2;
 						combo_slot2 = temp_combo_item2;
+						item_switch = true;
+					}
+				}
+				if (!item_switch){
+					if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
+						if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
+							if (item != -1){
+								gui = false;
+								canmove = true;
+								drop = true;
+								AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+							}
+						}
 					}
 				}
             }
@@ -160,6 +207,12 @@ else {
 			if (round(shoot_aim - 60) == 0){
 				reload = false;
 			}
+			if (recoil != 0){
+				recoil *= 0.95;
+				if (abs(recoil) < 0.5){
+					recoil = 0;
+				}
+			}
 		}
 		if (mouse_click){
 			if (self_box_click){
@@ -168,8 +221,9 @@ else {
 				shoot_aim = 60;
 			}
 			else if (shoot_aim <= 3){
-				var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 28, mouse_scale_x, mouse_scale_y);
-				ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 28 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 40);
+				var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y) + irandom_range(-3, 3);
+				ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 30 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 20, make_color_rgb(178, 174, 124));
+				recoil = random_range(-3, -6);
 				reload = true;
 			}
 		}
@@ -177,7 +231,7 @@ else {
 	}
 	else if (throw){
 		var anna_x_throwpos = anna_x;
-		var anna_y_throwpos = (anna_y - 19);
+		var anna_y_throwpos = (anna_y - 20);
 		
 		inside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(150) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(54));
 		outside_throw_distance = (sqr(mouse_scale_x - anna_x_throwpos) / sqr(48) + sqr(mouse_scale_y - anna_y_throwpos) / sqr(28));
@@ -231,7 +285,7 @@ var empty_slot = true;
 for (i = 0; i < 12; i++){
     if (item_slot[i] != noone){
         item_slot[i].x = lengthdir_x(gui_circle_length, ((360 / 12) * -i) + 90) + x;
-        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * -i) + 90) + y - 19;
+        item_slot[i].y = lengthdir_y(gui_circle_length, ((360 / 12) * -i) + 90) + y - 20;
         
         if (gui){
             if (item_slot[i].alpha < 0.8){

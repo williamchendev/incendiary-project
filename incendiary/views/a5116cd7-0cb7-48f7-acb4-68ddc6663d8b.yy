@@ -7,8 +7,7 @@
         "b896a714-b2b4-4253-8f1d-e8d218d3cc79",
         "5cccae7a-67a2-404b-9175-9f852ac15ca0",
         "aee453d0-bfe3-46fb-848c-87ab96a07cea",
-        "74d1f7f2-9675-41d6-a930-bbebf7b0daa0",
-        "6cc03425-831b-4ea3-a2d3-414aa7e44b1c"
+        "74d1f7f2-9675-41d6-a930-bbebf7b0daa0"
     ],
     "filterType": "GMSprite",
     "folderName": "Anna",

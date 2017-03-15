@@ -1,7 +1,7 @@
 ///Fire Create
 
 //Settings
-snow_amount = 10 * (room_width / 480);
+snow_amount = 3;
 snow_delay = 8;
 
 //Create Snow System

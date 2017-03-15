@@ -7,6 +7,9 @@ action.y = y - (sprite_height div 2);
 action.selected = selected;
 draw_set_font(text_font);
 
+x = round(x);
+y = round(y);
+
 //Clicked & Character Move Script
 if (action.clicked){
     with(oItem){
@@ -29,15 +32,13 @@ if (selected){
         selected = false;
     }
     else {
-        if (abs(oAnna.x - move_x) < 1){
-            if (abs(oAnna.y - move_y) < 1){
-                oAnna.canmove = false;
-                oAnna.moving = false;
-				oAnna.walking = false;
-                pick_up = true;
-                event = 0;
-            }
-        }
+		if (point_distance(oAnna.x, oAnna.y, move_x, move_y) <= 1){
+            oAnna.canmove = false;
+            oAnna.moving = false;
+			oAnna.walking = false;
+            pick_up = true;
+            event = 0;
+		}
     }
 }
 

@@ -20,7 +20,7 @@ text_index = 1;
 
 //Text Event
 type = 0;
-text_displace_y = 50;
+text_displace_y = 56;
 text_spd = 0.35;
 
 text1 = noone;

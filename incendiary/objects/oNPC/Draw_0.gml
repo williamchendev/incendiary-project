@@ -1,7 +1,7 @@
 ///Draw Event
 
 //Action
-if (distance_to_point(oAnna.mouse_scale_x, oAnna.mouse_scale_y) <= (32)){    
+if (point_distance(x, y - 42, oAnna.mouse_scale_x, oAnna.mouse_scale_y) <= (26)){    
     action.prox = true;
 }
 else {

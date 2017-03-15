@@ -39,14 +39,12 @@ if (selected){
         selected = false;
     }
     else {
-		if (abs(oAnna.x - move_x) < 1){
-            if (abs(oAnna.y - move_y) < 1){
-                oAnna.canmove = false;
-	            oAnna.moving = false;
-				oAnna.walking = false;
-	            inspecting = true;
-	            event = 0;
-            }
+		if (point_distance(oAnna.x, oAnna.y, move_x, move_y) <= 1){
+            oAnna.canmove = false;
+	        oAnna.moving = false;
+			oAnna.walking = false;
+	        inspecting = true;
+	        event = 0;
         }
     }
 }

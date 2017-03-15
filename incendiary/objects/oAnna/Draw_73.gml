@@ -20,7 +20,7 @@ if (action_timer != -1){
 //Throwing
 if (throw){
 	var anna_x_throwpos = anna_x;
-	var anna_y_throwpos = anna_y - 19;
+	var anna_y_throwpos = anna_y - 20;
 	
 	var max_arc_alpha = 0.2;
 	if (canthrow1){
@@ -143,9 +143,9 @@ if (gui){
 		
 		draw_set_alpha(clamp(0.6 + sign(combo_slot1 + 1), 0, 1));
 		draw_set_color(make_color_rgb(230, 230, 230));
-		draw_circle(xi - combo_distance, yi - 19, 6 + (sin_draw * 2.5), false);
+		draw_circle(xi - combo_distance, yi - 20, 6 + (sin_draw * 2.5), false);
 		draw_set_color(make_color_rgb(84, 28, 34));
-		draw_circle(xi - combo_distance, yi - 19, 6 + (sin_draw * 2.5), true);
+		draw_circle(xi - combo_distance, yi - 20, 6 + (sin_draw * 2.5), true);
 		
 		if (combo_slot1 != -1){
 			draw_sprite(sInventoryItems, combo_slot1, xi - (combo_distance - 1), yi - 18);
@@ -153,9 +153,9 @@ if (gui){
 		
 		draw_set_alpha(clamp(0.6 + sign(combo_slot2 + 1), 0, 1));
 		draw_set_color(make_color_rgb(230, 230, 230));
-		draw_circle(xi + combo_distance, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), false);
+		draw_circle(xi + combo_distance, yi - 20, 6 + (2.5 - (sin_draw * 2.5)), false);
 		draw_set_color(make_color_rgb(84, 28, 34));
-		draw_circle(xi + combo_distance, yi - 19, 6 + (2.5 - (sin_draw * 2.5)), true);
+		draw_circle(xi + combo_distance, yi - 20, 6 + (2.5 - (sin_draw * 2.5)), true);
 		
 		if (combo_slot2 != -1){
 			draw_sprite(sInventoryItems, combo_slot2, xi + (combo_distance + 1), yi - 18);
@@ -166,7 +166,7 @@ if (gui){
 }
 
 //Gun GUI
-if (max(ItemCheckScript(0), item == 0) != false){
+if (max(ItemCheckScript(0), item == 0, combo_slot1 == 0, combo_slot2 == 0) != false){
 	gungui_alpha += 0.02;
 }
 else {

@@ -256,9 +256,10 @@
     "playbackSpeedType": 1,
     "sepmasks": false,
     "swatchColours": null,
+    "swfPrecision": 0,
     "textureGroup": 0,
     "type": 0,
     "width": 48,
     "xorig": 24,
-    "yorig": 42
+    "yorig": 44
 }

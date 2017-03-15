@@ -14,6 +14,12 @@ if (!cutscene){
 			view_set_x = (x - 240) + (image_xscale * 12);
 		}
 	}
+	if (shoot){
+		if (point_distance(x, y - 30, mouse_scale_x, mouse_scale_y) < 45){
+			view_set_x = view_x;
+			view_set_y = view_y;
+		}
+	}
 }
 else {
     view_set_x = (((cutscene_x - 240) - view_x) * camera_speed) + view_x;

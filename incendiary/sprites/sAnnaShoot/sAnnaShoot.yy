@@ -59,23 +59,23 @@
             ]
         },
         {
-            "id": "43621f9f-4329-4ae2-a140-cd2c38d6b979",
+            "id": "93c350ba-adea-42b2-a15c-3c9bf20c6676",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
             "SpriteId": "aee453d0-bfe3-46fb-848c-87ab96a07cea",
             "compositeImage": {
-                "id": "8962f21a-5a6f-4f2a-b6c4-43e3fa1d208b",
+                "id": "2af9432d-efab-4266-ac18-848952cf5a21",
                 "modelName": "GMSpriteImage",
                 "mvc": "1.0",
-                "FrameId": "43621f9f-4329-4ae2-a140-cd2c38d6b979",
+                "FrameId": "93c350ba-adea-42b2-a15c-3c9bf20c6676",
                 "LayerId": "00000000-0000-0000-0000-000000000000"
             },
             "images": [
                 {
-                    "id": "015b54e6-6f06-4ab1-83c4-da0797034481",
+                    "id": "a0fcd9d8-0749-4596-a013-854b6b8efc31",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "43621f9f-4329-4ae2-a140-cd2c38d6b979",
+                    "FrameId": "93c350ba-adea-42b2-a15c-3c9bf20c6676",
                     "LayerId": "b2fe3ec2-1a64-4340-b11b-0654fc229518"
                 }
             ]
@@ -107,5 +107,5 @@
     "type": 0,
     "width": 48,
     "xorig": 24,
-    "yorig": 42
+    "yorig": 44
 }

@@ -6,10 +6,10 @@
     "For3D": false,
     "HTile": false,
     "VTile": false,
-    "bbox_bottom": 42,
+    "bbox_bottom": 43,
     "bbox_left": 20,
     "bbox_right": 27,
-    "bbox_top": 5,
+    "bbox_top": 2,
     "bboxmode": 2,
     "colkind": 1,
     "coltolerance": 0,
@@ -58,9 +58,10 @@
     "playbackSpeedType": 1,
     "sepmasks": false,
     "swatchColours": null,
+    "swfPrecision": 0,
     "textureGroup": 0,
     "type": 0,
     "width": 48,
     "xorig": 24,
-    "yorig": 42
+    "yorig": 44
 }

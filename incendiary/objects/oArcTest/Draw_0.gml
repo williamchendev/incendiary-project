@@ -1,7 +1,7 @@
 /// Draw Arc
 
 var anna_x_pos = oAnna.anna_x;
-var anna_y_pos = oAnna.anna_y - 19;
+var anna_y_pos = oAnna.anna_y - 20;
 
 var canthrow1 = false;
 var canthrow2 = false;

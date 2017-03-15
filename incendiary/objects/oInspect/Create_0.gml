@@ -21,7 +21,7 @@ outline_surface = surface_create(room_width, room_height);
 type = 0;
 text_spd = 0.35;
 text_font = RegularFont;
-text_displace_y = 50;
+text_displace_y = 56;
 
 inspect_text = noone;
 inspect_text[0, 0] = "...";

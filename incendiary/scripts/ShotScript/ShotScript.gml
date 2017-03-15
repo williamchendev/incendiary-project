@@ -1,8 +1,19 @@
-///ShotScript(x, y, direction, spd);
+///ShotScript(x, y, direction, spd, color);
 
-var inst_shot = instance_create_depth(argument0, argument1, depth, oShot);
+var layer_found = false;
+var temp_layer = "null";
+while(!layer_found){
+	temp_layer = "shotlayer_" + string(irandom_range(0, 99999));
+	if (!layer_exists(temp_layer)){
+		layer_found = true;
+	}
+} 
+
+var inst_shot = instance_create_layer(argument0, argument1, layer_create(depth, temp_layer), oShot);
 inst_shot.hit_direction = argument2;
 inst_shot.spd = argument3;
+inst_shot.hit_color = argument4;
+inst_shot.layer_id = temp_layer;
 
 with(inst_shot){
 	//Create Particle Shape

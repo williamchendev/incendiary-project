@@ -3,7 +3,7 @@
 //Settings
 depth = -y;
 action.x = x;
-action.y = y - (((sprite_height div 4) * 3) + 8);
+action.y = y - 58;
 action.selected = selected;
 
 //Clicked & Character Move Script

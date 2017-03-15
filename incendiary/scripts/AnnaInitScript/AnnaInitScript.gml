@@ -48,6 +48,7 @@ ammoloaded = 0;
 shoot = false;
 shoot_aim = 60;
 reload = false;
+recoil = 0;
 
 throw = false;
 inside_throw_distance = false;
@@ -56,6 +57,8 @@ canthrow1 = false;
 canthrow2 = false;
 surface_arc_1 = surface_create(room_width, room_height);
 surface_arc_2 = surface_create(room_width, room_height);
+
+drop = false;
 
 gungui_alpha = 0;
 item_text_surface = surface_create(room_width, room_height);
@@ -69,5 +72,8 @@ for (i = 0; i < 12; i++){
 }
 item_slot[0].item = 0;
 
-//Item Array
-//ItemDataScript();
+//Clamp Screen
+var view_x = x - 240 + (image_xscale * 12);
+var view_y = y - 135;
+
+camera_set_view_pos(view_camera[0], clamp(view_x, 0, room_width - 480), clamp(view_y, 0, room_height - 270));
