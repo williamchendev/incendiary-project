@@ -34,6 +34,33 @@ if (throw){
 	DrawArcScript(anna_x_throwpos, anna_y_throwpos, mouse_scale_x - 1, mouse_scale_y - 2, make_color_rgb(155, 143, 141), c_white, arc_alpha, surface_arc_1, surface_arc_2);
 }
 
+//Shooting
+if (shoot){
+	var can_reload = false;
+	if (!walking){
+		if (ammo <= 0){
+			if (ItemCheckScript(1)){
+				if (reload_alpha < 1){
+					reload_alpha += 0.02;
+				}
+				can_reload = true;
+			}
+		}
+	}
+	if (!can_reload){
+		reload_alpha = 0;
+	}
+	
+	if (reload_alpha > 0){
+		if (!ammoload){
+			draw_sprite_ext(sActions, 8, anna_x, anna_y - 54, 1, 1, 0, c_white, clamp(reload_alpha, 0, 1));
+		}
+	}
+}
+else {
+	reload_alpha = 0;
+}
+
 //Inventory
 if (gui){
 	var xi = round(x);
@@ -199,7 +226,7 @@ if (escape){
 
 if (global.escape_game != -1){
 	draw_set_font(RegularFont);
-	draw_set_color(make_colour_hsv(0, 0, 10));
+	draw_set_color(make_colour_rgb(25, 25, 25));
 	draw_sprite(sSandTimer, round(global.escape_game / 6), view_x, view_y);
 	draw_text(view_x + 16, view_y + 4, "Exit");
 	
@@ -219,7 +246,7 @@ if (debug_key){
 
 if (global.debug){
     draw_set_alpha(1);
-    draw_set_color(c_black);
+    draw_set_color(c_white);
     draw_set_font(DebugFont);
     draw_set_halign(fa_left);
     
@@ -228,10 +255,15 @@ if (global.debug){
     draw_text(view_x + 1, view_y + 15, "Anna_y: " + string(y));
 	draw_text(view_x + 1, view_y + 22, "Still: " + string(stand_still));
 	draw_text(view_x + 1, view_y + 29, "Half: " + string(x - view_x) + ":240");
+	draw_text(view_x + 1, view_y + 36, "Visibility: " + string(visibility));
 	
-	draw_set_color(c_white);
-	draw_line(view_x + 240, view_y, view_x + 240, view_y + 270);
-	draw_set_color(c_black);
+	draw_set_alpha(0.3);
+    draw_set_color(c_blue);
+	//draw_rectangle(anna_x - 6, anna_y - 42, anna_x + 6, anna_y + 2, false);
+	//draw_circle(anna_x, anna_y - 20, 42, true);
+	
+	draw_set_alpha(1);
+    draw_set_color(c_black);
 }
 
 //Mouse

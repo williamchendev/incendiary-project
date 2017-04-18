@@ -233,6 +233,50 @@
                     "LayerId": "1078770f-dbb0-4ca9-bf1a-9f4cdf8838be"
                 }
             ]
+        },
+        {
+            "id": "522391c6-8860-4869-a98a-94b555769bf4",
+            "modelName": "GMSpriteFrame",
+            "mvc": "1.0",
+            "SpriteId": "5fda43a1-8581-4a93-858b-5f349aa13af7",
+            "compositeImage": {
+                "id": "1644c7b5-1b52-4cee-8695-213c69d50ce8",
+                "modelName": "GMSpriteImage",
+                "mvc": "1.0",
+                "FrameId": "522391c6-8860-4869-a98a-94b555769bf4",
+                "LayerId": "00000000-0000-0000-0000-000000000000"
+            },
+            "images": [
+                {
+                    "id": "fc0a046a-15ab-4ad0-9e66-3db7a5b3b53a",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "522391c6-8860-4869-a98a-94b555769bf4",
+                    "LayerId": "1078770f-dbb0-4ca9-bf1a-9f4cdf8838be"
+                }
+            ]
+        },
+        {
+            "id": "7e882caa-bc96-4c41-9c06-7361de004508",
+            "modelName": "GMSpriteFrame",
+            "mvc": "1.0",
+            "SpriteId": "5fda43a1-8581-4a93-858b-5f349aa13af7",
+            "compositeImage": {
+                "id": "e6ceae4d-bf86-456f-ab00-d2d25ccbd788",
+                "modelName": "GMSpriteImage",
+                "mvc": "1.0",
+                "FrameId": "7e882caa-bc96-4c41-9c06-7361de004508",
+                "LayerId": "00000000-0000-0000-0000-000000000000"
+            },
+            "images": [
+                {
+                    "id": "0dbe7e9f-9dce-42b9-b53e-376268b932a5",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "7e882caa-bc96-4c41-9c06-7361de004508",
+                    "LayerId": "1078770f-dbb0-4ca9-bf1a-9f4cdf8838be"
+                }
+            ]
         }
     ],
     "gridX": 0,
@@ -256,6 +300,7 @@
     "playbackSpeedType": 1,
     "sepmasks": false,
     "swatchColours": null,
+    "swfPrecision": 0,
     "textureGroup": 0,
     "type": 0,
     "width": 16,

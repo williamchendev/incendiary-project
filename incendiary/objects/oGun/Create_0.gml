@@ -3,6 +3,8 @@ event_inherited();
 
 item = 0;
 
+action.action_type = 8;
+
 pick_up_text = noone;
 pick_up_text[0, 0] = "...";
 pick_up_text[0, 1] = x;

@@ -18,6 +18,7 @@ var shift_letter_start = string_pos(shift_text, text) - 1;
 var shift_letter_end = shift_letter_start + string_length(shift_text);
 var shift_letter = 0;
 
+//var s = 0; s <= round(clamp(time, 0, shift_text_limit)); s++){
 for (var s = 0; s <= round(clamp(time, 0, shift_text_limit)); s++){
 	var xpos = x + string_width(string_copy(text, 0, s)) + 1;
 	

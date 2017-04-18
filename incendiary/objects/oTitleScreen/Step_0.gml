@@ -50,8 +50,9 @@ if (cursor_num == -1){
 
 //Start
 if (start_time == 0){
-	//room_goto(room_template);
-	room_goto_next();
+	room_goto(test_room);
+	//room_goto(intro_room);
+	//room_goto_next();
 }
 else if (start_time < wait){
 	start_time--;

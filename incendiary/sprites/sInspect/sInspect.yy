@@ -58,6 +58,7 @@
     "playbackSpeedType": 1,
     "sepmasks": true,
     "swatchColours": null,
+    "swfPrecision": 0,
     "textureGroup": 0,
     "type": 0,
     "width": 64,

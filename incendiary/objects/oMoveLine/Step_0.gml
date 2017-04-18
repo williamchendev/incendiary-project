@@ -11,8 +11,12 @@ if (oAnna.mouse_click){
 				var self_box_click = point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4);
 				if (!self_box_click and !position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
 					path_end();
-            
-			        move_x = round(mouse_scale_x);
+					
+					var temp_move_inst = instance_nearest(mouse_scale_x, mouse_scale_y, oMove);
+					var min_move = temp_move_inst.x;
+					var max_move = round(temp_move_inst.x + (temp_move_inst.image_xscale * 32)) - 1;
+					
+			        move_x = round(clamp(mouse_scale_x, min_move, max_move));
 			        move_y = y;
             
 			        if (mp_grid_path(grid, path, x, y, move_x, move_y, true)){

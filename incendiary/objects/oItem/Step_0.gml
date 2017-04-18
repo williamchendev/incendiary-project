@@ -37,6 +37,8 @@ if (selected){
             oAnna.moving = false;
 			oAnna.walking = false;
             pick_up = true;
+			pick_ani = true;
+			pick_ani_end = false;
             event = 0;
 		}
     }
@@ -55,27 +57,42 @@ if (pick_up){
                 TextScript(pick_up_text[event, 1], pick_up_text[event, 2], pick_up_text[event, 0], pick_up_text[event, 3], text_spd);
                 event++;
             }
-            else {		
-                if(ItemAddScript(item)){
-                    with (action){
-                        instance_destroy();
-                    }
-                    instance_destroy();
-                    oAnna.gui = true;
-                }
-                else {
-                    if (put_down){
-                        TextScript(oAnna.x, oAnna.y - (text_displace_y + (string_height_ext(no_room_text, -1, 120) / 2)), no_room_text, c_white, text_spd);
-                        put_down = false;
-                    }
-                    else {
-                        oAnna.canmove = false;
-                        pick_up = false;
-                        put_down = true;
-                        selected = false;
-						oAnna.gui = true;
-                    }
-                }
+            else {
+				if (pick_ani){
+					oAnna.pick = true;
+					oAnna.image_index = 0;
+					pick_ani = false;
+				}
+				else {
+					if (oAnna.sprite_index == sAnnaItem){
+						if (oAnna.image_speed == -1){
+							pick_ani_end = true;
+						}
+					}
+				}
+				
+				if (pick_ani_end){
+					if(ItemAddScript(item)){
+					    with (action){
+					        instance_destroy();
+					    }
+					    instance_destroy();
+					    oAnna.gui = true;
+					}
+					else {
+					    if (put_down){
+					        TextScript(oAnna.x, oAnna.y - (text_displace_y + (string_height_ext(no_room_text, -1, 120) / 2)), no_room_text, c_white, text_spd);
+					        put_down = false;
+					    }
+					    else {
+					        oAnna.canmove = false;
+					        pick_up = false;
+					        put_down = true;
+					        selected = false;
+							oAnna.gui = true;
+						}
+					}
+				}	
             }
         }
     }

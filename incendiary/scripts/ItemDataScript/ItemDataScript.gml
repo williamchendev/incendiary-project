@@ -1,7 +1,7 @@
 ///ItemDataScript();
 
 //Info
-//Item Types: 0 - Key Item, 1 - Consumable, 2 - Throwable, 3 - Craftable
+//Item Types: 0 - Key Item, 1 - Consumable, 2 - Throwable, 3 - Craftable, 4 - Light
 
 global.item_data = noone;
 
@@ -111,18 +111,25 @@ global.item_data[14, 3] = noone; //Drop Item
 global.item_data[14, 4] = 1; //Barter Value
 
 //Item #15
-global.item_data[15, 0] = "Padlock"; //Name
-global.item_data[15, 1] = "Secure yet rusted"; //Description
+global.item_data[15, 0] = "Lighter"; //Name
+global.item_data[15, 1] = "Just like Dad\'s"; //Description
 global.item_data[15, 2] = 0; //Item Type
 global.item_data[15, 3] = noone; //Drop Item
 global.item_data[15, 4] = 3; //Barter Value
 
 //Item #16
-global.item_data[16, 0] = "Hairpin"; //Name
-global.item_data[16, 1] = "An alternative lockpick"; //Description
-global.item_data[16, 2] = 0; //Item Type
+global.item_data[16, 0] = "Lighter"; //Name
+global.item_data[16, 1] = "It\'s lit"; //Description
+global.item_data[16, 2] = 4; //Item Type
 global.item_data[16, 3] = noone; //Drop Item
-global.item_data[16, 4] = 1; //Barter Value
+global.item_data[16, 4] = -100; //Barter Value
+
+//Item #17
+global.item_data[17, 0] = "Hairpin"; //Name
+global.item_data[17, 1] = "An alternative lockpick"; //Description
+global.item_data[17, 2] = 0; //Item Type
+global.item_data[17, 3] = noone; //Drop Item
+global.item_data[17, 4] = 1; //Barter Value
 
 //Item #20
 global.item_data[20, 0] = "Molotov"; //Name

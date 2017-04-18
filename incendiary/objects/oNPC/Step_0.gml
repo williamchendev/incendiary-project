@@ -36,6 +36,7 @@ if (selected){
                 talk = true;
                 event = 0;
                 talk_reset = true;
+				talk_end = false;
             }
         }
     }
@@ -97,23 +98,37 @@ if (talk){
         if (event < array_height_2d(temp_text)){
             var text_x = 0;
             var text_y = 0;
-            draw_set_font(temp_text[event, 3]);
-            if (temp_text[event, 1] == -1){
+            draw_set_font(temp_text[event, 6]);
+			
+            if (temp_text[event, 3] == -1){
                 text_x = oAnna.x;
                 text_y = oAnna.y - (text_displace_y + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
             }
             else {
-                text_x = temp_text[event, 1].x;
-                text_y = temp_text[event, 1].y - ((((temp_text[event, 1].sprite_height div 4) * 3) + 8) + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
+                text_x = temp_text[event, 3].x;
+                text_y = temp_text[event, 3].y - ((((temp_text[event, 3].sprite_height div 4) * 3) + 8) + (string_height_ext(temp_text[event, 0], -1, 220) / 2));
             }
-            TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 3], temp_text[event, 2], 220, text_spd);
+			
+			if (temp_text[event, 2] <= 0){
+				TextFontScript(text_x, text_y, temp_text[event, 0], temp_text[event, 6], temp_text[event, 5], 220, temp_text[event, 4]);
+			}
+			else if (temp_text[event, 2] == 1){
+				TextShakeScript(text_x, text_y, temp_text[event, 0], temp_text[event, 1], temp_text[event, 5], temp_text[event, 4]);
+			}
+			else if (temp_text[event, 2] == 2){
+				TextShiftScript(text_x, text_y, temp_text[event, 0], temp_text[event, 1], 0, temp_text[event, 5], temp_text[event, 4]);
+			}
+			else if (temp_text[event, 2] == 3){
+				TextShiftScript(text_x, text_y, temp_text[event, 0], temp_text[event, 1], 1, temp_text[event, 5], temp_text[event, 4]);
+			}
+			
             event++;
         }
         else {
             oAnna.canmove = true;
             talk = false;
             selected = false;
+			talk_end = true;
         }
     }
 }
-

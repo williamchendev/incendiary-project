@@ -1,11 +1,8 @@
 /// @description Settings
 
 //Properties
-size = 32;
-alpha = 0.8;
-
-outline_size = 12;
-outline_alpha = 0.4;
+size = 64;
+alpha = 0.1;
 
 //Style
 flicker = 0.05;
@@ -14,7 +11,6 @@ grow = 3;
 
 //Light
 light_size = 0;
-light_size_outline = 0;
 
 //Variables
 flicker_num = 0;

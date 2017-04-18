@@ -2,15 +2,15 @@
 
 //Action
 if (point_distance(oAnna.mouse_scale_x, oAnna.mouse_scale_y, action.x, action.y) <= (32)){
-    //Player
-    if (instance_exists(oAnna)){
-        //Outline
-        if (oAnna.canmove){
-            if (!selected){
-                OutlineScript(sprite_index, image_index, outline_surface);
-            }
-        }
+    //Outline
+    if (oAnna.canmove){
+		if (!oAnna.shoot){
+	        if (!selected){
+	            OutlineScript(sprite_index, image_index, outline_surface);
+	        }
+		}
     }
+		
     action.prox = true;
 }
 else {

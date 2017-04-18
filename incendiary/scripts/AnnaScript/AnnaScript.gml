@@ -5,95 +5,179 @@ ControlScript();
 if (keyboard_check_pressed(vk_f11)){
     window_set_fullscreen(!window_get_fullscreen());
 }
-var self_box_click = point_in_rectangle(mouse_scale_x, mouse_scale_y, x - 6, y - 40, x + 6, y + 4);
+var self_box_click = point_in_rectangle(mouse_scale_x, mouse_scale_y, anna_x - 6, anna_y - 42, anna_x + 6, anna_y + 2);
 
 //Movement
 if (canmove){
-    if (mouse_click){
-        if (position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
-            var inst_act = instance_position(mouse_scale_x, mouse_scale_y, oAction);
-            if (inst_act != noone){
-                if (inst_act.action_sprite_scale == 1){
-                    inst_act.clicked = true;
-                }
-            }
-        }
-        else if (self_box_click){
-            if (item != -1){
-                gui = true;
-            }
-            else {
-                gui = true;
-            }
-            canmove = false;
-            moving = false;
-			walking = false;
-			drop = false;
-        }
-		else if (item != -1){
-			if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
-				if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
-					drop = true;
-					AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+	if (!shoot){
+	    if (mouse_click){
+	        if (position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
+	            var inst_act = instance_position(mouse_scale_x, mouse_scale_y, oAction);
+	            if (inst_act != noone){
+	                if (inst_act.action_sprite_scale == 1){
+	                    inst_act.clicked = true;
+	                }
+	            }
+	        }
+	        else if (self_box_click){
+				if (gui_access){
+		            if (item != -1){
+		                gui = true;
+		            }
+		            else {
+		                gui = true;
+		            }
+		            canmove = false;
+		            moving = false;
+					walking = false;
+					drop = false;
+				}
+	        }
+			else if (item != -1){
+				if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
+					if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
+						drop = true;
+						drop_start = true;
+						gui = false;
+						AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+					}
+				}
+			}
+	        else {
+	            //Pathfinding on Click
+	            path_end();
+            
+	            move_x = round(mouse_scale_x);
+	            move_y = round(mouse_scale_y);
+            
+	            if (mp_grid_path(grid, path, x, y, move_x, move_y, true)){
+	                var point_a = 0;
+	                var point_b = 2;
+                
+	                while (point_b < path_get_number(path)){
+	                    if (!collision_line(path_get_point_x(path, point_a), path_get_point_y(path, point_a), path_get_point_x(path, point_b),path_get_point_y(path, point_b), oSolid, false, true) and (point_b < path_get_number(path) - 1)){
+	                        point_b += 1;
+	                    }
+	                    else {
+	                        repeat((point_b - 2) - point_a){
+	                            path_delete_point(path, point_a + 1);
+	                        }
+                        
+	                        point_a += 1;
+	                        point_b = point_a + 2;
+	                    }
+	                }
+                
+	                path_delete_point(path, path_get_number(path) - 2);
+                
+	                path_start(path, spd, path_action_stop, true);
+	                path_set_kind(path, 0);
+					walking = true;
+	            }
+            
+	            moving = false;
+	        }
+	    }
+	
+		//Drop Items
+		if (drop){
+			if (item != -1){
+				if (point_distance(x, y, move_x, move_y) <= 1){
+					if (drop_start){
+						var dropped_item = false;
+						if (global.item_data[item, 3] != noone){
+							for (var u = 5; u > 2; u--){
+								var drop_x = x + (u * image_xscale);
+								var can_drop_item = (position_meeting(drop_x, round(y + 1), oMove) and (!position_meeting(drop_x, round(y + 1), oSolid)));
+								if (can_drop_item){
+									dropped_item = true;
+									break;
+								}
+							}
+						}
+						if (dropped_item){
+							pick = true;
+							oAnna.image_index = 0;
+							drop_start = false;
+						}
+						else {
+							drop = false;
+						}
+					}
+					
+					if (end_pick){
+						drop_start = true;
+						canmove = false;
+					}
 				}
 			}
 		}
-        else {
-            //Pathfinding on Click
-            path_end();
-            
-            move_x = round(mouse_scale_x);
-            move_y = round(mouse_scale_y);
-            
-            if (mp_grid_path(grid, path, x, y, move_x, move_y, true)){
-                var point_a = 0;
-                var point_b = 2;
-                
-                while (point_b < path_get_number(path)){
-                    if (!collision_line(path_get_point_x(path, point_a), path_get_point_y(path, point_a), path_get_point_x(path, point_b),path_get_point_y(path, point_b), oSolid, false, true) and (point_b < path_get_number(path) - 1)){
-                        point_b += 1;
-                    }
-                    else {
-                        repeat((point_b - 2) - point_a){
-                            path_delete_point(path, point_a + 1);
-                        }
-                        
-                        point_a += 1;
-                        point_b = point_a + 2;
-                    }
-                }
-                
-                path_delete_point(path, path_get_number(path) - 2);
-                
-                path_start(path, spd, path_action_stop, true);
-                path_set_kind(path, 0);
-				walking = true;
-            }
-            
-            moving = false;
-        }
-    }
-	if (drop){
-		if (item != -1){
-			if (point_distance(x, y, move_x, move_y) <= 1){
-				var dropped_item = false;
-				if (global.item_data[item, 3] != noone){
-					for (var u = 5; u > 2; u--){
-						var drop_x = x + (u * image_xscale);
-						var can_drop_item = (position_meeting(drop_x, round(y + 1), oMove) and (!position_meeting(drop_x, round(y + 1), oSolid)));
-						if (can_drop_item){
-								dropped_item = true;
-								instance_create_depth(drop_x, round(y + 4), round(-1 * (y + 4)), global.item_data[item, 3]);
-								break;
+	}
+	else {
+		//Shoot Aim Counter
+		if (reload != true){
+			if (ammo > 0){
+				if (position_meeting(mouse_scale_x, mouse_scale_y, oEnemy)){
+					shoot_aim--;
+				}
+				else{
+					shoot_aim += (60 - shoot_aim) * 0.05;
+				}
+			}
+		}
+		else {
+			shoot_aim += (60 - shoot_aim) * 0.1;
+			if (round(shoot_aim - 60) == 0){
+				reload = false;
+			}
+			if (recoil != 0){
+				recoil *= 0.95;
+				if (abs(recoil) < 0.5){
+					recoil = 0;
+				}
+			}
+		}
+		
+		//Click Mouse
+		if (mouse_click){
+			if (self_box_click){
+				gui = true;
+				canmove = false;
+				moving = false;
+				walking = false;
+				shoot = false;
+				shoot_aim = 60;
+			}
+			else if (position_meeting(mouse_scale_x, mouse_scale_y, oEnemy)){
+				if (ammo > 0){
+					if (shoot_aim <= 3){
+						ammo--;
+						var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y) + irandom_range(-3, 3);
+						ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 30 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 20, make_color_rgb(178, 174, 124));
+						recoil = random_range(-3, -6);
+						reload = true;
+					}
+				}
+			}
+			else {
+				var click_reload = false;
+				if (ammo <= 0){
+					if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
+						if (ItemSubScript(1)){
+							click_reload = true;
+							ammoload = true;
+							canmove = false;
+							image_index = 0;
 						}
 					}
 				}
-				if (dropped_item){
-					item = -1;
-					drop = false;
+				if (!click_reload){
+					AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+					moving = false;
 				}
 			}
 		}
+		shoot_aim = clamp(shoot_aim, 3, 60);
 	}
 }
 else {
@@ -105,6 +189,20 @@ else {
 		action_timer--;
 		if (action_timer == -1){
 			gui = true;
+		}
+	}
+	else if (ammoload){
+		if (ammo == maxammo){
+			shoot = true;
+			gui = false;
+			canmove = true;
+			ammoload = false;
+		}
+		else {
+			if (image_index >= image_number - 1){
+				image_index = 0;
+				ammo++;
+			}
 		}
 	}
     else if (gui){
@@ -125,14 +223,31 @@ else {
 				}
 				if (item != -1){
 					if (item == 0){
-						canmove = false;
 						shoot = true;
 						ItemAddScript(0);
+						item = -1;
+					}
+					else if (item == 1){
+						if (ItemCheckScript(0)){
+							if (ammo <= 0){
+								item = -1;
+								canmove = false;
+								ammoload = true;
+								image_index = 0;
+							}
+						}
+					}
+					else if (item == 15){
+						ItemAddScript(16);
 						item = -1;
 					}
 					else if (global.item_data[item, 2] == 2){
 						canmove = false;
 						throw = true;
+					}
+					else if (global.item_data[item, 2] == 4){
+						ItemAddScript(item - 1);
+						item = -1;
 					}
 				}
             }
@@ -161,13 +276,13 @@ else {
                     }
                 }
 				if (max(combo_slot1, combo_slot2) != -1 or item != -1){
-					if (point_distance(mouse_scale_x, mouse_scale_y, x - 14, y - 18) <= 7.5){
+					if (point_distance(mouse_scale_x, mouse_scale_y, x - 17, y - 20) <= 7.5){
 						var temp_combo_item1 = item;
 						item = combo_slot1;
 						combo_slot1 = temp_combo_item1;
 						item_switch = true;
 					}
-					else if (point_distance(mouse_scale_x, mouse_scale_y, x + 16, y - 18) <= 7.5){
+					else if (point_distance(mouse_scale_x, mouse_scale_y, x + 19, y - 20) <= 7.5){
 						var temp_combo_item2 = item;
 						item = combo_slot2;
 						combo_slot2 = temp_combo_item2;
@@ -175,13 +290,15 @@ else {
 					}
 				}
 				if (!item_switch){
-					if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
-						if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
-							if (item != -1){
-								gui = false;
-								canmove = true;
-								drop = true;
-								AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+					if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 20) > 42){
+						if (position_meeting(mouse_scale_x, mouse_scale_y, oMove)){
+							if (!position_meeting(mouse_scale_x, mouse_scale_y, oSolid)){
+								if (item != -1){
+									gui = false;
+									canmove = true;
+									drop = true;
+									AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+								}
 							}
 						}
 					}
@@ -196,38 +313,29 @@ else {
 			}
 		}
     }
-	else if (shoot){
-		if (reload != true){
-			if (mouse_hold){
-				shoot_aim--;
-			}
-		}
-		else {
-			shoot_aim += (60 - shoot_aim) * 0.1;
-			if (round(shoot_aim - 60) == 0){
-				reload = false;
-			}
-			if (recoil != 0){
-				recoil *= 0.95;
-				if (abs(recoil) < 0.5){
-					recoil = 0;
+	else if (drop){
+		if (item != -1){
+			var dropped_item = false;
+			for (var u = 5; u > 2; u--){
+				var drop_x = x + (u * image_xscale);
+				var can_drop_item = (position_meeting(drop_x, round(y + 1), oMove) and (!position_meeting(drop_x, round(y + 1), oSolid)));
+				if (can_drop_item){
+						dropped_item = true;
+						with(instance_create_depth(drop_x, round(y + 4), round(-1 * (y + 4)), global.item_data[item, 3])){
+							pick_up_text = noone;
+						}
+						break;
 				}
 			}
-		}
-		if (mouse_click){
-			if (self_box_click){
-				gui = true;
-				shoot = false;
-				shoot_aim = 60;
-			}
-			else if (shoot_aim <= 3){
-				var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y) + irandom_range(-3, 3);
-				ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 30 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 20, make_color_rgb(178, 174, 124));
-				recoil = random_range(-3, -6);
-				reload = true;
+			if (dropped_item){
+				item = -1;
 			}
 		}
-		shoot_aim = clamp(shoot_aim, 3, 60);
+		if (!pick){
+			drop = false;
+			drop_start = true;
+			canmove = true;
+		}
 	}
 	else if (throw){
 		var anna_x_throwpos = anna_x;
@@ -311,6 +419,47 @@ for (i = 0; i < 12; i++){
 		}
     }
 }
+
+//Light Source
+var light_equip = false;
+for (var l = 0; l < 14; l++){
+	if (!light_equip){
+		if (l < 12){
+			if (item_slot[l].item != -1){
+				if (global.item_data[item_slot[l].item, 2] == 4){
+					light_equip = true;
+				}
+			}
+		}
+		else {
+			if (l == 12){
+				if (item != -1){
+					if (global.item_data[item, 2] == 4){
+						light_equip = true;
+					}
+				}
+			}
+			else if (l == 13){
+				if (combo_slot1 != -1){
+					if (global.item_data[combo_slot1, 2] == 4){
+						light_equip = true;
+					}
+				}
+			}
+			else if (l == 14){
+				if (combo_slot2 != -1){
+					if (global.item_data[combo_slot2, 2] == 4){
+						light_equip = true;
+					}
+				}
+			}
+		}
+	}
+	else {
+		break;
+	}
+}
+light = light_equip;
 
 //Camera
 CameraScript();
