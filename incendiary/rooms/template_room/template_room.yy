@@ -118,7 +118,7 @@
         },
         {
             "__type": "GMRAssetLayer_Model:#YoYoStudio.MVCFormat",
-            "id": "4523289b-2b50-4ca5-86a9-88b781d876a3",
+            "id": "c0252c2a-430f-46f4-a78c-7eb42f8891c6",
             "modelName": "GMRAssetLayer",
             "mvc": "1.0",
             "depth": 10100,

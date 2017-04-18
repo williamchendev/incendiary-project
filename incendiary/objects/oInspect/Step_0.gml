@@ -57,7 +57,7 @@ if (inspecting){
 			}
 		}
 	}
-
+	
     if (!instance_exists(oText)){
         if (useful){
             if (event < array_height_2d(inspect_text)){
@@ -83,7 +83,7 @@ if (inspecting){
                         useless_text[event, 2] = oAnna.y - (text_displace_y + (string_height_ext(useless_text[event, 0], -1, 120) / 2));
                         useless_text[event, 3] = c_white;
                 }
-                TextScript(useless_text[event, 1], useless_text[event, 2], useless_text[event, 0], inspect_text[event, 3], text_spd);
+                TextScript(useless_text[event, 1], useless_text[event, 2], useless_text[event, 0], useless_text[event, 3], text_spd);
                 event++;
             }
             else {

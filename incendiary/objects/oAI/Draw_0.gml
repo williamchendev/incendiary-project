@@ -1,33 +1,46 @@
-///Draw
+/// @description Image
 draw_set_color(c_black);
 
 //Path
 if (global.debug){
-	draw_set_color(c_blue);
-	var draw_follow_rad = round(follow_radius * follow_radius_p);
-	draw_ellipse(x - (draw_follow_rad), y - (draw_follow_rad / 4), x + (draw_follow_rad), y + (draw_follow_rad / 4), true);
-	draw_set_color(c_red);
-	draw_ellipse(x - (follow_radius), y - (follow_radius / 4), x + (follow_radius), y + (follow_radius / 4), true);
+	draw_set_alpha(1);
+	if (!anna_vis){
+		draw_set_color(c_blue);
+		draw_ellipse(x - sight_radius, y - (sight_radius / 4), x + sight_radius, y + (sight_radius / 4), true);
+		draw_set_color(c_red);
+		draw_ellipse(x - aware_radius, y - (aware_radius / 4), x + aware_radius, y + (aware_radius / 4), true);
+	}
+	else if (behavior == "follow"){
+		draw_set_color(c_blue);
+		var draw_follow_rad = round(follow_radius * follow_radius_p);
+		draw_ellipse(x - (draw_follow_rad), y - (draw_follow_rad / 4), x + (draw_follow_rad), y + (draw_follow_rad / 4), true);
+		draw_set_color(c_red);
+		draw_ellipse(x - (follow_radius), y - (follow_radius / 4), x + (follow_radius), y + (follow_radius / 4), true);
 	
-	draw_set_color(c_black);
-    draw_path(path, x, y, true);
-    draw_point(x, y);
+		draw_set_color(c_black);
+	    draw_path(path, x, y, true);
+	    draw_point(x, y);
+	}
+	draw_set_alpha(1);
 }
 
 //Sight
 var sight_v = sight + sight_tilt;
-draw_set_alpha(alert);
-draw_set_color(make_color_rgb(180, 180, 180));
-draw_primitive_begin(pr_trianglefan);
+if (draw_ui){
+	if (!anna_vis){
+		draw_set_alpha((alert * 0.55) + 0.25);
+		draw_set_color(make_color_rgb(180, 110, 120));
+		draw_primitive_begin(pr_trianglefan);
 	
-draw_vertex(draw_x, draw_y);
+		draw_vertex(draw_x, draw_y);
 	
-var r;
-for (r = 0; r <= sight_angle; r++){
-	draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_v - (sight_angle div 2)) + r), draw_y + lengthdir_y(sight_radius, (sight_v - (sight_angle div 2)) + r));
+		var r;
+		for (r = 0; r <= sight_wide; r++){
+			draw_vertex(draw_x + lengthdir_x(aware_radius, (sight_v - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(aware_radius, (sight_v - (sight_wide div 2)) + r + 180) / 4));
+		}
+		draw_primitive_end();
+	}
 }
-draw_primitive_end();
-
 draw_set_alpha(1);
 draw_set_color(c_black);
 

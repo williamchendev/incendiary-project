@@ -5,8 +5,8 @@ alpha = 1;
 light_alpha = 0.6;
 
 //Lights
-anna_size = 64;
-anna_alpha = 0.3;
+anna_size = 60;
+anna_alpha = 0.05;
 anna_light = 0.3;
 
 flicker = 0.05;

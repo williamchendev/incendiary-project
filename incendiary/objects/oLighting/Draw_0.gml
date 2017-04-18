@@ -37,7 +37,7 @@ layer = layer_get_id("GUI_Layer");
 	}
 	anna_light = clamp(anna_light, 0.6, 1);
 	anna_alpha = 0.3 * anna_light;
-	anna_size = 64 * anna_light;
+	anna_size = 56 * anna_light;
 }
 
 //Surface Exists
@@ -75,10 +75,12 @@ for (var c = 0; c < 5; c++){
 	if (instance_exists(oAnna)){
 		var draw_light = true;
 		if (!oAnna.light){
-			if (c > 3){
+			if (c > 2){
 				draw_light = false;
 			}
-			else if (c == 0){
+		}
+		else {
+			if (c > 3){
 				draw_light = false;
 			}
 		}
@@ -109,7 +111,11 @@ surface_reset_target();
 gpu_set_blendmode(bm_normal);
 
 //Draw Surface
-draw_surface_ext(light_surface, 0, 0, 1, 1, 0, c_white, clamp(alpha, 0, 1));
+var draw_light_alpha = alpha;
+if (global.debug){
+	draw_light_alpha = 0.3;
+}
+draw_surface_ext(light_surface, 0, 0, 1, 1, 0, c_white, clamp(draw_light_alpha, 0, 1));
 
 //Reset
 draw_set_color(c_black);

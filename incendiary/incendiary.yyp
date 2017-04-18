@@ -303,6 +303,14 @@
             }
         },
         {
+            "Key": "198cb056-f131-40a4-a2b8-e0b0499d4230",
+            "Value": {
+                "id": "2fdc4c06-99d7-4833-878d-93788d11e5b3",
+                "resourcePath": "tilesets\\tile_Grass1\\tile_Grass1.yy",
+                "resourceType": "GMTileSet"
+            }
+        },
+        {
             "Key": "19cc95d3-fdcd-4c6d-a98f-657575a4a238",
             "Value": {
                 "id": "07024b4f-5356-4556-b788-3e60890f7fcc",
@@ -348,6 +356,14 @@
                 "id": "6432a2b6-d3ec-428c-bb71-5060c33b70e8",
                 "resourcePath": "scripts\\ItemDataScript\\ItemDataScript.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "20cbb6d3-2e82-4d56-bcf8-1f8b36230d53",
+            "Value": {
+                "id": "cc9d35dc-e2d8-47d3-90d5-d2e3d5c11b82",
+                "resourcePath": "sprites\\sGrassTile1\\sGrassTile1.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -687,6 +703,14 @@
             }
         },
         {
+            "Key": "5b94673a-4806-4d16-95de-5ff08e19415f",
+            "Value": {
+                "id": "cb40f818-d9e7-4155-9bae-452752f81179",
+                "resourcePath": "objects\\oChurchChair\\oChurchChair.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "5bf9d679-b95c-4d4d-b1eb-529622b8a324",
             "Value": {
                 "id": "b6aa41d1-415c-42e4-a90d-71d5e81b2ccc",
@@ -919,10 +943,26 @@
             }
         },
         {
+            "Key": "72c507a1-4886-44f0-a963-71ff81a2563d",
+            "Value": {
+                "id": "7b764d5a-8ef4-49c6-bc38-7f5069c4f117",
+                "resourcePath": "sprites\\sDirtTile1\\sDirtTile1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "72cb66ca-83f4-4fc5-bd65-ef51ee07c7ec",
             "Value": {
                 "id": "08639261-8352-4a2c-b099-2fd0238dc89a",
                 "resourcePath": "objects\\oInventorySlot\\oInventorySlot.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "73afb8ad-fd2e-4910-a12f-6cc21ee56b42",
+            "Value": {
+                "id": "c44f5e54-71bb-4a27-86b3-f7bf4750387a",
+                "resourcePath": "objects\\oChurchPodium\\oChurchPodium.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -940,6 +980,14 @@
                 "id": "fa7efb24-7d85-42e8-8c06-0ff970e7593d",
                 "resourcePath": "views\\379b4e83-10ab-4a4b-9616-f1733323a15d-room.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "77c38f3a-bcb8-4d1a-b313-c64ee69441a2",
+            "Value": {
+                "id": "1e07172a-6c04-4a30-83f9-3b91c0776bd9",
+                "resourcePath": "rooms\\tutorial_room\\tutorial_room.yy",
+                "resourceType": "GMRoom"
             }
         },
         {
@@ -1431,6 +1479,14 @@
             }
         },
         {
+            "Key": "c58fd1c9-1335-4b5a-9a2b-4d0ea85ae192",
+            "Value": {
+                "id": "c50e4bcc-a113-4ac0-842a-576e6b010259",
+                "resourcePath": "objects\\oMsimangu\\oMsimangu.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "c67364f9-6bb0-42e9-b1cd-9ae02b8ce2e9",
             "Value": {
                 "id": "8bae73a3-c8fa-4375-884e-6307cdccf55e",
@@ -1476,6 +1532,14 @@
                 "id": "96930cd1-bbff-4881-bd11-648ff51af1ef",
                 "resourcePath": "sprites\\skybox_wall3\\skybox_wall3.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "cb7d59a4-4983-4dab-a86a-a99ab7d60bcb",
+            "Value": {
+                "id": "a2c8df59-e497-4b39-a952-897edb0fe7e1",
+                "resourcePath": "tilesets\\tile_Dirt1\\tile_Dirt1.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -1876,6 +1940,14 @@
                 "id": "61452e49-24da-4824-aa0e-2b226a75d22e",
                 "resourcePath": "sprites\\sMsimangu\\sMsimangu.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "fe757859-5da4-4bf9-a7a9-7d0377990903",
+            "Value": {
+                "id": "39663d48-0c0f-498e-baeb-237a0ebd89e7",
+                "resourcePath": "objects\\oChurchConfession\\oChurchConfession.yy",
+                "resourceType": "GMObject"
             }
         },
         {
