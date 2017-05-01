@@ -18,6 +18,11 @@ start_y = y;
 hit_x = x;
 hit_y = y;
 
+enemy_hit = noone;
+
+enemy_x = x;
+enemy_y = y;
+
 hit_image = irandom_range(1, 6);
 
 hit_direction = 0;

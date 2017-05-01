@@ -117,10 +117,20 @@ if (canmove){
 		//Shoot Aim Counter
 		if (reload != true){
 			if (ammo > 0){
-				if (position_meeting(mouse_scale_x, mouse_scale_y, oEnemy)){
+				var dest_inst = instance_position(mouse_scale_x, mouse_scale_y, oDestructible);
+				var enemy_inst = instance_position(mouse_scale_x, mouse_scale_y, oAI);
+				var enemy_inst_aim = false;
+				if (dest_inst != noone){
 					shoot_aim--;
+					enemy_inst_aim = true;
 				}
-				else{
+				else if (enemy_inst != noone){
+					if (enemy_inst.karma < 0.8){
+						shoot_aim--;
+						enemy_inst_aim = true;
+					}
+				}
+				if (!enemy_inst_aim){
 					shoot_aim += (60 - shoot_aim) * 0.05;
 				}
 			}
@@ -140,6 +150,7 @@ if (canmove){
 		
 		//Click Mouse
 		if (mouse_click){
+			var shooting = false;
 			if (self_box_click){
 				gui = true;
 				canmove = false;
@@ -148,7 +159,19 @@ if (canmove){
 				shoot = false;
 				shoot_aim = 60;
 			}
-			else if (position_meeting(mouse_scale_x, mouse_scale_y, oEnemy)){
+			else if (position_meeting(mouse_scale_x, mouse_scale_y, oDestructible)){
+				shooting = true;
+			}
+			else if (position_meeting(mouse_scale_x, mouse_scale_y, oAI)){
+				var inst_shoot_hit = instance_position(mouse_scale_x, mouse_scale_y, oAI);
+				if (inst_shoot_hit != noone){
+					if (inst_shoot_hit.karma < 0.8){
+						shooting = true;
+					}
+				}
+			}
+			
+			if (shooting){
 				if (ammo > 0){
 					if (shoot_aim <= 3){
 						ammo--;
@@ -160,20 +183,22 @@ if (canmove){
 				}
 			}
 			else {
-				var click_reload = false;
-				if (ammo <= 0){
-					if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
-						if (ItemSubScript(1)){
-							click_reload = true;
-							ammoload = true;
-							canmove = false;
-							image_index = 0;
+				if (!gui){
+					var click_reload = false;
+					if (ammo <= 0){
+						if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
+							if (ItemSubScript(1)){
+								click_reload = true;
+								ammoload = true;
+								canmove = false;
+								image_index = 0;
+							}
 						}
 					}
-				}
-				if (!click_reload){
-					AnnaMoveScript(mouse_scale_x, mouse_scale_y);
-					moving = false;
+					if (!click_reload){
+						AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+						moving = false;
+					}
 				}
 			}
 		}

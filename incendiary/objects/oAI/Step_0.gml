@@ -16,21 +16,85 @@ var move = false;
 var light_c = 0;
 if (!anna_vis){
 	if (instance_exists(oAnna)){
-		if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < aware_radius){
-			var sight_v = sight + sight_tilt;
-			if (abs(sight_v - point_direction(0, 0, (x - oAnna.x) * 0.16, y - oAnna.y)) < sight_wide){
-				light_c = 0.05;
-				if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < sight_radius){
-					light_c = max(light_c, ((oAnna.visibility * 0.5) + 0.5) * sqr(1 - (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) / sight_radius)));
+		var sight_v = sight + sight_tilt + sight_track;
+		if (sight_v >= 360){
+			sight_v = sight_v - 360;
+		}
+		else if (sight_v < 0){
+			sight_v = 360 + sight_v;
+		}
+		var in_sight_vis = false;
+		var anna_angle = point_direction(0, 0, (x - oAnna.x) * 0.12, y - (oAnna.y));
+		
+		if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < sight_radius){
+			if (abs(sight_v - anna_angle) < sight_wide){
+				in_sight_vis = true;
+			}
+			else if (sight_v < sight_wide / 2){
+				if (abs((360 - sight_v) - anna_angle) < sight_wide){
+					in_sight_vis = true;
 				}
 			}
-			light_c = clamp(light_c, 0, 1);
+			else if (sight_v >  360 - (sight_wide / 2)){
+				if (abs(anna_angle - (sight_v - 360)) < sight_wide){
+					in_sight_vis = true;
+				}
+			}
 		}
+		
+		anna_angle = point_direction(0, 0, (x - oAnna.x) * 0.2, y - (oAnna.y));
+		if (in_sight_vis){
+			light_c = 0.05;
+			var sight_track_spd = 0.05;
+			if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < (sight_radius * sight_radius_p)){
+				sight_track_spd = 0.15;
+				light_c = max(light_c, ((oAnna.visibility * 0.5) + 0.5) * sqr(1 - (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) / sight_radius)));
+				if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < sight_alert_radius){
+					alert = 1;
+				}
+			}
+				
+			if (sight_v < 90 and anna_angle > 270){
+				sight_track += ((anna_angle - 360) - sight_v) * sight_track_spd;
+				if ((sight + sight_tilt + sight_track) <= 0){
+					sight_track = 360 - abs(sight + sight_tilt + sight_track);
+				}
+			}
+			else if (anna_angle < 90 and sight_v > 270){
+				sight_track += ((360 + anna_angle) - sight_v) * sight_track_spd;
+				if ((sight + sight_tilt + sight_track) >= 360){
+					sight_track = (sight + sight_tilt + sight_track) - 360;
+				}
+			}
+			else {
+				sight_track += (anna_angle - sight_v) * sight_track_spd;
+			}
+		}
+		else {
+			var sight_track_spd = 0.03;
+			var sight_t = sight + sight_tilt;
+			if (sight_v < 90 and sight_t > 270){
+				sight_track += ((sight_t - 360) - sight_v) * sight_track_spd;
+				if ((sight + sight_tilt + sight_track) <= 0){
+					sight_track = 360 - abs(sight + sight_tilt + sight_track);
+				}
+			}
+			else if (sight_t < 90 and sight_v > 270){
+				sight_track += ((360 + sight_t) - sight_v) * sight_track_spd;
+				if ((sight + sight_tilt + sight_track) >= 360){
+					sight_track = (sight + sight_tilt + sight_track) - 360;
+				}
+			}
+			else {
+				sight_track -= sight_track * sight_track_spd;
+			}
+		}
+		light_c = clamp(light_c, 0, 1);
 	}
 }
 else {
 	if (instance_exists(oAnna)){
-		if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < aware_radius){
+		if (point_distance(0, 0, abs(x - oAnna.x), abs(y - oAnna.y) * 4) < sight_radius){
 			light_c = 1;
 		}
 	}
@@ -76,6 +140,7 @@ if (canmove){
 		}
 	}
 	else if (behavior == "follow"){
+		spd = walk_spd;
 		if (follow != noone){
 			var should_move = false;
 			if (follow == oAnna){
@@ -154,8 +219,18 @@ if (canmove){
 		}
 	}
 	else if (behavior == "chase"){
+		spd = run_spd;
 		if (instance_exists(oAnna)){
 			if (anna_vis){
+				angry = angry_reset;
+			}
+			else {
+				if (angry > 0){
+					angry--;
+				}
+			}
+			
+			if (angry > 0){
 				if (!point_in_circle(oAnna.x - move_x, (oAnna.y - move_y) * 4, 0, 0, path_redirect_range)){
 					move = true;
 					move_x = oAnna.x;
@@ -197,9 +272,24 @@ if (canmove){
 	}
 	else if (behavior == "patrol"){
 		//Secure Areas
+		spd = walk_spd;
 	}
 	else if (behavior == "search"){
 		//Find Objects and scavenge
+		spd = walk_spd;
+	}
+	else if (behavior == "cutscene"){
+		//Cutscene
+		spd = walk_spd;
+		var cutscene_move = true;
+		if (move_x == cutscene_x){
+			if (move_y == cutscene_y){
+				cutscene_move = false;
+			}
+		}
+		if (cutscene_move){
+			move = true;
+		}
 	}
 }
 else {
@@ -248,4 +338,12 @@ if (move){
 			walking = true;
 		}
 	}
+}
+
+//Sin val
+if (sin_val < 1){
+	sin_val += 0.007;
+}
+else {
+	sin_val = 0;
 }

@@ -51,7 +51,7 @@ action_wait = 90;
 pick = false;
 end_pick = false;
 
-ammo = 0;
+ammo = 6;
 maxammo = 6;
 ammoload = false;
 shoot = false;

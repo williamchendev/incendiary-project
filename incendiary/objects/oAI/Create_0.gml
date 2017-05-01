@@ -2,17 +2,18 @@
 layer = layer_get_id("Player_Layer");
 
 ///Settings
-karma = -0.3; //hostile - (-1), neutral - (0), friendly - (1)
+karma = -1; //hostile - (-1), neutral - (0), friendly - (1)
 creepy = 0.8; //random_range(0, 1)
 nature = "alone"; //support, leader, alone
-behavior = "idle"; //idle - nothing/sulk, follow - support/tag, chase - attack/pursue, patrol, search
+behavior = "idle"; //idle - nothing/sulk, follow - support/tag, chase - attack/pursue, patrol, search, cutscene - theatric movement
 draw_ui = true;
 
 //Vision
 alertness = 0.2;
-sight_angle = 60;
-sight_radius = 94;
-aware_radius = 132;
+sight_angle = 90;
+sight_radius = 132;
+sight_radius_p = 0.6;
+sight_alert_radius = 20;
 
 //Movement
 spd = 0.8;
@@ -24,10 +25,13 @@ dash_spd = 2;
 //Animations
 idle_ani = en_f;
 walk_ani = en_fwalk;
+run_ani = en_frun;
 
 //Combat
-combat_range = 10;
+angry = 0;
+angry_reset = 180;
 
+combat_range = 20;
 combat_delay = 60;
 
 //Knowledge
@@ -54,6 +58,8 @@ move_y = y;
 
 draw_x = x;
 draw_y = y;
+cutscene_x = x;
+cutscene_y = y;
 
 walking = false;
 
@@ -63,3 +69,6 @@ alert = 0;
 sight = 0;
 sight_tilt = 0;
 sight_wide = 0;
+sight_track = 0;
+
+sin_val = 0;

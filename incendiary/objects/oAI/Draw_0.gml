@@ -5,10 +5,12 @@ draw_set_color(c_black);
 if (global.debug){
 	draw_set_alpha(1);
 	if (!anna_vis){
+		draw_set_color(c_green);
+		draw_ellipse(x - sight_alert_radius, y - (sight_alert_radius / 4), x + sight_alert_radius, y + (sight_alert_radius / 4), true);
 		draw_set_color(c_blue);
-		draw_ellipse(x - sight_radius, y - (sight_radius / 4), x + sight_radius, y + (sight_radius / 4), true);
+		draw_ellipse(x - (sight_radius * sight_radius_p), y - ((sight_radius * sight_radius_p) / 4), x + (sight_radius * sight_radius_p), y + ((sight_radius * sight_radius_p) / 4), true);
 		draw_set_color(c_red);
-		draw_ellipse(x - aware_radius, y - (aware_radius / 4), x + aware_radius, y + (aware_radius / 4), true);
+		draw_ellipse(x - sight_radius, y - (sight_radius / 4), x + sight_radius, y + (sight_radius / 4), true);
 	}
 	else if (behavior == "follow"){
 		draw_set_color(c_blue);
@@ -25,7 +27,7 @@ if (global.debug){
 }
 
 //Sight
-var sight_v = sight + sight_tilt;
+var sight_v = sight + sight_tilt + sight_track;
 if (draw_ui){
 	if (!anna_vis){
 		draw_set_alpha((alert * 0.55) + 0.25);
@@ -36,7 +38,7 @@ if (draw_ui){
 	
 		var r;
 		for (r = 0; r <= sight_wide; r++){
-			draw_vertex(draw_x + lengthdir_x(aware_radius, (sight_v - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(aware_radius, (sight_v - (sight_wide div 2)) + r + 180) / 4));
+			draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_v - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(sight_radius, (sight_v - (sight_wide div 2)) + r + 180) / 4));
 		}
 		draw_primitive_end();
 	}
@@ -45,7 +47,7 @@ draw_set_alpha(1);
 draw_set_color(c_black);
 
 
-///////////////Image
+//Walking/Moving
 if (canmove){
 	if (abs(x - move_x) < 1.1){
 		if (abs(y - move_y) < 1.1){
@@ -89,13 +91,18 @@ else {
 
 //AI Sprite
 if (walking){
-	sprite_index = en_fwalk;
+	if (spd == run_spd){
+		sprite_index = run_ani;
+	}
+	else if (spd == walk_spd){
+		sprite_index = walk_ani;
+	}
 }
 else {
-	sprite_index = en_f;
+	sprite_index = idle_ani;
 }
 
 //Draw Character
-draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, round(draw_x), round(draw_y), image_xscale, image_yscale, 0, image_blend, image_alpha);
 
 draw_set_color(c_black);

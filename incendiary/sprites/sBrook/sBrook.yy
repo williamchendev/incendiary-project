@@ -54,8 +54,8 @@
         }
     ],
     "origin": 9,
-    "playbackSpeed": 15,
-    "playbackSpeedType": 0,
+    "playbackSpeed": 0.2,
+    "playbackSpeedType": 1,
     "sepmasks": false,
     "swatchColours": null,
     "swfPrecision": 2.525,
