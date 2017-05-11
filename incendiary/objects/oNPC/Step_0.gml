@@ -33,6 +33,7 @@ if (selected){
                 oAnna.canmove = false;
                 oAnna.moving = false;
 				oAnna.walking = false;
+				oAnna.shoot = false;
                 talk = true;
                 event = 0;
                 talk_reset = true;

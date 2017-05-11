@@ -1,9 +1,5 @@
 /// @description Step
 
-if (enemy_hit != noone){
-	layer_depth(layer_get_id(layer_id), enemy_hit.depth - 1);
-}
-
 var temp_spd = spd;
 
 while(!hit and (temp_spd > 0)){
@@ -23,16 +19,37 @@ while(!hit and (temp_spd > 0)){
 		var inst_temp = instance_position(hit_x, hit_y, oAI);
 		if (hit_y < inst_temp.y - 14){
 			hit = true;
-			hit_x += (inst_temp.x - hit_x) * 0.4;
+			hit_x += (inst_temp.x - hit_x) * 0.5;
 			hit_y += (inst_temp.y - hit_y) * 0.1;
-			layer_depth(layer_get_id(layer_id), inst_temp.depth - 1);
 			
-			enemy_hit = inst_temp;
-			enemy_x = hit_x - inst_temp.x;
-			enemy_y = hit_y - inst_temp.y;
+			for (var p = 0; p < array_height_2d(inst_temp.hit_p); p++){
+				if (!inst_temp.hit_p[p, 0]){
+					inst_temp.hit_p[p, 0] = true;
+					inst_temp.hit_p[p, 1] = irandom_range(0, 15);
+					inst_temp.hit_p[p, 2] = round(hit_x) - inst_temp.x;
+					inst_temp.hit_p[p, 3] = round(hit_y) - inst_temp.y;
+					break;
+				}
+				if (p == array_height_2d(inst_temp.hit_p) - 1){
+					inst_temp.hit_p[p + 1, 0] = true;
+					inst_temp.hit_p[p + 1, 1] = irandom_range(0, 15);
+					inst_temp.hit_p[p + 1, 2] = round(hit_x) - inst_temp.x;
+					inst_temp.hit_p[p + 1, 3] = round(hit_y) - inst_temp.y;
+					break;
+				}
+			}
 			
-			hit_image = irandom_range(0, 15);
-			instance_create_depth(hit_x, hit_y, inst_temp.depth - 3, oBlood);
+			if (!inst_temp.dead){
+				for (var q = 0; q < irandom_range(1, 4); q++){
+					instance_create_depth(round(hit_x), round(hit_y), inst_temp.depth - irandom_range(1, 3), oBlood);
+				}
+				inst_temp.vitality--;
+				inst_temp.karma = -1;
+				inst_temp.behavior = "chase";
+				inst_temp.anna_vis = true;
+				inst_temp.alert = 1;
+			}
+			instance_destroy();
 		}
 	}
 	hit_x += lengthdir_x(1, hit_direction);

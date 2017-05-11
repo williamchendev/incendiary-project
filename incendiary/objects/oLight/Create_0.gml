@@ -15,7 +15,7 @@ light_size = 0;
 //Variables
 flicker_num = 0;
 grow_num = 0;
-sin_val = 1;
+sin_val = random_range(0, 1);
 spd = 0.003;
 
 alarm[0] = 1;

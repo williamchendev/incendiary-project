@@ -52,6 +52,7 @@ pick = false;
 end_pick = false;
 
 ammo = 6;
+maxammoload = 0;
 maxammo = 6;
 ammoload = false;
 shoot = false;

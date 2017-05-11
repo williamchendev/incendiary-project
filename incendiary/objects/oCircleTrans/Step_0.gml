@@ -2,7 +2,8 @@
 
 time += spd;
 
-if (time >= (750 / 2) + limit_add + (wait * spd)){
-    instance_destroy();
-}
+event_inherited();
 
+if (trans){
+	instance_create_depth(0, 0, -12000, oCircleTransReverse);
+}

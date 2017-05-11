@@ -22,7 +22,6 @@ text_index = 1;
 give_item = false;
 
 //Text Event
-type = 0;
 text_displace_y = 56;
 
 text1 = noone; //Init

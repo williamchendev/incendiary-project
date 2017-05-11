@@ -23,10 +23,7 @@ draw_line_color(x1, y1, hit_x, hit_y, merge_color(hit_color, c_white, 0.4), merg
 
 //Bullet Hole
 if (hit){
-	if (enemy_hit != noone){
-		draw_sprite(sBloodShot, hit_image, enemy_hit.x + enemy_x, enemy_hit.y + enemy_y);
-	}
-	else {
-		draw_sprite(sprite_index, hit_image, hit_x, hit_y);
-	}
+	hit_x = round(hit_x);
+	hit_y = round(hit_y);
+	draw_sprite(sprite_index, hit_image, hit_x, hit_y);
 }

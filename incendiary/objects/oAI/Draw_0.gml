@@ -27,7 +27,6 @@ if (global.debug){
 }
 
 //Sight
-var sight_v = sight + sight_tilt + sight_track;
 if (draw_ui){
 	if (!anna_vis){
 		draw_set_alpha((alert * 0.55) + 0.25);
@@ -38,7 +37,7 @@ if (draw_ui){
 	
 		var r;
 		for (r = 0; r <= sight_wide; r++){
-			draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_v - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(sight_radius, (sight_v - (sight_wide div 2)) + r + 180) / 4));
+			draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_track - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(sight_radius, (sight_track - (sight_wide div 2)) + r + 180) / 4));
 		}
 		draw_primitive_end();
 	}
@@ -104,5 +103,12 @@ else {
 
 //Draw Character
 draw_sprite_ext(sprite_index, image_index, round(draw_x), round(draw_y), image_xscale, image_yscale, 0, image_blend, image_alpha);
+
+//Draw Blood
+for (var p = 0; p < array_height_2d(hit_p); p++){
+	if (hit_p[p, 0]){
+		draw_sprite(sBloodShot, hit_p[p, 1], round(hit_p[p, 2] + draw_x), round(hit_p[p, 3] + draw_y));
+	}
+}
 
 draw_set_color(c_black);

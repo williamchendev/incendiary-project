@@ -6,48 +6,47 @@ move_x = x - 90;
 move_y = y;
 
 text1 = noone;
-text1[0, 0] = "Anna..";
+text1[0, 0] = "...piece of shit..";
 text1[0, 1] = self;
 text1[0, 2] = c_ltgray;
 text1[0, 3] = RegularFont;
 
-text1[1, 0] = "I heard you were at Michigan.";
+text1[1, 0] = "Anna?";
 text1[1, 1] = self;
 text1[1, 2] = c_ltgray;
 text1[1, 3] = RegularFont;
 
-text1[2, 0] = "Going.";
+text1[2, 0] = "I thought you were downtown.";
 text1[2, 1] = -1;
 text1[2, 2] = c_white;
 text1[2, 3] = RegularFont;
 
-text1[3, 0] = "I leave tomorrow.";
+text1[3, 0] = "My friend from Langley called.";
 text1[3, 1] = -1;
 text1[3, 2] = c_white;
 text1[3, 3] = RegularFont;
 
-text1[4, 0] = "Election season\'s over.";
+text1[4, 0] = "The last dead in michigan died.";
 text1[4, 1] = -1;
 text1[4, 2] = c_white;
 text1[4, 3] = RegularFont;
 
-text1[5, 0] = @"Yeah, I guess I have
-to move on.";
+text1[5, 0] = "Can dead people die?";
 text1[5, 1] = self;
 text1[5, 2] = c_ltgray;
 text1[5, 3] = RegularFont;
 
-text1[6, 0] = "I\'m heading home to Ohio.";
-text1[6, 1] = self;
-text1[6, 2] = c_ltgray;
+text1[6, 0] = "You know what I mean.";
+text1[6, 1] = -1;
+text1[6, 2] = c_white;
 text1[6, 3] = RegularFont;
 
-text1[7, 0] = "Looks like I'm out of a job.";
+text1[7, 0] = "Well that's a long ways to travel.";
 text1[7, 1] = self;
 text1[7, 2] = c_ltgray;
 text1[7, 3] = RegularFont;
 
-text1[8, 0] = "Again.";
+text1[8, 0] = "I";
 text1[8, 1] = self;
 text1[8, 2] = c_ltgray;
 text1[8, 3] = RegularFont;

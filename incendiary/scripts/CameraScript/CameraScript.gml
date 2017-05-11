@@ -48,12 +48,12 @@ else if (camera_type == 3){
 		layer_x("Background_2", ((view_set_x / 1.4) div 480) + layer_get_x("Background_2"));
 	}
 	if (layer_exists("Background_3")){
-		var background_x = (((view_set_x - 10) - layer_get_x("Background_3")) * 0.12) + layer_get_x("Background_3");
-		layer_x("Background_3", clamp(background_x, 0, room_width - 480));
+		var background_x = (((view_set_x - 10) - layer_get_x("Background_3")) * 0.12);
+		layer_x("Background_3", clamp(background_x + layer_get_x("Background_3"), 0, room_width - 480));
 	}
 	if (layer_exists("Background_4")){
-		var background_x = (((view_set_x - 10) - layer_get_x("Background_4")) * 0.1) + layer_get_x("Background_4");
-		layer_x("Background_4", clamp(background_x, 0, room_width - 480));
+		var background_x = (((view_set_x - 10) - layer_get_x("Background_4")) * 0.1);
+		layer_x("Background_4", clamp(background_x + layer_get_x("Background_4"), 0, room_width - 480));
 	}
 	if (layer_exists("Background_5")){
 		layer_x("Background_5", (view_set_x / 1.2) + 30);

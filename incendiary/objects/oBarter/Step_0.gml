@@ -30,6 +30,7 @@ if (selected){
             oAnna.canmove = false;
             oAnna.moving = false;
 			oAnna.walking = false;
+			oAnna.shoot = false;
 			oAnna.gui = true;
             buy = true;
         }

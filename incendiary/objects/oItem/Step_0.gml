@@ -36,6 +36,7 @@ if (selected){
             oAnna.canmove = false;
             oAnna.moving = false;
 			oAnna.walking = false;
+			oAnna.shoot = false;
             pick_up = true;
 			pick_ani = true;
 			pick_ani_end = false;

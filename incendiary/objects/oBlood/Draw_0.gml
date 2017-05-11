@@ -7,7 +7,7 @@ if (grounded){
 }
 else {
 	draw_set_color(make_color_rgb(127, 25, 45));
-	draw_circle(x, y, 3, false);
+	draw_circle(x, y, size, false);
 }
 
 draw_set_color(c_black);

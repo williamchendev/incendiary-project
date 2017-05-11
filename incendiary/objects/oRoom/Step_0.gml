@@ -7,10 +7,18 @@ if (touch){
 	if (trans_obj.trans){
 		if (room == room_type){
 			if (instance_exists(oAnna)){
-					for (var c = 0; c < 12; c++){
-						oAnna.item_slot[c].item = anna_items[c];
-					}
-					oAnna.ammo = anna_ammo;
+				for (var c = 0; c < 12; c++){
+					oAnna.item_slot[c].item = anna_items[c];
+				}
+				oAnna.ammo = anna_ammo;
+				for (var i = 0; i < instance_number(oRoom); i++){
+					var inst_room = instance_find(oRoom, i);
+					if (inst_room.room_type = previous_room){
+						oAnna.x = inst_room.move_x;
+						oAnna.y = inst_room.move_y;
+						break;
+					}	
+				}
 				instance_destroy(trans_obj);
 				instance_destroy();
 			}

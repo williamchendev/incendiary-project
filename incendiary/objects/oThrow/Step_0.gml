@@ -5,6 +5,14 @@ if (path_position == 1){
 }
 
 if (hit_ground){
+	with (instance_nearest(x, y, oAI)){
+		move_x = other.x;
+		move_y = other.y;
+		distracted_x = x;
+		distracted_y = y;
+		temp_behavior = behavior;
+		behavior = "distracted";
+	}
 	instance_destroy();
 }
 

@@ -115,11 +115,11 @@ if (canmove){
 	}
 	else {
 		//Shoot Aim Counter
+		var enemy_inst_aim = false;
 		if (reload != true){
 			if (ammo > 0){
 				var dest_inst = instance_position(mouse_scale_x, mouse_scale_y, oDestructible);
 				var enemy_inst = instance_position(mouse_scale_x, mouse_scale_y, oAI);
-				var enemy_inst_aim = false;
 				if (dest_inst != noone){
 					shoot_aim--;
 					enemy_inst_aim = true;
@@ -173,10 +173,12 @@ if (canmove){
 			
 			if (shooting){
 				if (ammo > 0){
-					if (shoot_aim <= 3){
+					if (enemy_inst_aim){
 						ammo--;
-						var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y) + irandom_range(-3, 3);
+						var inaccuracy = round((shoot_aim * 0.5) + recoil);
+						var temp_direct_shot = point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y) + irandom_range(-1 * inaccuracy, inaccuracy);
 						ShotScript(x + (2 * image_xscale) + lengthdir_x(22, temp_direct_shot), y - 30 + lengthdir_y(22, temp_direct_shot), temp_direct_shot, 20, make_color_rgb(178, 174, 124));
+						instance_create_layer(x + (2 * image_xscale) + lengthdir_x(20, point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y)), y - 30 + lengthdir_y(20, point_direction(x + (2 * image_xscale), y - 30, mouse_scale_x, mouse_scale_y)), "Solids_Layer", oLightTimeFlash);
 						recoil = random_range(-3, -6);
 						reload = true;
 					}
@@ -189,6 +191,7 @@ if (canmove){
 						if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
 							if (ItemSubScript(1)){
 								click_reload = true;
+								maxammoload = ammo + 3;
 								ammoload = true;
 								canmove = false;
 								image_index = 0;
@@ -217,11 +220,12 @@ else {
 		}
 	}
 	else if (ammoload){
-		if (ammo == maxammo){
+		if (ammo == clamp(maxammoload, 0, maxammo)){
 			shoot = true;
 			gui = false;
 			canmove = true;
 			ammoload = false;
+			maxammoload = 0;
 		}
 		else {
 			if (image_index >= image_number - 1){
@@ -254,10 +258,11 @@ else {
 					}
 					else if (item == 1){
 						if (ItemCheckScript(0)){
-							if (ammo <= 0){
+							if (ammo < maxammo){
 								item = -1;
 								canmove = false;
 								ammoload = true;
+								maxammoload = ammo + 3;
 								image_index = 0;
 							}
 						}
