@@ -21,6 +21,9 @@ if (action.clicked){
     with(oNPC){
         selected = false;
     }
+	with(oRoom){
+        selected = false;
+    }
     AnnaMoveScript(move_x, move_y);
     action.clicked = false;
     selected = true;

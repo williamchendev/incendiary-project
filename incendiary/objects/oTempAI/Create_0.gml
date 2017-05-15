@@ -9,6 +9,9 @@ room_timer = 0;
 
 room_stay_time = 60 * 20;
 
+//Variables
+can_spawn = true;
+
 ///AI DATA
 karma = 0;
 creepy = random_range(0, 1);
@@ -53,18 +56,26 @@ follow_radius_p = 0.6;
 
 //Rooms
 current_room = noone;
-room_path = noone;
 goal_room = noone;
 guard_room = noone;
 
+//Guard
+guard_room = room;
+guard_facing = image_xscale;
+guard_x = x;
+guard_y = y;
+
 //Knowledge
 rooms = noone;
+room_path = noone;
 room_priority = noone;
 if (instance_exists(oPatrol)){
 	rooms = oPatrol.rooms;
+	room_path = oPatrol.room_path;
 }
 if (rooms != noone){
 	for (var i = 0; i < array_height_2d(rooms); i++){
-		rooms_priority[i] = irandom_range(0, 100);
+		room_priority[i] = irandom_range(0, 100);
 	}
 }
+room_pathfind = noone;

@@ -40,24 +40,20 @@ combat_delay = 60;
 
 //Knowledge
 rooms = noone;
+room_path = noone;
 room_priority = noone;
 if (instance_exists(oPatrol)){
 	rooms = oPatrol.rooms;
+	room_path = oPatrol.room_path;
 }
 if (rooms != noone){
-	for (var i = 0; i < array_height_2d(rooms); i++){
-		rooms_priority[i] = irandom_range(0, 100);
+	for (var i = 0; i < array_length_1d(rooms); i++){
+		room_priority[i] = irandom_range(0, 100);
 	}
 }
-current_room = noone;
-for (var i = 0; i < array_height_2d(rooms); i++){
-	if (rooms[i] == room){
-		current_room = i;
-		break;
-	}
-}
-goal_room = noone;
-room_path = noone;
+current_room = room;
+goal_room = room;
+room_pathfind = noone;
 
 //Guard
 guard_room = room;
@@ -73,7 +69,7 @@ follow_radius = 120;
 follow_radius_p = 0.6;
 
 patrol_count = 0;
-patrol_checks = 3;
+patrol_checks = 4;
 patrol_time = 0;
 patrol_switch = 120;
 
@@ -95,6 +91,8 @@ draw_x = x;
 draw_y = y;
 cutscene_x = x;
 cutscene_y = y;
+patrol_x = x;
+patrol_y = y;
 
 walking = false;
 stand_still = false;
@@ -106,7 +104,7 @@ distracted_y = y;
 anna_vis = false;
 alert = 0;
 
-sight_track = 0;
+sight_track = (90 + (90 * sign(image_xscale)));
 sight_wide = 0;
 sight_tilt = 8;
 

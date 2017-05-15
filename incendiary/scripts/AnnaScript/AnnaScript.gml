@@ -151,7 +151,17 @@ if (canmove){
 		//Click Mouse
 		if (mouse_click){
 			var shooting = false;
-			if (self_box_click){
+			if (position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
+	            var inst_act = instance_position(mouse_scale_x, mouse_scale_y, oAction);
+	            if (inst_act != noone){
+	                if (inst_act.action_sprite_scale == 1){
+						if (inst_act.shoot_bypass){
+							inst_act.clicked = true;
+						}
+	                }
+	            }
+	        }
+			else if (self_box_click){
 				gui = true;
 				canmove = false;
 				moving = false;
@@ -159,14 +169,16 @@ if (canmove){
 				shoot = false;
 				shoot_aim = 60;
 			}
-			else if (position_meeting(mouse_scale_x, mouse_scale_y, oDestructible)){
-				shooting = true;
-			}
-			else if (position_meeting(mouse_scale_x, mouse_scale_y, oAI)){
-				var inst_shoot_hit = instance_position(mouse_scale_x, mouse_scale_y, oAI);
-				if (inst_shoot_hit != noone){
-					if (inst_shoot_hit.karma < 0.8){
-						shooting = true;
+			else if (!walking){
+				if (position_meeting(mouse_scale_x, mouse_scale_y, oDestructible)){
+					shooting = true;
+				}
+				else if (position_meeting(mouse_scale_x, mouse_scale_y, oAI)){
+					var inst_shoot_hit = instance_position(mouse_scale_x, mouse_scale_y, oAI);
+					if (inst_shoot_hit != noone){
+						if (inst_shoot_hit.karma < 0.8){
+							shooting = true;
+						}
 					}
 				}
 			}

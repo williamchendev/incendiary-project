@@ -1,37 +1,21 @@
 ///PatrolScript();
 
 var points = noone;
-
-var found_patrol = noone;
-var move_farther = true;
-
-if (instance_exists(oPatrol)){
-	while(found_patrol == noone){
-		var patrol_inst = instance_find(oPatrol, irandom_range(0, instance_number(oPatrol) - 1));
-		if (move_farther){
-			if (instance_nearest(x, y, oPatrol) == patrol_inst){
-				move_farther = false;
-			}
-			else {
-				found_patrol = patrol_inst;
-			}
-		}
-		else {
-			found_patrol = patrol_inst;
-		}
-	}
-}
 points[0] = x;
 points[1] = y;
-if (found_patrol != noone){
-	if (found_patrol.path != noone){
-		var random_path_pos = random_range(0, 1);
-		points[0] = path_get_x(found_patrol.path, random_path_pos);
-		points[1] = path_get_y(found_patrol.path, random_path_pos);
-	}
-	else {
-		points[0] = irandom_range(found_patrol.x, found_patrol.x + (found_patrol.sprite_width * found_patrol.image_xscale));
-		points[1] = irandom_range(found_patrol.y, found_patrol.y + (found_patrol.sprite_height * found_patrol.image_yscale));
+
+if (instance_exists(oPatrol)){
+	with(oPatrol){
+		if (path != noone){
+			var path_pos = random_range(0, 1);
+			points[0] = path_get_point_x(path, path_pos);
+			points[1] = path_get_point_y(path, path_pos);
+		}
+		else if (patrol_areas != noone){
+			var random_patrol_area = irandom_range(0, array_length_1d(patrol_areas) - 1);
+			points[0] = irandom_range(patrol_areas[random_patrol_area].bbox_left, patrol_areas[random_patrol_area].bbox_right);
+			points[1] = irandom_range(patrol_areas[random_patrol_area].bbox_top, patrol_areas[random_patrol_area].bbox_bottom);
+		}
 	}
 }
 return points;

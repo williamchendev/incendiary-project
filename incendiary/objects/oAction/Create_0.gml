@@ -10,4 +10,4 @@ action_type = 0;
 //Draw
 action_sprite_scale = 0.01;
 action_sprite_alpha = 0;
-
+shoot_bypass = false;

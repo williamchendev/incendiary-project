@@ -24,6 +24,9 @@ if (action.clicked){
     with(oNPC){
         selected = false;
     }
+	with(oRoom){
+        selected = false;
+    }
 	if (!inspect_move){
 		move_x = oAnna.x;
 		move_y = oAnna.y;

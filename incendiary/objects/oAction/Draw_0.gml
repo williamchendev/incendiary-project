@@ -30,7 +30,15 @@ action_sprite_alpha = clamp(action_sprite_alpha, 0, 0.9);
 //Draw Self
 if (!selected){
     if (oAnna.canmove){
-		if (!oAnna.shoot){
+		var draw_shoot = true;
+		if (oAnna.shoot){
+			draw_shoot = false;
+			if (shoot_bypass){
+				draw_shoot = true;
+			}
+		}
+		
+		if (draw_shoot){
 			draw_sprite_ext(sActions, action_type, x, y, action_sprite_scale, action_sprite_scale, 0, c_white, action_sprite_alpha);
 		}
 	}

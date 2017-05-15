@@ -51,8 +51,8 @@ if (cursor_num == -1){
 //Start
 if (start_time == 0){
 	//room_goto(test_room);
-	//room_goto(intro_room);
-	room_goto(tutorial_room);
+	//room_goto(tutorial_room);
+	room_goto(test_hall0);
 }
 else if (start_time < wait){
 	start_time--;

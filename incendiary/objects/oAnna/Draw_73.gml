@@ -254,7 +254,7 @@ if (global.debug){
     draw_text(view_x + 1, view_y + 8, "Anna_x: " + string(x));
     draw_text(view_x + 1, view_y + 15, "Anna_y: " + string(y));
 	draw_text(view_x + 1, view_y + 22, "Still: " + string(stand_still));
-	draw_text(view_x + 1, view_y + 29, "Half: " + string(x - view_x) + ":240");
+	draw_text(view_x + 1, view_y + 29, "Room: " + room_get_name(room));
 	draw_text(view_x + 1, view_y + 36, "Visibility: " + string(visibility));
 	
 	draw_set_alpha(0.3);

@@ -130,16 +130,7 @@ else {
 }
 
 //Knowledge
-if (rooms != noone){
-	if (rooms[current_room] != room){
-		for (var i = 0; i < array_height_2d(rooms); i++){
-			if (rooms[i] == room){
-				current_room = i;
-				break;
-			}
-		}
-	}
-}
+current_room = room;
 
 //Behavior
 if (canmove){
@@ -370,19 +361,20 @@ if (canmove){
 				}
 			}
 		}
-		else {
-			if (current_room == goal_room){
-				if (patrol_count <= 0){
-					pathfind = true;
-					patrol_count = clamp(irandom_range(patrol_checks - 2, patrol_checks + 2), 0, patrol_checks + 2);
+		
+		if (current_room == goal_room){
+			if (patrol_count <= 0){
+				pathfind = true;
+				patrol_count = clamp(irandom_range(patrol_checks - 2, patrol_checks + 2), 0, patrol_checks + 2);
+			}
+			else {
+				if (patrol_time <= 0){
+					should_move = true;
+					patrol_count--;
+					patrol_time = irandom_range(round(patrol_switch * 0.6), round(patrol_switch * 1.4));
 				}
 				else {
-					if (patrol_time <= 0){
-						should_move = true;
-						patrol_count--;
-						patrol_time = irandom_range(round(patrol_switch * 0.6), round(patrol_switch * 1.4));
-					}
-					else {
+					if (point_distance(x, y, patrol_x, patrol_y) < 2){
 						patrol_time--;
 					}
 				}
@@ -392,17 +384,18 @@ if (canmove){
 		if (pathfind){
 			if (rooms != noone){
 				var checks = noone;
+				var temp_current = 0;
 				for (var h = 0; h < array_length_1d(rooms); h++){
-					checks[i] = false;
+					checks[h] = false;
+					if (rooms[h] == current_room){
+						temp_current = h;
+					}
 				}
 				var temp_goal = 0;
-				var temp_priority = noone;
+				var temp_priority = room_priority[0];
 				for (var h = 0; h < array_length_1d(room_priority); h++){
 					var more_temp_priority = room_priority[h];
-					if (temp_priority == noone){
-						temp_priority = more_temp_priority;
-					}
-					else if (max(temp_priority, more_temp_priority) == more_temp_priority){
+					if (max(temp_priority, more_temp_priority) == more_temp_priority){
 						temp_priority = more_temp_priority;
 					}
 				
@@ -411,36 +404,51 @@ if (canmove){
 					}
 					room_priority[h] = irandom_range(0, 100);
 				}
-				goal_room = temp_goal;
-				room_path = RoomPathFind(rooms, checks, current_room, goal_room);
+				goal_room = rooms[temp_goal];
+				room_pathfind = RoomPathFind(room_path, checks, temp_current, temp_goal);
 				should_move = true;
 			}
 		}
 		if (should_move){
 			if (current_room != goal_room){
 				var temp_move_room = 0;
-				for (var i = 0; i < array_length_1d(room_path); i++){
-					if (room_path[i] == current_room){
-						temp_move_room = clamp(i - 1, 0, array_length_1d(room_path) - 1);
+				for (var i = 0; i < array_length_1d(room_pathfind); i++){
+					if (rooms[room_pathfind[i]] == current_room){
+						if (i > 0){
+							temp_move_room = room_pathfind[i - 1];
+						}
 						break;
 					}
 				}
 				for (var i = 0; i < instance_number(oRoom); i++){
 					var inst_room = instance_find(oRoom, i);
-					if (inst_room.room_type == temp_move_room){
+					if (inst_room.room_type == rooms[temp_move_room]){
 						move = true;
-						move_x = inst_room.x + ((inst_room.sprite_width * inst_room.image_xscale) / 2);
-						move_y = inst_room.y + ((inst_room.sprite_height * inst_room.image_yscale) / 2);
+						if (inst_room.click){
+							move_x = inst_room.move_x;
+							move_y = inst_room.move_y;
+						}
+						else {
+							move_x = inst_room.x;
+							move_y = inst_room.y;
+						}
 						break;
 					}
 				}
 			}
 			else if (instance_exists(oPatrol)){
 				move = true;
-				
-				var patrol_xy = PatrolScript();
-				move_x = patrol_xy[0];
-				move_y = patrol_xy[1];
+				var patrol_move_check = 10;
+				while (patrol_move_check > 0){
+					var patrol_xy = PatrolScript();
+					move_x = patrol_xy[0];
+					move_y = patrol_xy[1];
+					if (point_distance(x, y, move_x, move_y) > 64){
+						patrol_move_check = -1;
+					}
+				}
+				patrol_x = move_x;
+				patrol_y = move_y;
 			}
 		}
 	}
@@ -479,25 +487,41 @@ if (canmove){
 			if (pathfind){
 				if (rooms != noone){
 					var checks = noone;
+					var temp_goal = 0;
+					var temp_current = 0;
 					for (var h = 0; h < array_length_1d(rooms); h++){
 						checks[i] = false;
+						if (rooms[h] == guard_room){
+							temp_goal = h;
+						}
+						if (rooms[h] == current_room){
+							temp_current = h;
+						}
 					}
 					goal_room = guard_room;
-					room_path = RoomPathFind(rooms, checks, current_room, goal_room);
+					room_pathfind = RoomPathFind(room_path, checks, temp_current, temp_goal);
 				
 					var temp_move_room = 0;
-					for (var i = 0; i < array_length_1d(room_path); i++){
-						if (room_path[i] == current_room){
-							temp_move_room = clamp(i - 1, 0, array_length_1d(room_path) - 1);
+					for (var i = 0; i < array_length_1d(room_pathfind); i++){
+						if (rooms[room_pathfind[i]] == current_room){
+							if (i > 0){
+								temp_move_room = room_pathfind[i - 1];
+							}
 							break;
 						}
 					}
 					for (var i = 0; i < instance_number(oRoom); i++){
 						var inst_room = instance_find(oRoom, i);
-						if (inst_room.room_type == temp_move_room){
+						if (inst_room.room_type == rooms[temp_move_room]){
 							move = true;
-							move_x = inst_room.x + ((inst_room.sprite_width * inst_room.image_xscale) / 2);
-							move_y = inst_room.y + ((inst_room.sprite_height * inst_room.image_yscale) / 2);
+							if (inst_room.click){
+								move_x = inst_room.move_x;
+								move_y = inst_room.move_y;
+							}
+							else {
+								move_x = inst_room.x;
+								move_y = inst_room.y;
+							}
 							break;
 						}
 					}

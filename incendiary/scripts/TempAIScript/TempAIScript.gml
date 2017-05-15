@@ -53,6 +53,12 @@ inst_ai.patrol_checks = argument0.patrol_checks;
 inst_ai.patrol_time = argument0.patrol_time;
 inst_ai.patrol_switch = argument0.patrol_switch;
 
+//Guard
+inst_ai.guard_room = argument0.guard_room;
+inst_ai.guard_facing = argument0.guard_facing;
+inst_ai.guard_x = argument0.guard_x;
+inst_ai.guard_y = argument0.guard_y;
+
 //Path Finding
 inst_ai.path_redirect_range = argument0.path_redirect_range;
 
@@ -65,14 +71,7 @@ inst_ai.room_path = argument0.room_path;
 inst_ai.goal_room = argument0.goal_room;
 
 //knowledge
-inst_ai.rooms = noone;
-inst_ai.room_priority = noone;
-if (instance_exists(oPatrol)){
-	inst_ai.rooms = oPatrol.rooms;
-}
-if (rooms != noone){
-	for (var i = 0; i < array_height_2d(rooms); i++){
-		inst_ai.rooms_priority[i] = irandom_range(0, 100);
-	}
-}
+inst_ai.room_priority = argument0.room_priority;
+inst_ai.goal_room = argument0.goal_room;
+inst_ai.room_pathfind = argument0.room_pathfind;
 inst_ai.current_room = argument1;
