@@ -77,5 +77,47 @@ if (triggered){
 				event++;
 			}
 		}
+		else if (action[event, 0] == "lights"){
+			if (instance_exists(oLighting)){
+				if (light_time == 0){
+					light_alpha = oLighting.alpha;
+					light_destroy = false;
+					light_trigger = 0;
+					light_time++;
+				}
+				else {
+					if (light_time > action[event, 1]){
+						light_time = 0;
+						oLighting.alpha = light_alpha;
+						event++;
+					}
+					else {
+						if (light_trigger <= 0){
+							oLighting.alpha = random_range(action[event, 2], action[event, 3]);
+							light_trigger = irandom_range(1, 7);
+						}
+						if (action[event, 4] != -1){
+							if (!light_destroy){
+								if (light_time > (action[event, 1] * 0.75)){
+									oLighting.alpha = max(action[event, 2], action[event, 3]);
+									light_trigger = 7;
+									if (instance_exists(actor[action[event, 4]])){
+										with(actor[action[event, 4]]){
+											instance_destroy();
+										}
+									}
+									light_destroy = true;
+								}
+							}
+						}
+						light_trigger--;
+						light_time++;
+					}
+				}
+			}
+			else {
+				event++;
+			}
+		}
 	}
 }

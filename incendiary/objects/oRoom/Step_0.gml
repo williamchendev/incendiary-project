@@ -2,8 +2,11 @@
 
 var temp_ai_trans = noone;
 if (click){
-	if (position_meeting(move_x, move_y, oAI)){
-		temp_ai_trans = instance_position(move_x, move_y, oAI);
+	temp_ai_trans = instance_nearest(move_x, move_y, oAI);
+	if (temp_ai_trans != noone){
+		if (point_distance(move_x, move_y, temp_ai_trans.x, temp_ai_trans.y) > 5){
+			temp_ai_trans = noone;
+		}
 	}
 }
 else {
@@ -18,7 +21,7 @@ if (temp_ai_trans != noone){
 			for (var c = 1; c < array_length_1d(temp_ai_trans.room_pathfind); c++){
 				if (temp_ai_trans.rooms[temp_ai_trans.room_pathfind[c]] == room){
 					if (temp_ai_trans.rooms[temp_ai_trans.room_pathfind[c - 1]] == room_type){
-						var compatible_rooms = true;
+						compatible_rooms = true;
 						break;
 					}
 				}
@@ -111,9 +114,6 @@ if (!touch){
 			anna_shoot = oAnna.shoot;
 		}
 	}
-	else {
-		instance_destroy();
-	}
 }
 if (touch){
 	with (oTempAI){
@@ -166,7 +166,8 @@ if (touch){
 						instance_destroy();
 					}
 				}
-			} 
+			}
+			persistent = true;
 			room_goto(room_type);
 		}
 	}

@@ -81,6 +81,7 @@ dead = false;
 bleed = 0;
 attack = false;
 attack_timer = 0;
+attack_move = true;
 
 move_x = x;
 move_y = y;

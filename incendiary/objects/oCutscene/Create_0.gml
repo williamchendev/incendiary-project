@@ -28,6 +28,13 @@ action[3, 0] = "animation"; //Action Type
 action[3, 1] = 1; //Actor
 action[3, 2] = en_f; //Action Animation
 
+action[4, 0] = "lights"; //Action Type
+action[4, 1] = 140; //Action Time
+action[4, 2] = 0.3; //Min Flicker
+action[4, 3] = 0.8; //Max Flicker
+action[4, 4] = -1; //Destroy Instance
+
+
 //Variables
 text_displace_y = 56;
 text_spd = 0.35;
@@ -37,3 +44,8 @@ start_event = true;
 end_event = false;
 
 triggered = false;
+
+light_time = 0;
+light_trigger = 0;
+light_alpha = 0;
+light_destroy = false;

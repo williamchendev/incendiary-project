@@ -52,7 +52,7 @@ if (cursor_num == -1){
 if (start_time == 0){
 	//room_goto(test_room);
 	//room_goto(tutorial_room);
-	room_goto(test_hall0);
+	room_goto(test_hall1);
 }
 else if (start_time < wait){
 	start_time--;

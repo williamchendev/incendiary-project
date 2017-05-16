@@ -149,6 +149,7 @@ if (canmove){
 		}
 		
 		//Click Mouse
+		var action_click_shoot = false;
 		if (mouse_click){
 			var shooting = false;
 			if (position_meeting(mouse_scale_x, mouse_scale_y, oAction)){
@@ -157,6 +158,7 @@ if (canmove){
 	                if (inst_act.action_sprite_scale == 1){
 						if (inst_act.shoot_bypass){
 							inst_act.clicked = true;
+							action_click_shoot = true;
 						}
 	                }
 	            }
@@ -199,20 +201,22 @@ if (canmove){
 			else {
 				if (!gui){
 					var click_reload = false;
-					if (ammo <= 0){
-						if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
-							if (ItemSubScript(1)){
-								click_reload = true;
-								maxammoload = ammo + 3;
-								ammoload = true;
-								canmove = false;
-								image_index = 0;
+					if (!action_click_shoot){
+						if (ammo <= 0){
+							if (point_distance(mouse_scale_x, mouse_scale_y, anna_x, anna_y - 54) < 7){
+								if (ItemSubScript(1)){
+									click_reload = true;
+									maxammoload = ammo + 3;
+									ammoload = true;
+									canmove = false;
+									image_index = 0;
+								}
 							}
 						}
-					}
-					if (!click_reload){
-						AnnaMoveScript(mouse_scale_x, mouse_scale_y);
-						moving = false;
+						if (!click_reload){
+							AnnaMoveScript(mouse_scale_x, mouse_scale_y);
+							moving = false;
+						}
 					}
 				}
 			}

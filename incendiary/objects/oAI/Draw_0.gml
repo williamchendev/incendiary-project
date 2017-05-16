@@ -27,19 +27,21 @@ if (global.debug){
 }
 
 //Sight
-if (draw_ui){
-	if (!anna_vis){
-		draw_set_alpha((alert * 0.55) + 0.25);
-		draw_set_color(make_color_rgb(180, 110, 120));
-		draw_primitive_begin(pr_trianglefan);
+if (canmove){
+	if (draw_ui){
+		if (!anna_vis){
+			draw_set_alpha((alert * 0.55) + 0.25);
+			draw_set_color(make_color_rgb(180, 110, 120));
+			draw_primitive_begin(pr_trianglefan);
 	
-		draw_vertex(draw_x, draw_y);
+			draw_vertex(draw_x, draw_y);
 	
-		var r;
-		for (r = 0; r <= sight_wide; r++){
-			draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_track - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(sight_radius, (sight_track - (sight_wide div 2)) + r + 180) / 4));
+			var r;
+			for (r = 0; r <= sight_wide; r++){
+				draw_vertex(draw_x + lengthdir_x(sight_radius, (sight_track - (sight_wide div 2)) + r + 180), draw_y + (lengthdir_y(sight_radius, (sight_track - (sight_wide div 2)) + r + 180) / 4));
+			}
+			draw_primitive_end();
 		}
-		draw_primitive_end();
 	}
 }
 draw_set_alpha(1);

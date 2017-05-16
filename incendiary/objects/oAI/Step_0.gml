@@ -131,6 +131,9 @@ else {
 
 //Knowledge
 current_room = room;
+if (behavior != "chase"){
+	attack_move = true;
+}
 
 //Behavior
 if (canmove){
@@ -310,6 +313,14 @@ if (canmove){
 					move_x = oAnna.x;
 					move_y = oAnna.y;
 				}
+				if (attack_move){
+					move = true;
+					move_x = oAnna.x;
+					move_y = oAnna.y;
+					move_x_p = move_x - 1;
+					move_y_p = move_y - 1;
+					attack_move = false;
+				}
 				if (point_in_circle(oAnna.x - x, (oAnna.y - y) * 4, 0, 0, combat_range)){
 					canmove = false;
 					attack = true;
@@ -350,18 +361,6 @@ if (canmove){
 		var should_move = false;
 		var pathfind = false;
 		
-		if (anna_vis){
-			if (karma < -0.2){
-				behavior = "chase";
-			}
-			else if (karma < 0){
-				if (creepy > 0.8){
-					behavior = "follow";
-					follow = oAnna;
-				}
-			}
-		}
-		
 		if (current_room == goal_room){
 			if (patrol_count <= 0){
 				pathfind = true;
@@ -377,6 +376,26 @@ if (canmove){
 					if (point_distance(x, y, patrol_x, patrol_y) < 2){
 						patrol_time--;
 					}
+				}
+			}
+		}
+		else {
+			if (room_pathfind != noone){
+				should_move = true;
+			}
+			else {
+				pathfind = true;
+			}
+		}
+		
+		if (anna_vis){
+			if (karma < -0.2){
+				behavior = "chase";
+			}
+			else if (karma < 0){
+				if (creepy > 0.8){
+					behavior = "follow";
+					follow = oAnna;
 				}
 			}
 		}
@@ -412,17 +431,15 @@ if (canmove){
 		if (should_move){
 			if (current_room != goal_room){
 				var temp_move_room = 0;
-				for (var i = 0; i < array_length_1d(room_pathfind); i++){
+				for (var i = 1; i < array_length_1d(room_pathfind); i++){
 					if (rooms[room_pathfind[i]] == current_room){
-						if (i > 0){
-							temp_move_room = room_pathfind[i - 1];
-						}
+						temp_move_room = i - 1;
 						break;
 					}
 				}
 				for (var i = 0; i < instance_number(oRoom); i++){
 					var inst_room = instance_find(oRoom, i);
-					if (inst_room.room_type == rooms[temp_move_room]){
+					if (inst_room.room_type == rooms[room_pathfind[temp_move_room]]){
 						move = true;
 						if (inst_room.click){
 							move_x = inst_room.move_x;
@@ -490,7 +507,7 @@ if (canmove){
 					var temp_goal = 0;
 					var temp_current = 0;
 					for (var h = 0; h < array_length_1d(rooms); h++){
-						checks[i] = false;
+						checks[h] = false;
 						if (rooms[h] == guard_room){
 							temp_goal = h;
 						}

@@ -47,7 +47,13 @@ if (shoot){
 			}
 		}
 	}
+	else {
+		reload_alpha = 0;
+	}
 	if (!can_reload){
+		reload_alpha = 0;
+	}
+	if (!canmove){
 		reload_alpha = 0;
 	}
 	

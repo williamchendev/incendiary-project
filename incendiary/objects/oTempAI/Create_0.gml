@@ -1,15 +1,12 @@
 /// @description Init
 
 //Settings
-room_behavior = "idle";
-
 room_spd = 1;
-room_reset_time = 120;
-room_timer = 0;
-
-room_stay_time = 60 * 20;
+room_reset_time = 260;
+room_timer = room_reset_time;
 
 //Variables
+canmove = true;
 can_spawn = true;
 
 ///AI DATA

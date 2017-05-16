@@ -48,6 +48,7 @@ while(!hit and (temp_spd > 0)){
 				inst_temp.behavior = "chase";
 				inst_temp.anna_vis = true;
 				inst_temp.alert = 1;
+				inst_temp.attack_move = true;
 			}
 			instance_destroy();
 		}

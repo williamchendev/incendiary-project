@@ -1,98 +1,95 @@
 /// @description Step Event
 
-if (behavior == "chase"){
-	room_behavior = "travel";
-	goal_room = room;
-	if (angry <= 0){
-		if (karma < -0.2){
-			if (nature == "support"){
-				behavior = choose("patrol", "follow");
-			}
-			else {
-				behavior = "patrol";
-			}
-		}
-		else if (karma >= -0.2){
-			if (nature == "alone"){
-				behavior = choose("idle", "search", "patrol");
-			}
-			else if (nature == "support"){
-				behavior = choose("idle", "follow");
-			}
-			else if (nature == "leader"){
-				behavior = choose("search", "patrol");
-			}
-		}
-		room_behavior = "check";
-		goal_room = current_room;
-	}
-	else {
-		angry--;
-	}
-}
-else if (behavior == "guard"){
-	room_behavior = "travel";
-	if (current_room != guard_room){
-		goal_room = guard_room;
-	}
-}
+var move = false;
+var move_room = noone;
 
-if (room_behavior == "idle"){
-	if (current_room != goal_room){
-		room_behavior = "travel";
-		room_timer = room_reset_time;
-	}
-	else {
-		room_behavior = "check";
-		room_timer = room_stay_time;
-	}
-}
-else if (room_behavior == "travel"){
-	if (current_room == goal_room){
-		room_behavior = "idle";
-	}
-	else {
-		if (room_timer <= 0){
-			room_timer = room_reset_time;
-			for (var v = 0; v < array_length_1d(room_pathfind); v++){
-				if (rooms[room_pathfind[v]] == current_room){
-					if (v > 0){
-						current_room = rooms[room_pathfind[v - 1]];
+if (canmove){
+	if (room_pathfind != noone){
+		if (current_room == goal_room){
+			move = true;
+		}
+		else {
+			if (room_timer <= 0){
+				if (behavior == "chase"){
+					room_timer *= 0.5;
+				}
+				room_timer = room_reset_time;
+				var temp_pre_room = 0;
+				for (var c = 1; c < array_length_1d(room_pathfind); c++){
+					if (rooms[room_pathfind[c]] == current_room){
+						current_room = rooms[room_pathfind[c - 1]];
+						temp_pre_room = c;
+						break;
+					}
+				}
+				for (var i = 0; i < instance_number(oRoom); i++){
+					var temp_room = instance_find(oRoom, i);
+					if (temp_room.room_type == rooms[room_pathfind[temp_pre_room]]){
+						x = temp_room.move_x;
+						y = temp_room.move_y;
 						break;
 					}
 				}
 			}
-			for (var i = 0; i < instance_number(oRoom); i++){
-				var temp_room = instance_find(oRoom, i);
-				if (temp_room.previous_room == current_room){
-					x = temp_room.move_x;
-					y = temp_room.move_y;
-					break;
-				}
-			}
-		}
-		else {
-			room_timer -= spd;
-			if (current_room == room){
-				if (instance_exists(oPatrol)){
-					var patrol_xy = PatrolScript();
-					x = patrol_xy[0];
-					y = patrol_xy[1];
+			else {
+				room_timer -= room_spd;
+				if (current_room == room){
+					if (behavior == "chase"){
+						if (instance_exists(oAnna)){
+							x = oAnna.x;
+							y = oAnna.y;
+						}
+					}
+					else {
+						if (instance_exists(oPatrol)){
+							var patrol_xy = PatrolScript();
+							x = patrol_xy[0];
+							y = patrol_xy[1];
+						}
+					}
 				}
 			}
 		}
 	}
+	else {
+		move = true;
+	}
+	
+	if (behavior == "chase"){
+		if (goal_room != room){
+			for (var c = 0; c < array_length_1d(rooms); c++){
+				if (rooms[c] == room){
+					move_room = c;
+				}
+			}
+			goal_room = rooms[move_room];
+			move = true;
+		}
+	}
 }
-else if (room_behavior == "check"){
-	if (room_timer <= 0){
-		var checks = noone;
-		var temp_current = 0;
-		for (var h = 0; h < array_length_1d(rooms); h++){
-			checks[h] = false;
-			if (current_room == rooms[h]){
-				temp_current = h;
+else {
+	/*
+	if (current_room == room){
+		if (instance_exists(oPatrol)){
+			var patrol_xy = PatrolScript();
+			x = patrol_xy[0];
+			y = patrol_xy[1];
+		}
+	}
+	*/
+}
+
+if (move){
+	if (behavior == "guard"){
+		if (current_room != guard_room){
+			for (var c = 0; c < array_length_1d(rooms); c++){
+				if (rooms[c] == guard_room){
+					move_room = c;
+				}
 			}
 		}
+	}
+	else if (behavior == "patrol"){
 		var temp_goal = 0;
 		var temp_priority = room_priority[0];
 		for (var k = 0; k < array_length_1d(room_priority); k++){
@@ -110,23 +107,43 @@ else if (room_behavior == "check"){
 			room_priority[k] = irandom_range(0, 100);
 		}
 		goal_room = rooms[temp_goal];
-		room_pathfind = RoomPathFind(room_path, checks, temp_current, temp_goal);
-		
-		room_behavior = "idle";
+		move_room = temp_goal;
 	}
-	else {
-		room_timer -= spd;
+}
+
+if (move){
+	if (move_room != noone){
+		var checks = noone;
+		var temp_current = 0;
+		for (var h = 0; h < array_length_1d(rooms); h++){
+			checks[h] = false;
+			if (current_room == rooms[h]){
+				temp_current = h;
+			}
+		}
+		room_pathfind = RoomPathFind(room_path, checks, temp_current, move_room);
+		room_timer = room_reset_time;
 	}
 }
 
 if (current_room == room){
 	if (can_spawn){
 		var inst_ai = instance_create_layer(x, y, "Player_Layer", oAI);
+		
+		if (behavior == "guard"){
+			if (room == guard_room){
+				inst_ai.x = guard_x;
+				inst_ai.y = guard_y;
+			}
+		}
+		
 		inst_ai.karma = karma;
 		inst_ai.creepy = creepy;
 		inst_ai.nature = nature;
 		inst_ai.behavior = behavior;
 		inst_ai.vitality = vitality;
+		
+		inst_ai.canmove = canmove;
 
 		//Vision
 		inst_ai.alertness = alertness;
