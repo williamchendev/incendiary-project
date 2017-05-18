@@ -40,15 +40,17 @@ while(!hit and (temp_spd > 0)){
 			}
 			
 			if (!inst_temp.dead){
-				for (var q = 0; q < irandom_range(1, 4); q++){
-					instance_create_depth(round(hit_x), round(hit_y), inst_temp.depth - irandom_range(1, 3), oBlood);
+				if (inst_temp.behavior != "cutscene"){
+					for (var q = 0; q < irandom_range(1, 4); q++){
+						instance_create_depth(round(hit_x), round(hit_y), inst_temp.depth - irandom_range(1, 3), oBlood);
+					}
+					inst_temp.vitality--;
+					inst_temp.karma = -1;
+					inst_temp.behavior = "chase";
+					inst_temp.anna_vis = true;
+					inst_temp.alert = 1;
+					inst_temp.attack_move = true;
 				}
-				inst_temp.vitality--;
-				inst_temp.karma = -1;
-				inst_temp.behavior = "chase";
-				inst_temp.anna_vis = true;
-				inst_temp.alert = 1;
-				inst_temp.attack_move = true;
 			}
 			instance_destroy();
 		}

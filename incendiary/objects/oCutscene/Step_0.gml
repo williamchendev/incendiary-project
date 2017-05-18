@@ -57,7 +57,7 @@ if (triggered){
 				start_event = false;
 			}
 			else {
-				if ((point_distance(actor[action[event, 1]].x, actor[action[event, 1]].y, action[event, 2], action[event, 3]) < 1) or action[1, 4]){
+				if ((point_distance(actor[action[event, 1]].x, actor[action[event, 1]].y, action[event, 2], action[event, 3]) < 1) or action[event, 4]){
 					start_event = true;
 					event++;
 				}
@@ -116,8 +116,21 @@ if (triggered){
 				}
 			}
 			else {
+				start_event = true;
 				event++;
 			}
+		}
+		else if (action[event, 0] == "create"){
+			instance_create_depth(action[event, 2], action[event, 3], action[event, 3] * -1, action[event, 1])
+			start_event = true;
+			event++;
+		}
+		else if (action[event, 0] == "destroy"){
+			with (action[event, 1]){
+				instance_destroy();
+			}
+			start_event = true;
+			event++;
 		}
 	}
 }

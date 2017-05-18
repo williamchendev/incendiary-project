@@ -3,9 +3,9 @@ layer = layer_get_id("Player_Layer");
 
 ///Settings
 karma = -0.3; //hostile - (-1), neutral - (0), friendly - (1)
-creepy = 0.8; //random_range(0, 1)
+creepy = 0.7; //random_range(0, 1)
 nature = "alone"; //support, leader, alone
-behavior = "guard"; //idle - nothing/sulk, follow - support/tag, chase - attack/pursue, patrol, search, guard - watch one location, cutscene - theatric movement
+behavior = "patrol"; //idle - nothing/sulk, follow - support/tag, chase - attack/pursue, patrol, search, guard - watch one location, cutscene - theatric movement
 draw_ui = true;
 
 vitality = 2;
@@ -30,6 +30,7 @@ dash_spd = 2;
 idle_ani = en_f;
 walk_ani = en_fwalk;
 run_ani = en_frun;
+death_ani = en_fdeath;
 
 //Combat
 angry = 0;

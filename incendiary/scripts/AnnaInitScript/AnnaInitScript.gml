@@ -51,7 +51,7 @@ action_wait = 90;
 pick = false;
 end_pick = false;
 
-ammo = 6;
+ammo = 2;
 maxammoload = 0;
 maxammo = 6;
 ammoload = false;
@@ -84,15 +84,7 @@ for (i = 0; i < 12; i++){
 }
 item_slot[0].item = 15;
 
-item_slot[3].item = 6;
-item_slot[4].item = 7;
-item_slot[5].item = 6;
-item_slot[6].item = 7;
-
-item_slot[7].item = 1;
-item_slot[8].item = 1;
-item_slot[9].item = 1;
-item_slot[10].item = 1;
+//item_slot[1].item = 0;
 
 //Clamp Screen
 var view_x = x - 240 + (image_xscale * 12);

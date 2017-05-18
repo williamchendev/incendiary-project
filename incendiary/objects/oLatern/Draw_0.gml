@@ -1,6 +1,6 @@
 /// @description Draw Latern
 
-depth = -1 * (y + 10);
+depth = -1 * (y + 6);
 
 var sin_num = (sin(sin_val * 2 * pi) + 1) / 2;
 

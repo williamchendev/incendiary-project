@@ -1,10 +1,5 @@
 /// @description Init
 
-cutscene_switch = true;
-if (!cutscene_switch){
-	instance_destroy();
-}
-
 //Settings
 actor[0] =  oAnna;
 actor[1] =  instance_nearest(x, y, oAI);
@@ -34,6 +29,16 @@ action[4, 2] = 0.3; //Min Flicker
 action[4, 3] = 0.8; //Max Flicker
 action[4, 4] = -1; //Destroy Instance
 
+action[5, 0] = "create"; //Action Type
+action[5, 1] = oGun; //Instance Name
+action[5, 2] = x; //X
+action[5, 3] = y; //Y
+
+action[6, 0] = "destroy"; //Action Type
+action[6, 1] = oGun; //Instance Name
+
+action = noone;
+actor = noone;
 
 //Variables
 text_displace_y = 56;

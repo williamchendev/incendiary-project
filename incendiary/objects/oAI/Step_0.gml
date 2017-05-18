@@ -587,6 +587,8 @@ if (canmove){
 			}
 			canmove = false;
 			dead = true;
+			global.kills += 1;
+			image_index = 0;
 		}
 	}
 }

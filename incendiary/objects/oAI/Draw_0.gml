@@ -91,7 +91,14 @@ else {
 }
 
 //AI Sprite
-if (walking){
+if (dead){
+	sprite_index = death_ani;
+	mask_index = death_ani;
+	if (image_index >= 10){
+		image_speed = 0;
+	}
+}
+else if (walking){
 	if (spd == run_spd){
 		sprite_index = run_ani;
 	}

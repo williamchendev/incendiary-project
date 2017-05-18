@@ -33,7 +33,7 @@ if (mouse_click){
 			}
 		}
 		else if (cursor_num == 1){
-		
+			
 		}
 		else if (cursor_num == 2){
 			game_end();
@@ -50,9 +50,8 @@ if (cursor_num == -1){
 
 //Start
 if (start_time == 0){
-	//room_goto(test_room);
-	//room_goto(tutorial_room);
-	room_goto(test_hall1);
+	//room_goto(intro_room);
+	room_goto(hallway1_room);
 }
 else if (start_time < wait){
 	start_time--;

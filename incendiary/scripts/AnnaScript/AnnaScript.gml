@@ -424,7 +424,7 @@ else {
 					path_start(path, spd, path_action_stop, true);
 					path_set_kind(path, 0);
 				}
-				ItemAddScript(item);
+				//ItemAddScript(item);
 				item = -1;
 				gui = false;
 				throw = false;
@@ -547,5 +547,5 @@ if (restart_key){
 
 //Test
 if (test_key){
-    instance_create_layer(0, 0, "Action_Layer", oCircleTrans);
+    global.kills += 1;
 }

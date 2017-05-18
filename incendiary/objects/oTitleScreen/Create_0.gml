@@ -13,6 +13,7 @@ global.escape_game = -1;
 global.music_vol = 0;
 global.sfx_vol = 0;
 global.dog_fluff = 0;
+StoryInitScript();
 
 //Item Array
 ItemDataScript();
@@ -65,5 +66,5 @@ credits_data = noone;
 
 credits_data[0] = "Code + Art: William Spelman";
 credits_data[1] = "Music: Jack Barenbrugge";
-credits_data[2] = "Special Thanks to Ms.Haga";
+credits_data[2] = "Special Thanks to Ms.Haga and Mr.Dwyer";
 credits_data[3] = "Emotional Wreck: William Spelman";

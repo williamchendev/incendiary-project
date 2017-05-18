@@ -2,7 +2,7 @@ event_inherited();
 
 sprite_index = sLog;
 
-inspect_move = false;
+inspect_move = true;
 
 //Text Event
 useless_text = noone;
@@ -16,6 +16,6 @@ useless_text[1, 1] = x;
 useless_text[1, 2] = y;
 useless_text[1, 3] = c_white;
 
-move_x = x;
+move_x = x - 48;
 move_y = y - 4;
 

@@ -6,60 +6,71 @@ move_x = x - 90;
 move_y = y;
 
 text1 = noone;
-text1[0, 0] = "...piece of shit..";
+
+text1[0, 0] = "So you\'re leaving?";
 text1[0, 1] = self;
 text1[0, 2] = c_ltgray;
 text1[0, 3] = RegularFont;
 
-text1[1, 0] = "Anna?";
-text1[1, 1] = self;
-text1[1, 2] = c_ltgray;
+text1[1, 0] = "Yeah..";
+text1[1, 1] = -1;
+text1[1, 2] = c_white;
 text1[1, 3] = RegularFont;
 
-text1[2, 0] = "I thought you were downtown.";
-text1[2, 1] = -1;
-text1[2, 2] = c_white;
+text1[2, 0] = "Michigan is pretty far from the coasts.";
+text1[2, 1] = self;
+text1[2, 2] = c_ltgray;
 text1[2, 3] = RegularFont;
 
-text1[3, 0] = "My friend from Langley called.";
+text1[3, 0] = "Good.";
 text1[3, 1] = -1;
 text1[3, 2] = c_white;
 text1[3, 3] = RegularFont;
 
-text1[4, 0] = "The last dead in michigan died.";
-text1[4, 1] = -1;
-text1[4, 2] = c_white;
+text1[4, 0] = "How about we gamble something?";
+text1[4, 1] = self;
+text1[4, 2] = c_ltgray;
 text1[4, 3] = RegularFont;
 
-text1[5, 0] = "Can dead people die?";
-text1[5, 1] = self;
-text1[5, 2] = c_ltgray;
+text1[5, 0] = "Like what?";
+text1[5, 1] = -1;
+text1[5, 2] = c_white;
 text1[5, 3] = RegularFont;
 
-text1[6, 0] = "You know what I mean.";
-text1[6, 1] = -1;
-text1[6, 2] = c_white;
+text1[6, 0] = "Heads or Tails?";
+text1[6, 1] = self;
+text1[6, 2] = c_ltgray;
 text1[6, 3] = RegularFont;
 
-text1[7, 0] = "Well that's a long ways to travel.";
-text1[7, 1] = self;
-text1[7, 2] = c_ltgray;
+text1[7, 0] = "Heads.";
+text1[7, 1] = -1;
+text1[7, 2] = c_white;
 text1[7, 3] = RegularFont;
 
-text1[8, 0] = "I";
+text1[8, 0] = "...";
 text1[8, 1] = self;
 text1[8, 2] = c_ltgray;
 text1[8, 3] = RegularFont;
 
 text1[9, 0] = "...";
-text1[9, 1] = self;
-text1[9, 2] = c_ltgray;
+text1[9, 1] = -1;
+text1[9, 2] = c_white;
 text1[9, 3] = RegularFont;
 
-text1[10, 0] = "It's good seeing you, Anna.";
+text1[10, 0] = "..Tails.";
 text1[10, 1] = self;
 text1[10, 2] = c_ltgray;
 text1[10, 3] = RegularFont;
+
+text1[11, 0] = "You're a pretty terrible liar.";
+text1[11, 1] = -1;
+text1[11, 2] = c_white;
+text1[11, 3] = RegularFont;
+
+text1[12, 0] = "There goes asking you to stay...";
+text1[12, 1] = self;
+text1[12, 2] = c_ltgray;
+text1[12, 3] = RegularFont;
 
 text2 = noone;
 text2[0, 0] = @"Did you really sleep overnight
@@ -84,8 +95,7 @@ text2[3, 1] = self;
 text2[3, 2] = c_ltgray;
 text2[3, 3] = RegularFont;
 
-text2[4, 0] = @"I smoked so much it'll probably reek
-untill 2024.";
+text2[4, 0] = "For closure or something.";
 text2[4, 1] = self;
 text2[4, 2] = c_ltgray;
 text2[4, 3] = RegularFont;

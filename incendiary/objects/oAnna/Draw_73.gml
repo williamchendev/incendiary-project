@@ -262,6 +262,15 @@ if (global.debug){
 	draw_text(view_x + 1, view_y + 22, "Still: " + string(stand_still));
 	draw_text(view_x + 1, view_y + 29, "Room: " + room_get_name(room));
 	draw_text(view_x + 1, view_y + 36, "Visibility: " + string(visibility));
+	draw_text(view_x + 1, view_y + 44, string(global.kills));
+	
+	/*
+	var cutscene_num = 0;
+	if (instance_exists(oCutscene)){
+		cutscene_num = oCutscene.event;
+	}
+	draw_text(view_x + 1, view_y + 44, "Event: " + string(cutscene_num));
+	*/
 	
 	draw_set_alpha(0.3);
     draw_set_color(c_blue);

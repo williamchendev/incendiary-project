@@ -17,37 +17,19 @@ if ((path != noone) or (patrol_areas != noone)){
 //ROOM DATA
 rooms = noone;
 
-rooms[0] = test_hall0;
-room_path[0, 0] = 7;
-room_path[0, 1] = 1;
+rooms[0] = living_room;
+room_path[0, 0] = 1;
 
-rooms[1] = test_hall1;
+rooms[1] = hallway1_room;
 room_path[1, 0] = 0;
 room_path[1, 1] = 2;
 
-rooms[2] = test_hall2;
+rooms[2] = hallway2_room;
 room_path[2, 0] = 1;
 room_path[2, 1] = 3;
 
-rooms[3] = test_hall3;
+rooms[3] = downstairs_room;
 room_path[3, 0] = 2;
-room_path[3, 1] = 4;
-
-rooms[4] = test_hall4;
-room_path[4, 0] = 3;
-room_path[4, 1] = 5;
-
-rooms[5] = test_hall5;
-room_path[5, 0] = 4;
-room_path[5, 1] = 6;
-
-rooms[6] = test_hall6;
-room_path[6, 0] = 5;
-room_path[6, 1] = 7;
-
-rooms[7] = test_hall7;
-room_path[7, 0] = 6;
-room_path[7, 1] = 0;
 
 /*
 rooms[8] = test_hall0;

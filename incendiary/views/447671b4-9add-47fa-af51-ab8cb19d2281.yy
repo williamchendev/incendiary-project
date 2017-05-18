@@ -11,7 +11,8 @@
         "51bbe573-e804-406a-b668-80c3f84565ea",
         "a23bb081-e455-47e7-a3b7-48fecb55178e",
         "b31d8ea8-0e2a-48c6-a489-e288d246c8a7",
-        "c54fa055-b83a-4540-96b0-27fd3d3461ee"
+        "c54fa055-b83a-4540-96b0-27fd3d3461ee",
+        "1bc8c3ba-832d-4e34-9872-dcb0f2b49dd1"
     ],
     "filterType": "GMSprite",
     "folderName": "Inspect",

@@ -1,5 +1,6 @@
 /// @description Narp
 
+//AI Transport
 var temp_ai_trans = noone;
 if (click){
 	temp_ai_trans = instance_nearest(move_x, move_y, oAI);
@@ -45,73 +46,74 @@ if (!touch){
 		action.selected = selected;
 		action.shoot_bypass = true;
 	
-		if (instance_exists(oAnna)){
-			if (point_distance(oAnna.mouse_scale_x, oAnna.mouse_scale_y, action.x, action.y) <= (24)){
-			    action.prox = true;
+		if (active){
+			if (instance_exists(oAnna)){
+				if (point_distance(oAnna.mouse_scale_x, oAnna.mouse_scale_y, action.x, action.y) <= (24)){
+				    action.prox = true;
+				}
+				else {
+				    action.prox = false;
+				}
 			}
-			else {
-			    action.prox = false;
-			}
-		}
 
-		var touched = false;
-		if (click){
-			if (!selected){
-				if (action.clicked){
-					with(oItem){
-					    selected = false;
+			var touched = false;
+			if (click){
+				if (!selected){
+					if (action.clicked){
+						with(oItem){
+						    selected = false;
+						}
+						with(oInspect){
+						    selected = false;
+						}
+						with(oNPC){
+						    selected = false;
+						}
+						with(oRoom){
+						    selected = false;
+						}
+						AnnaMoveScript(move_x, move_y);
+						action.clicked = false;
+						selected = true;
 					}
-					with(oInspect){
-					    selected = false;
-					}
-					with(oNPC){
-					    selected = false;
-					}
-					with(oRoom){
-					    selected = false;
-					}
-					AnnaMoveScript(move_x, move_y);
-					action.clicked = false;
-					selected = true;
+				}
+				else {
+					if (!oAnna.moving){
+				        selected = false;
+				    }
+				    else {
+						if (point_distance(oAnna.x, oAnna.y, move_x, move_y) <= 1){
+				            touched = true;
+						}
+				    }
 				}
 			}
 			else {
-				if (!oAnna.moving){
-			        selected = false;
-			    }
-			    else {
-					if (point_distance(oAnna.x, oAnna.y, move_x, move_y) <= 1){
-			            touched = true;
-					}
-			    }
-			}
-		}
-		else {
-			action.action_sprite_alpha = 0;
-			if (place_meeting(x, y, oAnna)){
-				touched = true;
-			}
-		}
-	
-		if (touched){
-			touch = true;
-			
-			oAnna.canmove = false;
-			oAnna.moving = false;
-			oAnna.walking = false;
-			
-			var anna_item = oAnna.item;
-			for (var c = 0; c < 12; c++){
-				anna_items[c] = oAnna.item_slot[c].item;
-				if (anna_item != -1){
-					if (anna_items[c] == -1){
-						anna_items[c] = anna_item;
-						anna_item = -1;
-					}
+				if (place_meeting(x, y, oAnna)){
+					touched = true;
 				}
 			}
-			anna_ammo = oAnna.ammo;
-			anna_shoot = oAnna.shoot;
+	
+			if (touched){
+				touch = true;
+			
+				oAnna.canmove = false;
+				oAnna.moving = false;
+				oAnna.walking = false;
+			
+				var anna_item = oAnna.item;
+				for (var c = 0; c < 12; c++){
+					anna_items[c] = oAnna.item_slot[c].item;
+					if (anna_item != -1){
+						if (anna_items[c] == -1){
+							anna_items[c] = anna_item;
+							anna_item = -1;
+						}
+					}
+				}
+				anna_ammo = oAnna.ammo;
+				anna_shoot = oAnna.shoot;
+			}
 		}
 	}
 }
@@ -174,3 +176,13 @@ if (touch){
 }
 
 visible = global.debug;
+
+//Action Visible
+if (instance_exists(action)){
+	if (click){
+		action.visible = true;
+	}
+	else {
+		action.visible = false;
+	}
+}
