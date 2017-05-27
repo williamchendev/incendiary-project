@@ -20,7 +20,7 @@ if (argument0.behavior == "distracted"){
 
 inst_ai.vitality = argument0.vitality;
 
-inst_ai.canmove = argument0.canmove;
+inst_ai.canmove = true;
 
 //Vision
 inst_ai.alertness = argument0.alertness;

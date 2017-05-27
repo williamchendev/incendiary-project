@@ -57,13 +57,21 @@ if (canmove){
 	
 	if (behavior == "chase"){
 		if (goal_room != room){
+			var found_chase_room = false;
 			for (var c = 0; c < array_length_1d(rooms); c++){
 				if (rooms[c] == room){
 					move_room = c;
+					found_chase_room = true;
 				}
 			}
-			goal_room = rooms[move_room];
-			move = true;
+			if (found_chase_room){
+				goal_room = rooms[move_room];
+				move = true;
+			}
+			else {
+				behavior = "patrol";
+				move = true;
+			}
 		}
 	}
 }
